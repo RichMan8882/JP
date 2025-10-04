@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 // import
 import '@/assets/sass/TempPage.min.css'
-
 import anime from '@/assets/js/anime.es.js'
 const { t } = useI18n()
 const siteStore = useSiteStore()
@@ -37,25 +36,25 @@ const search = ref({
 })
 const dataList = ref([
   {
-    title: t('待購置數量'),
+    title: t('出荷数'),
     unit: t('劑'),
     index: '0'
   },
   {
-    title: t('目前庫存量'),
+    title: t('返品・交換数'),
     unit: t('劑'),
     index: '1'
   },
-  {
-    title: t('待放置數量'),
-    unit: t('劑'),
-    index: '2'
-  },
-  {
-    title: t('待放置廠商'),
-    unit: t(''),
-    index: '3'
-  }
+  // {
+  //   title: t('待放置數量'),
+  //   unit: t('劑'),
+  //   index: '2'
+  // },
+  // {
+  //   title: t('待放置廠商'),
+  //   unit: t(''),
+  //   index: '3'
+  // }
 ])
 const showToolPopup = ref(false)
 const symbol = ref('')
@@ -178,22 +177,24 @@ const connectRecordList = computed(() => {
   }
 })
 const addBetGameType = (type: any) => {
-  if (betData.value.option.includes(type)) {
-    betData.value.option = betData.value.option.filter((item) => item !== type)
-  } else {
-    betData.value.option.push(type)
-  }
-  console.log(betData.value.option)
+  console.log(type);
+
+  betData.value.option = [type + '']
+  // if (betData.value.option.includes(type)) {
+  //   betData.value.option = betData.value.option.filter((item) => item !== type)
+  // } else {
+  //   betData.value.option.push(type)
+  // }
+  // console.log(betData.value.option)
 }
+
 const checkBetData = () => {
   if (!disableBet.value) {
     disableBet.value = true
+    console.log(checkBetData.value);
+
     try {
       betData.value.productId = symbolData.value.id
-      betData.value.amount =
-        siteStore.siteData.betAmounts[
-          siteStore.siteData.betAmounts.length - 1
-        ].toString()
       console.log(betData.value)
       const pairData = symbolData.value
       console.log('pairData', pairData)
@@ -221,16 +222,17 @@ const checkBetData = () => {
         }
       }
       if (betData.value.amount === '') {
-        ElNotification({
-          message: `${t('請輸入下單金額')}`,
-          type: 'error',
-          showClose: false
-        })
-        return
+        // ElNotification({
+        //   message: `${t('請輸入下單金額')}`,
+        //   type: 'error',
+        //   showClose: false
+        // })
+        // return
+        betData.value.amount = 50
       }
       if (betData.value.option.length === 0) {
         ElNotification({
-          message: `${t('請選擇購置或放置')}`,
+          message: `${t('請選擇參數設置模式')}`,
           type: 'error',
           showClose: false
         })
@@ -261,28 +263,28 @@ const checkBetData = () => {
           betData.value.amount = betData.value.amount.toString()
           const response = await bet(betData.value)
           console.log('bet response', response)
-          // <p style="margin:0 0 8px 0"> ${t('交易金額')}: ${response.data.amount} </p>
-
           if (response.success) {
             ElMessageBox.alert(
               `
-               <p style="margin:0 0 8px 0"> ${t('交易期別')}: ${response.data.roundNo} </p>
-               <p style="margin:0 0 8px 0"> ${t('交易期別')}: ${gameOptionNameList(
+               <p style="margin:0 0 8px 0"> ${t('系統編號')}: ${response.data.roundNo} </p>
+               <p style="margin:0 0 8px 0"> ${t('設置數值')}: ${response.data.amount} </p>
+               <p style="margin:0 0 8px 0"> ${t('設置選項')}: ${gameOptionNameList(
                 response.data.option
               )} </p>
                <p style="margin:0 0 8px 0"> ${t('時間')}: ${formatDate(
                 response.data.openAt
               )} </p>
              `,
-              `${t('下單成功')}`,
+              `${t('設置成功')}`,
               {
                 confirmButtonText: `${t('確認')}`,
                 center: true,
-                dangerouslyUseHTMLString: true
+                dangerouslyUseHTMLString: true,
+                customClass: 'messageStyle'
               }
             )
           } else {
-            // ElNotification({
+            // ElNotification({＄3778405
             //   title: response.message,
             //   type: 'error',
             //   showClose: false
@@ -962,70 +964,54 @@ const triggerDataRandom = () => {
 
 <template>
   <div class="page">
-    <div class="user-t white" style="background-color: #025189; padding: 9px; line-height: 24px">
+    <div class="page-video">
+      <video autoplay muted loop preload="auto">
+        <source src="https://upload.comethike.com/uploads/1759578336584.mov">
+      </video>
+    </div>
+    <div class="user-t white" style="padding: 9px; line-height: 24px">
       <div class="login-no">
-        <div class="goBack" @click="navigateTo('/')">返回首頁</div>
+        <div class="goBack" @click="navigateTo('/user')">返回首頁</div>
         <span class="log-user">
           <span style="margin-right: 5px">
             <i class="fa-solid fa-user"></i>
           </span>
           Hello,<span style="
-              color: rgb(238, 238, 175);
               display: inline-block;
               margin: 0 5px;
-            ">{{ PlayerStore?.playerInfo?.username }}</span>
+            ">{{ PlayerStore?.playerInfo?.username }} </span>
           $ {{ new Intl.NumberFormat('zh-TW').format(playerWalletBalance) }}
         </span>
       </div>
     </div>
-    <div>
-      <div class="sys">
-        <div class="container">
-          <div class="row text-center">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="heading-count" style="
-                  background-color: rgba(255, 255, 255, 0.411);
-                  padding-top: 20px;
-                  padding-bottom: 20px;
-                  border-radius: 30px;
-                ">
-                <h2>{{ $lang('工單') }}</h2>
-                <p>{{ betData.roundNo || '' }}</p>
-                <div class="card-body-time" :style="socketCurrentRoundCountdown < 11 ? 'color:red' : ''">
-                  {{ $lang('剩餘時間:') }}
-                  <span>{{ socketCurrentRoundCountdown || '0' }}s</span>
-                </div>
+    <div class="sys">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="heading-count">
+              <h2>{{ $lang('工單') }}</h2>
+              <p>{{ betData.roundNo || '' }}</p>
+              <div class="card-body-time" :style="socketCurrentRoundCountdown < 11 ? 'color:red' : ''">
+                {{ $lang('剩餘時間:') }}
+                <span>{{ socketCurrentRoundCountdown || '0' }}s</span>
               </div>
             </div>
-            <div class="col-md-12 col-sm-12 col-xs-12" style="padding: 40px 0 20px">
-              <div v-for="(item, index) in dataList" :key="`data-${index}`" class="time-entry" style="
-                  border-radius: 20px;
-                  border: solid 2px #69dffd;
-                  background-color: #3026266c;
-                ">
-                <span id="a1a_value">&nbsp;{{ dataNumber[item.index] }}&nbsp;{{ item.unit }}</span>{{ item.title }}
-              </div>
+          </div>
+          <div class="btns" style="padding: 40px 0 20px">
+            <div v-for="(item, index) in dataList" :key="`data-${index}`" class="time-entry">
+              <span id="a1a_value">&nbsp;{{ dataNumber[item.index] }}&nbsp;{{ item.unit }}</span>{{ item.title }}
+            </div>
+            <div class="round button radio-group" :class="{
+              active: betData.option[0] == 4
+            }" @click="addBetGameType(4)">{{ $lang('出荷') }}</div>
 
-              <div id="radio" style="margin-top: 30px">
-                <label style="margin-right: 20px">
-                  <input type="radio" name="order_type" value="kkk" />
-                  <span class="round button" :class="{
-                    active: betData.option.includes(0)
-                  }" @click="addBetGameType(0)">{{ $lang('購置') }}</span>
-                </label>
-                <label>
-                  <input type="radio" name="order_type" value="fff" />
-                  <span class="round button" :class="{
-                    active: betData.option.includes(1)
-                  }" @click="addBetGameType(1)">
-                    {{ $lang('放置') }}</span>
-                </label>
-              </div>
-              <div class="button-group" @click="checkBetData">
-                <button id="confirmButton" class="btn btn-common">
-                  {{ $lang('確定') }}
-                </button>
-              </div>
+            <div class="round button radio-group" :class="{ active: betData.option[0] == 5 }"
+              @click="addBetGameType(5)">
+              {{ $lang('返品/交換') }}</div>
+            <div class="button-group" @click="checkBetData">
+              <button id="confirmButton" class="btn btn-common">
+                {{ $lang('確定') }}
+              </button>
             </div>
           </div>
         </div>
@@ -1033,24 +1019,67 @@ const triggerDataRandom = () => {
     </div>
   </div>
 </template>
-<style lang="sass" scoped>
-@keyframes backgroundSwitch
-  0%
-    background-image: url("@/assets/image/index/slide01.jpg")
-  33%
-    background-image: url("@/assets/image/index/slide02.jpg")
-  66%
-    background-image: url("@/assets/image/index/slide03.jpg")
-  100%
-    background-image: url("@/assets/image/index/slide01.jpg")
+<style lang="scss">
+.messageStyle {
 
+  border-radius: 15px !important;
+
+  .el-message-box__header {
+    .el-message-box__title {
+      color: #f58194 !important;
+      font-size: 1.5rem !important;
+      font-weight: 600;
+    }
+  }
+
+  .el-message-box__content {
+    color: #000;
+
+    .el-message-box__container {
+      .el-message-box__message span {
+        color: #0a00ff !important;
+      }
+    }
+  }
+
+  .el-message-box__btns {
+    height: 80px;
+    text-align: center;
+
+    .el-button {
+      height: 45px;
+      width: 160px;
+      font-size: 20px;
+      background: #f58194;
+      color: #fff;
+      background-color: #f58194;
+      border: 1px solid #f58194;
+    }
+  }
+}
+</style>
+<style lang="sass" scoped>
 .page
+
+  // animation: backgroundSwitch 15s infinite
+  // background-position: center
+  // background-size: cover
+
   position: relative
-  animation: backgroundSwitch 15s infinite
-  background-position: center
-  background-size: cover
   height: 100vh
   overflow: auto
+  .page-video
+    position: absolute
+    z-index: -1
+    object-fit: cover
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    video
+      width: 100%
+      height: 100%
+      object-fit: cover
   .sbps
     position: absolute
     top: 0
@@ -1061,14 +1090,12 @@ const triggerDataRandom = () => {
 <style lang="sass" scoped>
 .white
     color: #FFF
-
 .black
   color: #0C1239
-
 /* user
 
 .user-t
-  background: #0A0E21
+  background: #ff6c7a
   padding: 12px 0
   font-size: 16px
   margin-bottom: 26px
@@ -1084,11 +1111,12 @@ const triggerDataRandom = () => {
   display: flex
   justify-content: center
   .goBack
-    color: #025189
+    color: #ff6c7a
     background-color: rgba(255, 255, 255, 0.767)
     padding-right: 7px
     padding-left: 7px
     margin-right: 10px
+    border-radius: 3px
     font-weight: bold
     cursor: pointer
 .login-off
@@ -1102,8 +1130,8 @@ const triggerDataRandom = () => {
   color: #fff
   position: absolute
   margin: 0 auto
-  margin-top: 55px
-  top: 15%
+  top: 50%
+  transform: translateY(-50%)
   text-align: center
   width: 100%
   overflow-y: auto
@@ -1115,12 +1143,17 @@ const triggerDataRandom = () => {
     width: 100%
     @media (min-width: 1200px)
       max-width: 1140px
-    .heading-count h2
-      font-size: 42px
-      color: #ffffff
-      line-height: 30px
-      margin-bottom: 15px
-      text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
+    .heading-count
+      background-color: rgba(255, 255, 255, 0.411)
+      padding-top: 20px
+      padding-bottom: 20px
+      border-radius: 30px
+      h2
+        font-size: 42px
+        color: #ffffff
+        line-height: 30px
+        margin-bottom: 15px
+        text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
     .heading-count p
       color: #1d5cd5
       font-size: 18px
@@ -1131,21 +1164,45 @@ const triggerDataRandom = () => {
       color: #212529
       line-height: 36px
       // font-weight: bold
+  /* 定义流动动画 */
+  @keyframes gradientFlow 
+    0% 
+      background-position: 0 0
+    100% 
+      background-position: 100% 100%
+
+  .btns
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    justify-content: center
+    gap: 15px
     .time-entry
-      margin-bottom: 20px
-      padding: 15px
       color: #fff
+      overflow: hidden
       font-size: 18px
       display: inline-block
-      margin: 15px
       padding: 20px
-      border-radius: 0px
       text-align: center
       font-weight: 800
       color: #fff
       font-size: 18px
       line-height: 22px
+      border-radius: 20px
+      border: 4px solid  #ff6c7a
+      transition: all .3s
       text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
+      background: transparent
+      &::before 
+        content: ""
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: repeating-linear-gradient( -45deg, #ff6c7a, #ff6c7a 5px,  #ff8691 0, #ff8691 8px )
+        // animation: gradientFlow 30s linear infinite
+        background-size: 200% 200%
+        z-index: -1
       span
         font-size: 28px
         font-family: 'Montserrat', sans-serif
@@ -1154,64 +1211,47 @@ const triggerDataRandom = () => {
         display: block
         color: #fff
         margin-bottom: 10px
-    label
-      display: inline-block
-      margin-bottom: .5rem
-      padding-bottom: 8px
-      .active
-        background: #ff943c
-        color: #fff
-        cursor: default
-        text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
-        border: solid 3px #ffffff
-      #radio .active:hover
-        background: #ff943c
-        color: #fff
-        text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
-      input[type="radio"]
-        display: none
-      span
-        box-sizing: border-box
-        display: inline-block
-        border-radius: 10px
-        margin: 0 5px 10px 0
-        padding: 15px 35px
-        background: #f7f7f7
-        color: #333
-        cursor: pointer
-        font-size: 25px
-        font-weight: bold
-        border: solid 3px #ffffff
-        line-height: 25px
-        transition: all .2s ease
-    .button-group
-      margin-top: 30px
-      font-size: 25px
-      line-height: 25px
-      padding: 16px 20px
-      border-radius: 0px
-      cursor: pointer
-      font-weight: 800
-      color: #fff
-      text-transform: uppercase
-      -webkit-transition: all 0.2slinear
-      -moz-transition: all 0.2s linear
-      -o-transition: all 0.2s linear
-      transition: all 0.2s linear
-      display: inline-block
-      background-color: #03942f
-      position: relative
-      z-index: 1
-      border-radius: 4px
-      width: 80%
-      border: solid 2px #fff
+    .radio-group
+      margin-top: 20px
+      padding: 20px 20px
+      border-radius: 10px
+      font-size: 22px
+      border: 2px solid  #fff
+      overflow: hidden
+      &::before 
+        content: ""
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: repeating-linear-gradient( -45deg, #ff6c7a, #ff6c7a 5px,  #ff8691 0, #ff8691 8px )
+        background-size: 200% 200%
+        z-index: -1
       &:hover
-        box-shadow: 0 6px 22px rgba(0, 0, 0, 0.1)
-      .btn-common
-        text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
-    #radio .button:hover
-      background: #fff7cdec
-      color: #ff1919
+        &::before
+          background: repeating-linear-gradient( -45deg, #ff6c7a, #ff6c7a 5px,  #ff8691 0, #ff8691 8px )
+          background-size: 200% 200%
+          animation: gradientFlow 30s linear infinite
+      &.active
+        background: repeating-linear-gradient( -45deg, #d64a5a, #d64a5a 5px,  #d96070 0, #d96070 8px)
+        background-size: 200% 200%
+        animation: gradientFlow 30s linear infinite
+    .button-group
+      overflow: hidden
+      margin: 40px 20px 0
+      position: relative
+      padding: 10px 20px
+      border-radius: 10px
+      font-size: 22px
+      grid-column: 3 / 1
+      border: 2px solid  #fff
+      transition: all .3s 
+      background: repeating-linear-gradient( -45deg, #ff6c7a, #ff6c7a 5px,  #ff8691 0, #ff8691 8px )
+      &:hover
+        margin: 40px 0 0
+        
+      
 </style>
 <style lang="sass" scoped>
 .game
@@ -1444,108 +1484,7 @@ const triggerDataRandom = () => {
           font-size: 42px
 </style>
 
-<style lang="sass" scoped>
-.game-tools
-  height: 90px
-  box-shadow: 0 -1px 3px 0px #ddd
-  width: 100%
-  background-color: #fff
-  padding: 5px
-  @media screen and (min-width: 768px)
-    height: 120px
-    background: #efefef
-    box-shadow: none
-  &-time
-    width: 100%
-    display: flex
-    justify-content: flex-end
-    align-items: center
-    border-radius: 6px
-    padding: 5px
-    color: #f77
-    font-weight: bold
-    font-size: 12px
-    width: 100%
-    text-align: right
-    @media screen and (min-width: 768px)
-      font-size: 14px
-    h6
-      font-weight: normal
-      margin-right: 5px
-      color: #333
-      @media screen and (min-width: 768px)
-        font-size: 16px
 
-  &-main
-    display: flex
-    justify-content: center
-    align-items: center
-    @media screen and (min-width: 768px)
-      height: 68px
-
-  &-buysell
-    width: 80%
-    display: flex
-    margin-right: 5px
-    gap: 5px
-    @media screen and (min-width: 768px)
-      height: 100%
-      width: 90%
-      padding-top: 5px
-      margin-right: 10px
-
-    button
-      flex: 1
-      height: 45px
-      display: flex
-      justify-content: center
-      align-items: center
-      color: #fff
-      font-size: 15px
-      border-radius: 6px
-      position: relative
-      transition: all ease .2s
-      @media screen and (min-width: 768px)
-        height: 100%
-
-      &::before
-        content: ""
-        position: absolute
-        left: 0
-        top: 0
-        width: 100%
-        height: 50%
-        border-radius: 6px
-        background-image: linear-gradient(to top, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 80%)
-
-      &.game-tools-buy
-        filter: brightness(1)
-        background-image: linear-gradient(to bottom, #39D627 0%, #11A100 100%)
-        &.active
-          filter: brightness(0.6)
-
-      &.game-tools-sell
-        background-image: linear-gradient(to bottom, #FF5858 0%, #D10000 100%)
-        filter: brightness(1)
-        &.active
-          filter: brightness(0.6)
-
-  &-submit
-    width: calc(20% - 5px)
-    font-size: 18px
-    display: flex
-    align-items: center
-    justify-content: center
-    border-radius: 6px
-    height: 45px
-    background-image: linear-gradient(to bottom, #FFD433 0%, #F68C00 100%)
-    border: 1px solid #e57b01
-    font-size: 20px
-    color: #0c0c0c
-    @media screen and (min-width: 768px)
-      width: calc(10% - 10px)
-      height: 100%
-</style>
 
 <style lang="sass" scoped>
 .menu
@@ -1723,7 +1662,7 @@ input {
 <style>
 .el-input__wrapper {
   background-color: #00000000;
-  border: 1px solid #00000000;
+  border: 1pxsolid #00000000;
   box-shadow: none;
 }
 </style>

@@ -87,9 +87,12 @@ const updateImage = (data: any) => {
 
 <template>
   <div class="pages">
+    <headerTop />
     <div class="tag">
-      <i class="fa-regular fa-file-lines" style="color: #0069a8"></i>
-      {{ $lang('薪資申請') }}
+      <h2>
+        <i class="fa-regular fa-file-lines" style="color: #0069a8"></i>
+        {{ $lang('薪資申請') }}
+      </h2>
     </div>
     <div v-if="Object.keys(playerStore.playerInfo.bankInfo || {}).length === 0" class="inf-bg">
       <div class="ul-contact-form-container">
@@ -105,11 +108,12 @@ const updateImage = (data: any) => {
             <div class="form-group">
               <div class="position-relative">
                 <label style="
-                    color: rgb(12, 12, 158);
+                    
                     font-weight: bold;
                     font-size: 18px;
-                  ">{{ $lang('銀行') }} ▼</label>
-                <select v-model="bankInfo.bankName" name="phoneCode" class="form-control">
+                  ">{{ $lang('銀行') }}</label>
+                <select v-model="bankInfo.bankName" name="phoneCode" class="form-control"
+                  style="border: 2px solid #ff6c7a; border-radius: 10px;margin-left: 5px;padding: 0 10px;">
                   <option v-for="item in siteStore.siteData?.depositOptions.bank" :key="item">
                     {{ item }}
                   </option>
@@ -121,10 +125,10 @@ const updateImage = (data: any) => {
             <div class="form-group">
               <div class="position-relative">
                 <label style="
-                    color: rgb(12, 12, 158);
+                    
                     font-weight: bold;
                     font-size: 18px;
-                  ">{{ $lang('分行') }} ▼</label>
+                  ">{{ $lang('分行') }}</label>
                 <input v-model="bankInfo.branch" v-trim-input type="text" name="name" class="form-control" />
               </div>
             </div>
@@ -133,10 +137,10 @@ const updateImage = (data: any) => {
             <div class="form-group">
               <div class="position-relative">
                 <label style="
-                    color: rgb(12, 12, 158);
+                    
                     font-weight: bold;
                     font-size: 18px;
-                  ">{{ $lang('帳戶號碼') }} ▼</label>
+                  ">{{ $lang('帳戶號碼') }}</label>
                 <input v-model="bankInfo.accountNo" v-trim-input type="text" name="tel" class="form-control" />
               </div>
             </div>
@@ -144,10 +148,10 @@ const updateImage = (data: any) => {
             <div class="form-group">
               <div class="position-relative">
                 <label style="
-                    color: rgb(12, 12, 158);
+                    
                     font-weight: bold;
                     font-size: 18px;
-                  ">{{ $lang('帳戶戶名') }} ▼</label>
+                  ">{{ $lang('帳戶戶名') }}</label>
                 <input v-model="bankInfo.account" v-trim-input type="text" name="name" class="form-control" />
               </div>
             </div>
@@ -155,10 +159,10 @@ const updateImage = (data: any) => {
             <div class="form-group">
               <div class="position-relative">
                 <label style="
-                    color: rgb(12, 12, 158);
+                    
                     font-weight: bold;
                     font-size: 18px;
-                  ">{{ $lang('上傳照片') }} ▼</label>
+                  ">{{ $lang('上傳照片') }}</label>
                 <div class="form-control" style="display: flex; flex-wrap: wrap">
                   <pureImgUploader :limit="1" :index="2" @update-image="updateImage">
                   </pureImgUploader>
@@ -168,84 +172,101 @@ const updateImage = (data: any) => {
               </div>
             </div>
             <br />
-            <button type="submit" name="update_password" class="btn btn-primary" @click="submitBankApply">
-              <span style="font-size: 20px; font-weight: bold">{{
-                $lang('送出')
-                }}</span>
+            <button type="submit" name="update_password" class="buttonWhGreen" @click="submitBankApply">
+              {{ $lang('送出') }}
             </button>
           </div>
         </div>
       </div>
     </div>
     <div v-else style="">
-      <div class="input-classic">
-        <span class="input-title">{{ $lang('銀行資訊狀態') }}</span>
-        <div class="input-text text-center">
+      <div class="input-classic" style="display: flex;justify-content: center;align-items: center;padding: 200px 0;">
+        <span class="input-title" style="text-align: center;">{{ $lang('銀行資訊狀態') }}</span>
+        <div class="input-text text-center" style="color: #ff6c7a; font-size: 22px;">
           {{ $lang('審核中') }}
         </div>
       </div>
     </div>
+
   </div>
 </template>
+
 
 <style scoped lang="sass">
 .pages
   box-sizing: border-box
-  @media screen and (max-width: 768px)
-    padding: 0 10px 10px
+  
+  @media screen and (max-width: 992px)
+    padding: 0
 </style>
+
 <style scoped lang="sass">
 .tag
-  margin: 0 clamp(15px, 3.15vw, 60px)
-  background-color: #b8e6fcc0
-  border-radius: clamp(20px, 2.1vw, 40px)
-  padding-top: 3px
-  margin-top: 10px
+  padding-top: 123px
   text-align: center
   font-weight: 600
-  font-size: clamp(22px, 1.58vw, 30px)
-  color: var(--black)
-  line-height: 1.3
+  @media (max-width: 992px)
+    padding-top: 70px
+  h2
+    font-size: 1.375rem
+    color: #fff
+    padding: 8px 0
+    background: repeating-linear-gradient( -45deg, #ff6c7a, #ff6c7a 5px,  #ff8691 0, #ff8691 8px )
+    .fa-solid
+      color: rgba(255, 255, 255, 0.5)
 .inf-bg
   margin-top: 50px
-  background-image: url(@/assets/image/index/bank-b01.png)
-  background-size: cover
   padding: 0 clamp(15px, 3.15vw, 60px) clamp(40px, 4.2vw, 80px)
-  .ul-contact-form-container
+  @media (max-width: 992px) 
+    padding: 0
+  .ul-contact-form-container 
+    border-radius: clamp(15px, 1.1vw, 30px)  
     background-color: white
+    border: 2px solid #ff6c7ab9
     margin: 0 clamp(15px, 19.71vw, 375px)
     padding: clamp(60px, 6.31vw, 70px) clamp(20px, 2.1vw, 40px)
     box-shadow: 0px -10px 40px rgba(0, 0, 0, 0.15)
-    @media screen and (max-width: 991px)
+    @media screen and (max-width: 991px) 
       margin: 0 clamp(15px, 11.71vw, 375px)
-    @media screen and (max-width: 767px)
+    @media screen and (max-width: 767px) 
       margin: clamp(15px, 3.15vw, 375px)
-  .ul-contact-form input, .ul-contact-form textarea, .ul-contact-form select
+  .ul-contact-form input, .ul-contact-form textarea 
     display: block
     height: clamp(45px, 2.94vw, 56px)
-    border: #F8E6E2 1px solid
-    background-color: #F8E6E2
+    border: #ff6c7aaa 1px solid
+    background-color: #ff6c7a22
     padding: 0 clamp(15px, 1.58vw, 10px)
     padding-right: clamp(30px, 3.15vw, 60px)
     max-width: 100%
     width: 100%
     border-radius: 10px
-    outline: none
-  // .form-control:focus
-  //   color: #212529
-  //   background-color: #fff
-  //   border-color: #86b7fe
-  //   outline: 0
-  //   box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25)
+  .form-control:focus 
+    color: #212529
+    background-color: #fff
+    border-color: #ff6c7a88
+    outline: 0
+    box-shadow: 0 0 .25rem #ff6c7a55
   .form-group
     margin-bottom: clamp(15px, 1.58vw, 30px)
+    .position-relative
+      position: relative
+      .eyes
+        position: absolute
+        right: 10px
+        bottom: 10px
+        cursor: pointer
+  .ul-contact-form-container
+    @media screen and (max-width: 992px) 
+      margin: 20px 5px
+      padding: 15px
   .ul-contact-form-container__title
+    color: #ff6c7a
     text-align: center
     font-weight: 600
     font-size: clamp(22px, 2.52vw, 35px)
-  .ul-contact-form button
+  .ul-contact-form .update_password 
     flex-shrink: 0
-    background-color: #EF2853
+    background-color: #ff6c7a
     height: clamp(45px, 2.94vw, 56px)
     color: white
     padding: 0 20px
@@ -253,18 +274,17 @@ const updateImage = (data: any) => {
     text-transform: uppercase
     width: 100%
     border-radius: 10px
-    transition: all .2s ease
-    &:hover
-      color:  #EF2853
-      background-color: #000
-.input-classic
-  height:200px
-  display: flex
-  align-items: center
-  justify-content: center
-  flex-direction: column
-  font-size: 20px
-  .input-text
-    font-size: 28px
-  
+    display: flex
+    align-items: center
+    justify-content: center
+    cursor: pointer
+.buttonWhGreen
+  padding: 8px 45px
+  border-radius: 10px
+  color: white
+  border: 2px solid #ff6c7a
+  background: repeating-linear-gradient( -45deg, #ff6c7a, #ff6c7a 5px,  #ff8691 0, #ff8691 8px )
+  transition: all .2s ease-in-out
+  &:hover    
+    transform: scale(1.05)
 </style>

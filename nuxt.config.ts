@@ -33,6 +33,9 @@ export default defineNuxtConfig({
   imports: {
     dirs: ['stores']
   },
+  routeRules:{
+    '/':{redirect:'/user'}
+  },
   app: {
     head: {
       charset: 'utf-8',
@@ -106,7 +109,8 @@ export default defineNuxtConfig({
       PLEDGESOCKETURL: 'wss://pledgesocket.comethike.com:8443',
       APIBASE: 'https://bpapi2.comethike.com',
       // siteId: '657fef28c02bc92e35075322'
-      siteId: '66b05825a8e203dee95d8bf2'
+      // siteId: '66b05825a8e203dee95d8bf2'
+      siteId: '68df8b1e9617294892148bf2'
     }
   },
   devServer: {

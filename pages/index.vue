@@ -19,7 +19,7 @@ const { t } = useI18n()
 const headerNavList = ref([
   {
     title: `${t('首頁')}`,
-    router: '/'
+    router: '/user'
   },
   {
     title: `${t('關於我們')}`,
@@ -44,11 +44,11 @@ const handleNavigateTo = (path: string) => {
 const openChatBox = () => {
   const urlPattern = new RegExp(
     '^(https?:\\/\\/)?' + // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name and extension
-      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-      '(\\#[-a-z\\d_]*)?$',
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name and extension
+    '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+    '(\\#[-a-z\\d_]*)?$',
     'i'
   ) // fragment locator
   if (urlPattern.test(siteStore.chatbox)) {
@@ -122,33 +122,19 @@ const upTo = () => {
           <div class="menu-nav">
             <ul>
               <li v-for="item in headerNavList" :key="item.title">
-                <a
-                  class="nav-sty black a-aim"
-                  @click="handleNavigateTo(item.router)"
-                  >{{ $lang(item.title) }}</a
-                >
+                <a class="nav-sty black a-aim" @click="handleNavigateTo(item.router)">{{ $lang(item.title) }}</a>
               </li>
               <li>
-                <a
-                  class="nav-sty black a-aim"
-                  @click="handleNavigateTo('/user')"
-                  ><span
-                    style="
+                <a class="nav-sty black a-aim" @click="handleNavigateTo('/user')"><span style="
                       border: 1px solid;
                       padding: 6px;
                       background-color: rgb(208, 233, 255);
                       border-radius: 5px;
-                    "
-                    >{{ $lang('職員系統') }}</span
-                  ></a
-                >
+                    ">{{ $lang('職員系統') }}</span></a>
               </li>
             </ul>
             <div class="sid" @click="onOpen">
-              <i
-                class="fa-solid fa-bars"
-                style="height: 30px; width: 26px; color: #0e63ff"
-              ></i>
+              <i class="fa-solid fa-bars" style="height: 30px; width: 26px; color: #0e63ff"></i>
             </div>
           </div>
           <a class="white" @click="navigateTo('/user')">
@@ -176,12 +162,7 @@ const upTo = () => {
       </div> -->
       </footer>
       <!-- top -->
-      <button
-        v-if="isTop"
-        class="scroll-top scroll-to-target open"
-        data-target="html"
-        @click="upTo"
-      >
+      <button v-if="isTop" class="scroll-top scroll-to-target open" data-target="html" @click="upTo">
         <i class="fas fa-level-up-alt"></i>
       </button>
       <!-- 彈出 -->
@@ -195,24 +176,15 @@ const upTo = () => {
         <div class="ul-sidebar-header-nav-wrapper">
           <ul>
             <li v-for="item in headerNavList" :key="item.title">
-              <a
-                class="nav-sty black a-aim"
-                @click="handleNavigateTo(item.router)"
-                >{{ $lang(item.title) }}</a
-              >
+              <a class="nav-sty black a-aim" @click="handleNavigateTo(item.router)">{{ $lang(item.title) }}</a>
             </li>
             <li>
-              <a class="nav-sty black a-aim" @click="handleNavigateTo('/user')"
-                ><span
-                  style="
+              <a class="nav-sty black a-aim" @click="handleNavigateTo('/user')"><span style="
                     border: 1px solid;
                     padding: 6px;
                     background-color: rgb(208, 233, 255);
                     border-radius: 5px;
-                  "
-                  >{{ $lang('職員系統') }}</span
-                ></a
-              >
+                  ">{{ $lang('職員系統') }}</span></a>
             </li>
           </ul>
         </div>

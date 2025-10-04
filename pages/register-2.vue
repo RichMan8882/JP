@@ -192,7 +192,7 @@ const goRegister = async () => {
     console.log('signupRes', signupRes)
     if (signupRes.success) {
       referrerCodeCookiee.value = ''
-      navigateTo('/')
+      navigateTo('/user')
     }
   }
 }
@@ -201,7 +201,7 @@ const { isLogin } = useAuthStore()
 await useAsyncData(async () => {
   if (!router.currentRoute.value.name.includes('model')) {
     if (isLogin()) {
-      navigateTo('/')
+      navigateTo('/user')
     }
   }
   if (router.currentRoute.value.query.referrer) {

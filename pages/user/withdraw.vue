@@ -217,11 +217,12 @@ watch(
 
 <template>
   <div class="pages">
+    <headerTop />
     <div class="tag">
-      <i class="fa-solid fa-wallet" style="color: #0069a8;"></i>
-      我的錢包
+      <h2><i class="fa-solid fa-wallet"></i>
+        我的錢包</h2>
     </div>
-    <div class="inf-bg">
+    <div class=" inf-bg">
       <div v-if="playerStore.playerInfo.bankInfo !== null" class="formSection">
         <div class="changeType">
           <button type="button" class="buttonWhite" :class="selectType === 'withdraw' ? 'active' : ''"
@@ -229,7 +230,7 @@ watch(
             {{ $lang('提領') }}
           </button>
           <button type="button" class="buttonWhite" :class="selectType === 'transfer' ? 'active' : ''"
-            v-if="playerStore.playerInfo.wallet.length > 1" @click="selectType = 'transfer'">
+            @click="selectType = 'transfer'">
             {{ $lang('劃轉') }}
           </button>
         </div>
@@ -238,7 +239,7 @@ watch(
             <!--  銀行  -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="color: rgb(12, 12, 158);font-weight: bold;font-size: 18px;">銀行 ▼</label>
+                <label style="font-weight: bold;font-size: 18px;">銀行</label>
                 <input type="text" name="acc"
                   :value="playerStore.playerInfo.bankInfo.bankName + ' ' + playerStore.playerInfo.bankInfo.branch"
                   class="form-control" readonly>
@@ -248,7 +249,7 @@ watch(
             <!-- 戶名 -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="color: rgb(12, 12, 158);font-weight: bold;font-size: 18px;">戶名 ▼</label>
+                <label style="font-weight: bold;font-size: 18px;">戶名</label>
                 <input type="text" name="name" :value="playerStore.playerInfo.bankInfo.account" class="form-control"
                   readonly>
 
@@ -257,7 +258,7 @@ watch(
             <!-- 我的資產 -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="color: rgb(12, 12, 158);font-weight: bold;font-size: 18px;">我的資產(主錢包) ▼</label>
+                <label style="font-weight: bold;font-size: 18px;">我的資產(主錢包)</label>
                 <input type="text" name="name" :value="new Intl.NumberFormat('zh-TW').format(mainBalance)"
                   class="form-control" readonly>
               </div>
@@ -265,7 +266,7 @@ watch(
             <!-- 帳號 -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="color: rgb(12, 12, 158);font-weight: bold;font-size: 18px;">帳號 ▼</label>
+                <label style="font-weight: bold;font-size: 18px;">帳號</label>
                 <input type="text" name="name" v-model="playerStore.playerInfo.bankInfo.accountNo" class="form-control"
                   readonly>
               </div>
@@ -273,7 +274,7 @@ watch(
             <!-- 金額 -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="color: rgb(12, 12, 158);font-weight: bold;font-size: 18px;">金額 ▼</label>
+                <label style="font-weight: bold;font-size: 18px;">金額</label>
                 <input type="number" v-model="withdrawAmount" class="form-control">
               </div>
               <div>
@@ -296,7 +297,7 @@ watch(
 
             <div class="form-group" style="padding-top: 10px;" v-if="siteStore.siteData.transactionPasswordRequired">
               <div class="position-relative">
-                <label style="color: rgb(12, 12, 158);font-weight: bold;font-size: 18px;">交易密碼 ▼</label>
+                <label style="font-weight: bold;font-size: 18px;">交易密碼</label>
                 <input type="password" v-model="tPwd" v-trim-input name="new_password" autocomplete="off"
                   class="form-control">
               </div>
@@ -312,7 +313,7 @@ watch(
           <form action="" class="ul-contact-form">
             <div class="form-group" style="padding-top: 10px;">
               <div class="position-relative">
-                <label style="color: rgb(12, 12, 158);font-weight: bold;font-size: 18px;">轉出錢包 ▼</label>
+                <label style="font-weight: bold;font-size: 18px;">轉出錢包</label>
                 <div class="form-control">
                   <select v-model="transferWalletData.from" style="width: 100%;">
                     <option v-for="item in playerStore.playerInfo.wallet" :key="item.id" :value="item.id"
@@ -326,7 +327,7 @@ watch(
             </div>
             <div class="form-group" style="padding-top: 10px;">
               <div class="position-relative">
-                <label style="color: rgb(12, 12, 158);font-weight: bold;font-size: 18px;">轉入錢包 ▼</label>
+                <label style="font-weight: bold;font-size: 18px;">轉入錢包</label>
                 <div class="form-control">
                   <select v-model="transferWalletData.to" style="width: 100%;">
                     <option v-for="item in playerStore.playerInfo.wallet" :key="item.id" :value="item.id"
@@ -340,7 +341,7 @@ watch(
             </div>
             <div class="form-group" style="padding-top: 10px;">
               <div class="position-relative">
-                <label style="color: rgb(12, 12, 158);font-weight: bold;font-size: 18px;">數量 ▼</label>
+                <label style="font-weight: bold;font-size: 18px;">數量</label>
                 <input v-model="transferWalletData.amount" v-trim-input type="number" class="form-control"
                   style="padding-right:10px;" />
               </div>
@@ -352,100 +353,106 @@ watch(
         </div>
       </div>
     </div>
+    <indexFooter />
   </div>
 </template>
 
 <style scoped lang="sass">
 .pages
   box-sizing: border-box
-  @media screen and (max-width: 768px)
-    padding: 0 10px 10px
-</style>
-
-<style scoped lang="sass">
-.inf-bg
-  margin-top: 50px
-  background-image: url(@/assets/image/index/bank-b01.png)
-  background-size: cover
-  padding: 0 clamp(15px, 3.15vw, 60px) clamp(40px, 4.2vw, 80px)
-    
+  
+  @media screen and (max-width: 992px)
+    padding: 0
 </style>
 
 <style scoped lang="sass">
 .tag
-  margin: 0 clamp(15px, 3.15vw, 60px)
-  background-color: #b8e6fcc0
-  border-radius: clamp(20px, 2.1vw, 40px)
-  padding-top: 3px
-  margin-top: 10px
+  padding-top: 123px
   text-align: center
   font-weight: 600
-  font-size: clamp(22px, 1.58vw, 30px)
-  color: var(--black)
-  line-height: 1.3
-.formSection
-  background-color: white
-  margin: 0 clamp(15px, 19.71vw, 375px)
-  padding: clamp(60px, 6.31vw, 70px) clamp(20px, 2.1vw, 40px)
-  box-shadow: 0px -10px 40px rgba(0, 0, 0, 0.15)
-  @media screen and (max-width: 991px) 
-    margin: 0 clamp(15px, 11.71vw, 375px)
-  @media screen and (max-width: 767px) 
-    margin: clamp(15px, 3.15vw, 375px)
-  .ul-contact-form-container 
+  @media (max-width: 992px)
+    padding-top: 70px
+  h2
+    font-size: 1.375rem
+    color: #fff
+    padding: 8px 0
+    background: repeating-linear-gradient( -45deg, #ff6c7a, #ff6c7a 5px,  #ff8691 0, #ff8691 8px )
+    .fa-solid
+      color: rgba(255, 255, 255, 0.5)
+.inf-bg
+  margin-top: 50px
+  padding: 0 clamp(15px, 3.15vw, 60px) clamp(40px, 4.2vw, 80px)
+  @media (max-width: 992px) 
+    padding: 0
+  .formSection
+    border-radius: clamp(15px, 1.1vw, 30px)  
     background-color: white
+    border: 2px solid #ff6c7ab9
     margin: 0 clamp(15px, 19.71vw, 375px)
     padding: clamp(60px, 6.31vw, 70px) clamp(20px, 2.1vw, 40px)
     box-shadow: 0px -10px 40px rgba(0, 0, 0, 0.15)
-  .ul-contact-form input, .ul-contact-form textarea, .ul-contact-form .form-control
+    @media screen and (max-width: 991px) 
+      margin: 0 clamp(15px, 11.71vw, 375px)
+    @media screen and (max-width: 767px) 
+      margin: clamp(15px, 3.15vw, 375px)
+    .changeType
+      display: flex
+      justify-content: flex-start
+      padding-bottom: 20px
+      gap: clamp(15px, 1.58vw, 30px)
+      .buttonWhite
+        padding: 8px 35px
+        border-radius: 10px
+        color: #ff6c7a
+        border: 2px solid #ff6c7a
+        &:hover    
+          color: white
+          background-color: #ff6c7a
+        &.active
+          color: white
+          background-color: #ff6c7a
+  .ul-contact-form input, .ul-contact-form textarea 
     display: block
     height: clamp(45px, 2.94vw, 56px)
-    border: #F8E6E2 1px solid
-    background-color: #F8E6E2
+    border: #ff6c7aaa 1px solid
+    background-color: #ff6c7a22
     padding: 0 clamp(15px, 1.58vw, 10px)
     padding-right: clamp(30px, 3.15vw, 60px)
     max-width: 100%
     width: 100%
     border-radius: 10px
-    outline: none
-    position: relative
-  select
-    position: absolute
-    outline: none
-    left: 0
-    right: 0
-    top: 0
-    bottom: 0
-    background: none
-    /* 移除默认样式 */
-    appearance: none
-    -webkit-appearance: none
-    -moz-appearance: none
-    
-    /* 自定义样式 */
-    width: 100%
-    padding: 8px 35px 8px 15px
-     /* 右侧留出箭头空间 */    
-    /* 自定义箭头 */
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23333"><path d="M7 10l5 5 5-5z"/></svg>')
-    background-repeat: no-repeat
-    background-position: right 8px center /* 调整这里控制位置 */
-    background-size: 16px
   .form-control:focus 
     color: #212529
     background-color: #fff
-    border-color: #86b7fe
+    border-color: #ff6c7a88
     outline: 0
-    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25)
+    box-shadow: 0 0 .25rem #ff6c7a55
+  select
+    border: #ff6c7aaa 1px solid
+    background-color: #ff6c7a22
+    border-radius: 10px
+    padding: 8px 20px
   .form-group
     margin-bottom: clamp(15px, 1.58vw, 30px)
+    .position-relative
+      position: relative
+      .eyes
+        position: absolute
+        right: 10px
+        bottom: 10px
+        cursor: pointer
+  .ul-contact-form-container
+    @media screen and (max-width: 992px) 
+      margin: 20px 5px
+      padding: 15px
   .ul-contact-form-container__title
+    color: #ff6c7a
     text-align: center
     font-weight: 600
     font-size: clamp(22px, 2.52vw, 35px)
-  .ul-contact-form button 
+  .ul-contact-form .update_password 
     flex-shrink: 0
-    background-color: #EF2853
+    background-color: #ff6c7a
     height: clamp(45px, 2.94vw, 56px)
     color: white
     padding: 0 20px
@@ -453,26 +460,17 @@ watch(
     text-transform: uppercase
     width: 100%
     border-radius: 10px
-    transition: all .2s ease
-    &:hover 
-      color:  #EF2853
-      background-color: #000
-.buttonWhite
-  margin: 0 30px 30px 0
-  width: 100px
-  height: 40px
-  cursor: pointer
-  background-color: rgb(230, 230, 230)
-  // border-radius: 5px
-  outline: none
-  text-align: center
-  line-height: 40px
-  cursor: pointer
-  font-size: 16px
-  color: #0d6efd
-  transition: all .3s ease
-  @media screen and (max-width: 768px)
-    width: 135px
-  &:hover
-    color: red
+    display: flex
+    align-items: center
+    justify-content: center
+    cursor: pointer
+.buttonWhGreen
+  padding: 8px 45px
+  border-radius: 10px
+  color: white
+  border: 2px solid #ff6c7a
+  background: repeating-linear-gradient( -45deg, #ff6c7a, #ff6c7a 5px,  #ff8691 0, #ff8691 8px )
+  transition: all .2s ease-in-out
+  &:hover    
+    transform: scale(1.05)
 </style>

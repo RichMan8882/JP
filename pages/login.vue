@@ -104,16 +104,22 @@ const openChatBox = () => {
               <input v-model="recaptchaCode" v-trim-input type="text" placeholder="請輸入驗證碼" @keyup.enter="setLogin"
                 @focus="focusItem = 'recaptcha'" @focusout="focusItem = ''" />
               <input type="submit" value="登入" @click="setLogin" />
-              <!-- <input type="submit" style="margin-top: 24px;background-color: #696969;" value="注冊"
-              @click="() => { navigateTo('/register') }"> -->
+              <input type="submit" class="regis" value="注冊" @click="() => { navigateTo('/register') }">
             </div>
 
-            <h3 style="font-weight: bold; margin-top: 30px">快捷服務</h3>
+            <h3 style="font-weight: bold;margin-top: 20px;">
+              <span style="
+                  background-color: #fff;
+                  padding: 0 10px;
+                  position: relative;
+                  z-index: 3;
+                ">快捷服務</span>
+            </h3>
             <div class="login-bottom">
               <div class="login-check">
                 <a @click="
                   () => {
-                    navigateTo('/')
+                    navigateTo('/user')
                   }
                 "><label class="checkbox">返回首頁</label></a>
               </div>
@@ -130,8 +136,7 @@ const openChatBox = () => {
 
 <style scoped lang="sass">
 .bg-temp
-  background: url('@/assets/image/index/login-banner.jpg') no-repeat
-  background-size: cover
+  background: #f5f5f6
   padding: 70px 0px 70px 0px
   min-height: 100dvh
   font-size: 100%
@@ -142,6 +147,7 @@ const openChatBox = () => {
   .login
     width: 40%
     background: #fff
+    border-radius: 15px
     margin: 0 auto
     min-height: 400px
     padding: 10px
@@ -151,8 +157,9 @@ const openChatBox = () => {
     @media screen and (max-width: 960px)
       width: 90%
   .login-main
-    border: 2px solid #7397D1
+    border: 2px solid #f58194
     min-height: 400px
+    border-radius: 15px
 
   .login-top
     padding: 45px 0px
@@ -162,13 +169,13 @@ const openChatBox = () => {
   h1
     font-size: 26px
     font-weight: 500
-    color: #37588B
+    color: #f58194
     margin: 10px 0px 35px 0px
 
   h3
     font-size: 19px
     font-weight: 400
-    color: #8E8E8E
+    color: #8e8e8e
     margin: 0px 0px 16px 0px
     position: relative
 
@@ -194,11 +201,13 @@ const openChatBox = () => {
 
   .form
     margin: 0
-    padding: 0
+    padding: 0 20px
     border: 0
     font-size: 100%
     font: inherit
     vertical-align: baseline
+    @media (max-width: 992px)
+      padding: 0 15px
 
   .login-top input
     &[type="text"]
@@ -206,9 +215,10 @@ const openChatBox = () => {
       font-weight: bold
       color: #000
       padding: 15px 10px 15px 13px
-      width: 55%
+      width: 100%
+      border-radius: 10px
       display: block
-      border: 1px solid #8b8b8b
+      border: 1px solid #f581949a
       outline: none
       margin: 30px auto 20px
       -webkit-appearance: none
@@ -218,24 +228,37 @@ const openChatBox = () => {
       font-weight: bold
       color: #000
       padding: 15px 10px 15px 13px
-      width: 55%
+      width: 100%
+      border-radius: 10px
       display: block
-      border: 1px solid #8b8b8b
+      border: 1px solid #f581949a
       margin: 0 auto
       outline: none
       -webkit-appearance: none
 
     &[type="submit"]
-      background: #37588B
+      background: #f58194
       color: #FFF
       border: none
       font-size: 23px
       font-weight: 400
       padding: 10px 0px
-      width: 62%
+      width: 100%
+      border-radius: 10px
       cursor: pointer
       outline: none
-
+      transition: all 0.3s ease-in-out
+      &:hover
+        background: #f58194d9
+        color: #FFF
+  .regis
+    border: 2px solid #f58194 !important
+    background: #fff !important
+    color: #f58194 !important
+    margin-top: 24px
+    &:hover
+      background: #f58194 !important
+      color: #fff !important
   .login-bottom
     width: 60%
     margin: 25px auto
@@ -265,7 +288,6 @@ const openChatBox = () => {
 
 
 @media screen and (max-width: 768px)
-
   .bg-temp .login-top input
-    width: 80% !important
+    width: 100% !important
 </style>

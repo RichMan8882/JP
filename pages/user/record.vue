@@ -263,53 +263,38 @@ const formatMemo = (value: any) => {
 
 <template>
   <div class="pages">
-    <div
-      class="ul-cart-container"
-      :class="recordType == 'transaction' ? 'ck-container' : ''"
-    >
+    <headerTop />
+    <div class="ul-cart-container" :class="recordType == 'transaction' ? 'ck-container' : ''">
       <div class="tag">
-        <i class="fa-solid fa-chart-column" style="color: #005d96"></i>
-        {{ $lang('資金紀錄') }} -
-        {{
-          recordType == 'transaction'
-            ? '訂單記錄'
-            : recordType == 'withdraw'
-              ? '提領紀錄'
-              : ''
-        }}
+        <h2>
+          <i class="fa-solid fa-chart-column"></i>
+          {{ $lang('資金紀錄') }} -
+          {{
+            recordType == 'transaction'
+              ? '訂單記錄'
+              : recordType == 'withdraw'
+                ? '提領紀錄'
+                : ''
+          }}
+        </h2>
       </div>
       <div class="changeType">
-        <button
-          type="button"
-          class="buttonWhite"
-          :class="recordType === 'transaction' ? 'active' : ''"
-          @click="changeRecordType('transaction')"
-        >
+        <button type="button" class="buttonWhite" :class="recordType === 'transaction' ? 'active' : ''"
+          @click="changeRecordType('transaction')">
           {{ $lang('訂單記錄') }}
         </button>
-        <button
-          type="button"
-          class="buttonWhite"
-          :class="recordType === 'withdraw' ? 'active' : ''"
-          @click="changeRecordType('withdraw')"
-        >
+        <button type="button" class="buttonWhite" :class="recordType === 'withdraw' ? 'active' : ''"
+          @click="changeRecordType('withdraw')">
           {{ $lang('提領紀錄') }}
         </button>
       </div>
       <div class="cart-top">
         <div v-if="recordType === 'transaction'" class="table-responsive">
-          <div
-            v-if="playerStore.playerInfo.wallet.length > 1"
-            class="walletBox"
-          >
+          <div v-if="playerStore.playerInfo.wallet.length > 1" class="walletBox">
             <span class="">{{ $lang('錢包') }}</span>
             <select v-model="selectWalletId" class="selectStyle">
-              <option
-                v-for="item in playerStore.playerInfo.wallet"
-                :key="item.id"
-                :value="item.id"
-                @click="(selectWalletId = item.id), (selectWallet = item)"
-              >
+              <option v-for="item in playerStore.playerInfo.wallet" :key="item.id" :value="item.id"
+                @click="(selectWalletId = item.id), (selectWallet = item)">
                 {{ walletTypeName(item.type) }}
               </option>
             </select>
@@ -403,34 +388,32 @@ const formatMemo = (value: any) => {
         </div>
       </div>
     </div>
+    <indexFooter />
   </div>
 </template>
 
 <style scoped lang="sass">
 .pages
   box-sizing: border-box
-  @media screen and (max-width: 768px)
-    padding: 0 5px 5px
+  @media screen and (max-width: 992px)
+    padding: 0
 </style>
 
 <style scoped lang="sass">
 .tag
-  margin: 0 clamp(15px, 3.15vw, 60px)
-  background-color: #b8e6fcc0
-  border-radius: clamp(20px, 2.1vw, 40px)
-  padding-top: 3px
-  margin-top: 10px
+  padding-top: 123px
   text-align: center
   font-weight: 600
-  font-size: clamp(22px, 1.58vw, 30px)
-  color: var(--black)
-  line-height: 1.3
-.ck-container
-  background-image: url(@/assets/image/index/record-b02.png) !important
+  @media (max-width: 992px)
+    padding-top: 70px
+  h2
+    font-size: 1.375rem
+    color: #fff
+    padding: 8px 0
+    background: repeating-linear-gradient( -45deg, #ff6c7a, #ff6c7a 5px,  #ff8691 0, #ff8691 8px )
+    .fa-solid
+      color: rgba(255, 255, 255, 0.5)
 .ul-cart-container
-  // margin-top: 50px
-  background-image: url(@/assets/image/index/record-b01.png)
-  background-size: cover
   min-height: 100vh
   .cart-top
     margin: clamp(40px, 4.2vw, 80px) clamp(15px, 19.44vw, 370px)
@@ -458,24 +441,29 @@ const formatMemo = (value: any) => {
         p
           margin-top: 0
           margin-bottom: 1rem
-
+.changeType
+  display: flex
+  justify-content: center
+  gap: 15px
 .buttonWhite
-  margin: 30px 0 0 30px
-  width: 100px
+  margin: 30px 0 30px
+  width: 140px
   height: 40px
-  background-color: rgb(230, 230, 230)
+  background-color: #fff
   // border-radius: 5px
   text-align: center
-  line-height: 40px
   cursor: pointer
   font-size: 16px
   outline: none
-  color: #0d6efd
+  color: #ff6c7a
+  border-radius: 10px
+  border: 2px solid #ff6c7a
   transition: all .3s ease
   @media screen and (max-width: 768px)
-    width: 135px
+    width: 40%
   &:hover
-    color: red
+    background-color: #ff6c7a
+    color: #fff
 @media screen and (max-width: 1140px)
   .cart-top
     margin: clamp(40px, 4.2vw, 80px) 30px !important
@@ -556,6 +544,6 @@ const formatMemo = (value: any) => {
   svg
     padding: 0 10px 0 0
 .active
-  background-color: #0d6efd
+  background-color: #ff6c7a
   color: #FFF
 </style>

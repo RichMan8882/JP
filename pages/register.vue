@@ -191,7 +191,7 @@ const goRegister = async () => {
     console.log('signupRes', signupRes)
     if (signupRes.success) {
       referrerCodeCookiee.value = ''
-      navigateTo('/')
+      navigateTo('/user')
     }
   }
 }
@@ -200,7 +200,7 @@ const { isLogin } = useAuthStore()
 await useAsyncData(async () => {
   if (!router.currentRoute.value.name.includes('model')) {
     if (isLogin()) {
-      navigateTo('/')
+      navigateTo('/user')
     }
   }
   if (router.currentRoute.value.query.referrer) {
@@ -257,8 +257,8 @@ await onMounted(() => {
                     </div>
                     <div class="tips">
                       <div :class="validationStatus.accountValid
-                          ? 'valid-feedback'
-                          : 'invalid-feedback'
+                        ? 'valid-feedback'
+                        : 'invalid-feedback'
                         ">
                         <span v-if="validationStatus.accountValid">
                           <i class="fas fa-check"></i>
@@ -289,8 +289,8 @@ await onMounted(() => {
                     </div>
                     <div class="tips">
                       <div :class="validationStatus.passwordValid
-                          ? 'valid-feedback'
-                          : 'invalid-feedback'
+                        ? 'valid-feedback'
+                        : 'invalid-feedback'
                         ">
                         <span v-if="validationStatus.passwordValid">
                           <i class="fas fa-check"></i>
@@ -299,13 +299,13 @@ await onMounted(() => {
                         {{ $lang('需使用3位以上數字') }}
                       </div>
                       <div v-if="signupData.password" :class="signupData.password !== signupData.account
-                          ? 'valid-feedback'
-                          : 'invalid-feedback'
+                        ? 'valid-feedback'
+                        : 'invalid-feedback'
                         ">
                         <span v-if="signupData.password !== signupData.account">
                           <i class="fas fa-check"></i>
                         </span>
-                        {{ $lang('登入密碼不可與帳號相同') }}
+                        {{ $lang('登入密碼不與帳號相同') }}
                       </div>
                     </div>
                   </div>
@@ -359,8 +359,8 @@ await onMounted(() => {
                     </div>
                     <div class="tips">
                       <div :class="validationStatus.transactionPasswordValid
-                          ? 'valid-feedback'
-                          : 'invalid-feedback'
+                        ? 'valid-feedback'
+                        : 'invalid-feedback'
                         ">
                         <span v-if="validationStatus.transactionPasswordValid">
                           <i class="fas fa-check"></i>
@@ -369,8 +369,8 @@ await onMounted(() => {
                         {{ $lang('需使用3位以上數字') }}
                       </div>
                       <div v-if="signupData.transactionPassword" :class="!validationStatus.transactionPasswordSameWithPassword
-                          ? 'valid-feedback'
-                          : 'invalid-feedback'
+                        ? 'valid-feedback'
+                        : 'invalid-feedback'
                         ">
                         <span v-if="
                           !validationStatus.transactionPasswordSameWithPassword
@@ -426,8 +426,8 @@ await onMounted(() => {
                     </div>
                     <div class="tips">
                       <div ref="usernameRef" :class="signupData.username
-                          ? 'valid-feedback'
-                          : 'invalid-feedback'
+                        ? 'valid-feedback'
+                        : 'invalid-feedback'
                         ">
                         <span v-if="signupData.username">
                           <i class="fas fa-check"></i>
@@ -455,8 +455,8 @@ await onMounted(() => {
                     </div>
                     <div class="tips">
                       <div v-if="showPhoneValid" :class="validationStatus.phoneValid
-                          ? 'valid-feedback'
-                          : 'invalid-feedback'
+                        ? 'valid-feedback'
+                        : 'invalid-feedback'
                         ">
                         <span v-if="validationStatus.phoneValid">
                           <i class="fas fa-check"></i>
@@ -464,8 +464,8 @@ await onMounted(() => {
                         {{ $lang('手機號碼開頭須為09，共10碼') }}
                       </div>
                       <div ref="mobileRef" :class="signupData.mobile
-                          ? 'valid-feedback'
-                          : 'invalid-feedback'
+                        ? 'valid-feedback'
+                        : 'invalid-feedback'
                         ">
                         <span v-if="signupData.mobile">
                           <i class="fas fa-check"></i>
@@ -570,17 +570,17 @@ await onMounted(() => {
   position: relative
   width: 100dvw
   height: 100dvh
-  background: url('@/assets/image/index/login-banner.jpg') no-repeat
+  background: #f5f5f6
   background-size: cover
   background-position: center
   padding: 30px 15px
   overflow-y: auto
-
   @media (min-width: 768px)
     display: flex
     justify-content: center
     align-items: center
-
+  .register-card
+    border-radius: 15px
   &-card
     width: 100%
     max-width: 500px
@@ -589,8 +589,9 @@ await onMounted(() => {
     // , 0.8
     padding: 15px
     .bg-temp
-      border: 2px solid #7397D1
+      border: 2px solid #f58194
       width: 100%
+      border-radius: 15px
       @media (max-width: 768px)
         padding: 0 15px
     @media (min-width: 768px)
@@ -605,7 +606,7 @@ await onMounted(() => {
     text-align: center
     font-size: 26px
     font-weight: 500
-    color: #37588B
+    color: #f58194
     margin: 10px 0px 35px 0px
     @media (min-width: 768px)
       font-size: 42px
@@ -685,42 +686,41 @@ await onMounted(() => {
 
     button
       width: 30%
-      background: #37588B
+      background:  #f58194
       color: #FFF
       border: none
-      font-size: 23px
+      border-radius: 10px
+      font-size: 1.4375rem
       font-weight: 400
       padding: 10px 0px
       cursor: pointer
       outline: none
       transition: all 0.3s
-
       &:hover
         opacity: 0.8
-
+      @media (max-width: 768px)
+        width: 40%
       &.login-btn
         //background-color: #c8a375
         border: solid 1px #fff
       &.register-btn
         background-color: #eee
         color: #666
-
   &-input
     position: relative
 
     input
       width: 100%
       font-size: 17px
-      font-weight: bold
+      font-weight: 500
       color: #000
       padding: 15px 10px 15px 13px
       display: block
-      border: 1px solid #8b8b8b
+      border: 1px solid #f58194
+      border-radius: 10px
       outline: none
-      margin: 0 auto 20px
-      outline: 0
-
-      transition: all 0.3s
+      margin: 0 auto 5px
+      -webkit-appearance: none
 
     span
       position: absolute
@@ -734,11 +734,12 @@ await onMounted(() => {
     @media (min-width: 768px)
       input
         font-size: 17px
-        font-weight: bold
+        font-weight: 500
         color: #000
         padding: 15px 10px 15px 13px
         display: block
-        border: 1px solid #8b8b8b
+        border: 1px solid #f58194
+        border-radius: 10px
         outline: none
         margin: 0 auto 5px
         -webkit-appearance: none
@@ -768,6 +769,8 @@ await onMounted(() => {
 <style scoped lang="sass">
 .tips
   width: 100%
+  display: flex
+  justify-content: flex-end
   font-size: 12px
   color: red
 </style>
@@ -779,7 +782,6 @@ await onMounted(() => {
   font-size: 12px
   @media screen and (max-width: 768px)
     font-size: 10px
-
 .invalid-feedback
   width: 100%
   color: #cf0000
@@ -787,11 +789,5 @@ await onMounted(() => {
   font-size: 12px
   @media screen and (max-width: 768px)
     font-size: 10px
-.btn-submit
-  background: #37588B
-  &.disabled
-    background: #37588B
-    cursor: not-allowed
-    &:hover
-      background: #37588B77
+
 </style>
