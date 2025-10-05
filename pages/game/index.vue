@@ -971,7 +971,7 @@ const triggerDataRandom = () => {
     </div>
     <div class="user-t white" style="padding: 9px; line-height: 24px">
       <div class="login-no">
-        <div class="goBack" @click="navigateTo('/user')">返回首頁</div>
+        <div class="goBack" @click="navigateTo('/user')">{{ t('返回首頁') }}</div>
         <span class="log-user">
           <span style="margin-right: 5px">
             <i class="fa-solid fa-user"></i>

@@ -90,7 +90,7 @@ const updateImage = (data: any) => {
     <headerTop />
     <div class="tag">
       <h2>
-        <i class="fa-regular fa-file-lines" style="color: #0069a8"></i>
+        <i class="fa-regular fa-file-lines"></i>
         {{ $lang('薪資申請') }}
       </h2>
     </div>
@@ -187,7 +187,7 @@ const updateImage = (data: any) => {
         </div>
       </div>
     </div>
-
+    <indexFooter />
   </div>
 </template>
 
@@ -212,7 +212,7 @@ const updateImage = (data: any) => {
     color: #fff
     padding: 8px 0
     background: repeating-linear-gradient( -45deg, #ff6c7a, #ff6c7a 5px,  #ff8691 0, #ff8691 8px )
-    .fa-solid
+    .fa-regular
       color: rgba(255, 255, 255, 0.5)
 .inf-bg
   margin-top: 50px
@@ -264,6 +264,7 @@ const updateImage = (data: any) => {
     text-align: center
     font-weight: 600
     font-size: clamp(22px, 2.52vw, 35px)
+    margin-block-end: clamp(15px, 1.58vw, 30px)
   .ul-contact-form .update_password 
     flex-shrink: 0
     background-color: #ff6c7a

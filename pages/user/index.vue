@@ -340,7 +340,7 @@ const activityLis = ref([
                 transform="translate(473.5 1824.5) rotate(-90)" fill="#fbb" />
             </g>
           </svg>
-          <h2 class="dashboard-lis-title-title">現在の活動</h2>
+          <h2 class="dashboard-lis-title-title">{{ $lang('當前活動') }}</h2>
         </div>
       </div>
       <div class="dashboard-lis-list">
@@ -425,19 +425,19 @@ const activityLis = ref([
         <div class="ul-inner-container">
           <div class="ul-ad-content">
             <div class="ul-ad-txt">
-              <span class="ul-ad-sub-title">積極的家庭工作者</span>
-              <h2 class="ul-section-title" style="text-shadow:2px 3px 5px #4d4d4d;">平素より格別のお引き立てを賜り厚く御礼申し上げます。</h2>
+              <span class="ul-ad-sub-title">{{ $lang('積極的家庭工作者') }}</span>
+              <h2 class="ul-section-title" style="text-shadow:2px 3px 5px #4d4d4d;">{{ $lang('我們衷心感謝您一直以來的惠顧。') }}</h2>
               <div class="ul-ad-categories">
-                <span class="category"><span><i class="fa-solid fa-check"></i></span>日本</span>
-                <span class="category"><span><i class="fa-solid fa-check"></i></span>韓國</span>
-                <span class="category"><span><i class="fa-solid fa-check"></i></span>台灣</span>
-                <span class="category"><span><i class="fa-solid fa-check"></i></span>全球</span>
+                <span class="category"><span><i class="fa-solid fa-check"></i></span>{{ $lang('日本') }}</span>
+                <span class="category"><span><i class="fa-solid fa-check"></i></span>{{ $lang('韓国') }}</span>
+                <span class="category"><span><i class="fa-solid fa-check"></i></span>{{ $lang('台灣') }}</span>
+                <span class="category"><span><i class="fa-solid fa-check"></i></span>{{ $lang('全球') }}</span>
               </div>
             </div>
-            <div class="ul-ad-img">
+            <!-- <div class="ul-ad-img">
               <img src="@/assets/image/index/ad01-img.png" alt="Ad Image">
-            </div>
-            <a class="ul-btn" style="font-weight: bold;">了解詳情
+            </div> -->
+            <a class="ul-btn" style="font-weight: bold;">{{ $lang('了解詳情') }}
               <svg t="1739515035390" class="icon" viewBox="0 0 1024 1024" version="1.1"
                 xmlns="http://www.w3.org/2000/svg" p-id="1851" xmlns:xlink="http://www.w3.org/1999/xlink" width="20"
                 height="20">

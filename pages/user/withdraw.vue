@@ -171,7 +171,7 @@ const goTransfer = async () => {
     fromWalletId: transferWalletData.value.from,
     toWalletId: transferWalletData.value.to,
     amount: JSON.stringify(transferWalletData.value.amount),
-    memo: `用戶操作 ${walletTypeName(fromData)} 劃轉至 ${walletTypeName(toData)} ,數量: ${transferWalletData.value.amount}`
+    memo: `${t('用戶操作')} ${walletTypeName(fromData)} ${t('劃轉至')} ${walletTypeName(toData)} ,${t('數量')}: ${transferWalletData.value.amount}`
   })
   if (transferRes.success) {
     ElNotification({
@@ -220,7 +220,7 @@ watch(
     <headerTop />
     <div class="tag">
       <h2><i class="fa-solid fa-wallet"></i>
-        我的錢包</h2>
+        {{ $lang("我的錢包") }}</h2>
     </div>
     <div class=" inf-bg">
       <div v-if="playerStore.playerInfo.bankInfo !== null" class="formSection">
@@ -239,7 +239,7 @@ watch(
             <!--  銀行  -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">銀行</label>
+                <label style="font-weight: bold;font-size: 18px;">{{ $lang('銀行') }}</label>
                 <input type="text" name="acc"
                   :value="playerStore.playerInfo.bankInfo.bankName + ' ' + playerStore.playerInfo.bankInfo.branch"
                   class="form-control" readonly>
@@ -249,7 +249,7 @@ watch(
             <!-- 戶名 -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">戶名</label>
+                <label style="font-weight: bold;font-size: 18px;">{{ $lang('戶名') }}</label>
                 <input type="text" name="name" :value="playerStore.playerInfo.bankInfo.account" class="form-control"
                   readonly>
 
@@ -258,7 +258,7 @@ watch(
             <!-- 我的資產 -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">我的資產(主錢包)</label>
+                <label style="font-weight: bold;font-size: 18px;">{{ $lang('我的資產(主錢包)') }}</label>
                 <input type="text" name="name" :value="new Intl.NumberFormat('zh-TW').format(mainBalance)"
                   class="form-control" readonly>
               </div>
@@ -266,7 +266,7 @@ watch(
             <!-- 帳號 -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">帳號</label>
+                <label style="font-weight: bold;font-size: 18px;">{{ $lang('帳號') }}</label>
                 <input type="text" name="name" v-model="playerStore.playerInfo.bankInfo.accountNo" class="form-control"
                   readonly>
               </div>
@@ -274,7 +274,7 @@ watch(
             <!-- 金額 -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">金額</label>
+                <label style="font-weight: bold;font-size: 18px;">{{ $lang('金額') }}</label>
                 <input type="number" v-model="withdrawAmount" class="form-control">
               </div>
               <div>
@@ -291,13 +291,13 @@ watch(
                   }}</span>&nbsp
                 <span style="font-size: 12px;color: rgb(47, 169, 88);">{{ $lang('手續費') }}：{{
                   withdrawAmount > 0 ? withdrawFee : 0
-                }}</span>
+                  }}</span>
               </div>
             </div>
 
             <div class="form-group" style="padding-top: 10px;" v-if="siteStore.siteData.transactionPasswordRequired">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">交易密碼</label>
+                <label style="font-weight: bold;font-size: 18px;">{{ $lang('交易密碼') }}</label>
                 <input type="password" v-model="tPwd" v-trim-input name="new_password" autocomplete="off"
                   class="form-control">
               </div>
@@ -313,7 +313,7 @@ watch(
           <form action="" class="ul-contact-form">
             <div class="form-group" style="padding-top: 10px;">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">轉出錢包</label>
+                <label style="font-weight: bold;font-size: 18px;">{{ $lang('轉出錢包') }}</label>
                 <div class="form-control">
                   <select v-model="transferWalletData.from" style="width: 100%;">
                     <option v-for="item in playerStore.playerInfo.wallet" :key="item.id" :value="item.id"
@@ -327,7 +327,7 @@ watch(
             </div>
             <div class="form-group" style="padding-top: 10px;">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">轉入錢包</label>
+                <label style="font-weight: bold;font-size: 18px;">{{ $lang('轉入錢包') }}</label>
                 <div class="form-control">
                   <select v-model="transferWalletData.to" style="width: 100%;">
                     <option v-for="item in playerStore.playerInfo.wallet" :key="item.id" :value="item.id"
@@ -341,7 +341,7 @@ watch(
             </div>
             <div class="form-group" style="padding-top: 10px;">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">數量</label>
+                <label style="font-weight: bold;font-size: 18px;">{{ $lang('數量') }}</label>
                 <input v-model="transferWalletData.amount" v-trim-input type="number" class="form-control"
                   style="padding-right:10px;" />
               </div>

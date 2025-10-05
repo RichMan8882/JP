@@ -96,10 +96,10 @@ export default defineNuxtConfig({
       redirectOn: 'root' // recommended
     },
     locales: [
+      { code: 'ja_JP', file: './language/ja-JP.json' },
       { code: 'en_US', file: './language/en-US.json' },
       { code: 'zh_TW', file: './language/zh-TW.json' },
-      { code: 'zh_CN', file: './language/zh-CN.json' },
-      { code: 'ja_JP', file: './language/ja-JP.json' }
+      { code: 'zh_CN', file: './language/zh-CN.json' }
     ]
   },
   nitro: {},

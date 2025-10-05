@@ -11,22 +11,22 @@ const siteStore = useSiteStore()
         <ul class="footer-content__box-up__menu">
           <li><a href="https://www.aidma-hd.jp/privacy/" target="_blank"><span>
                 <font dir="auto" style="vertical-align: inherit;">
-                  <font dir="auto" style="vertical-align: inherit;">隱私權政策</font>
+                  <font dir="auto" style="vertical-align: inherit;">{{ $lang('隱私權政策') }}</font>
                 </font>
               </span></a></li>
           <li><a href="/terms"><span>
                 <font dir="auto" style="vertical-align: inherit;">
-                  <font dir="auto" style="vertical-align: inherit;">服務條款</font>
+                  <font dir="auto" style="vertical-align: inherit;">{{ $lang('服務條款') }}</font>
                 </font>
               </span></a></li>
           <li><a href="/contact"><span>
                 <font dir="auto" style="vertical-align: inherit;">
-                  <font dir="auto" style="vertical-align: inherit;">詢問</font>
+                  <font dir="auto" style="vertical-align: inherit;">{{ $lang('詢問') }}</font>
                 </font>
               </span></a></li>
           <li><a href="https://www.aidma-hd.jp/profile/"><span>
                 <font dir="auto" style="vertical-align: inherit;">
-                  <font dir="auto" style="vertical-align: inherit;">營運公司</font>
+                  <font dir="auto" style="vertical-align: inherit;">{{ $lang('營運公司') }}</font>
                 </font>
               </span></a></li>
         </ul>
@@ -34,7 +34,7 @@ const siteStore = useSiteStore()
       <div class="footer-content__box-down">
         <p>
           <font dir="auto" style="vertical-align: inherit;">
-            <font dir="auto" style="vertical-align: inherit;">愛多瑪控股有限公司</font>
+            <font dir="auto" style="vertical-align: inherit;">{{ $lang('愛多瑪控股有限公司') }}</font>
           </font>
         </p>
         <p>
@@ -52,7 +52,11 @@ const siteStore = useSiteStore()
     <div class="footer-content__copyright -worker">
       <p>
         <font dir="auto" style="vertical-align: inherit;">
-          <font dir="auto" style="vertical-align: inherit;">版權所有 Aidma Holdings Inc. 保留所有權利。</font>
+          <font dir="auto" style="vertical-align: inherit;">
+            {{ $lang('版權所有') }}
+            Aidma Holdings Inc.
+            {{ $lang('保留所有權利') }}.
+          </font>
         </font>
       </p>
     </div>

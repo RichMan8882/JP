@@ -16,37 +16,37 @@ const props = defineProps({
 
 const dashboardList = ref([
   {
-    title: t('TOP'),//職員首頁
+    title: t('職員首頁'),
     path: '/user',
     icon: '<i class="fa-brands fa-500px"></i>'
   },
   {
-    title: t('注文センター'),//訂單中心
+    title: t('訂單中心'),
     path: '/game',
     icon: '<i class="fa-brands fa-500px"></i>'
   },
   {
-    title: t('スタッフ情報'),//職員資料
+    title: t('職員資料'),
     path: '/user/info',
     icon: '<i class="fa-solid fa-gears"></i>'
   },
   {
-    title: t('給与ゾーン'),//薪資專區
+    title: t('薪資專區'),
     path: '/user/bank',
     icon: '<i class="fa-solid fa-handshake-angle"></i>'
   },
   {
-    title: t('金融センター'),//財務中心
+    title: t('財務中心'),
     path: '/user/record',
     icon: '<i class="fa-solid fa-file-invoice"></i>'
   },
   {
-    title: t('モーゲージ'),//質押
+    title: t('質押'),
     path: '/user/pledge',
     icon: '<i class="fas fa-coins"></i>'
   },
   {
-    title: t('お問い合わせ'),//聯絡我們
+    title: t('聯絡我們'),
     path: 'customer',
     icon: '<i class="fa-brands fa-facebook-messenger"></i>'
   }
@@ -151,11 +151,11 @@ watch(
             </ul>
 
             <div class="menu-btn hover-target" @click="signout()" v-if="isLogin()">
-              <a style="padding-right: 0;">サインアウト</a>
+              <a style="padding-right: 0;">{{ $lang('登出') }}</a>
               <i class="fa-solid fa-arrow-right"></i>
             </div>
             <div class="menu-btn hover-target" @click="navigateTo('/login')" v-else>
-              <a style="padding-right: 0;">ログイン</a>
+              <a style="padding-right: 0;">{{ $lang('登入') }}</a>
               <i class="fa-solid fa-arrow-right"></i>
             </div>
           </div>
@@ -171,7 +171,7 @@ watch(
               </div>
               <div class="header-el-subtitle">
                 <span v-if="isLogin()">
-                  {{ $lang('バランス') }}
+                  {{ $lang('餘額') }}
                   <i class="fa-solid fa-dollar-sign"></i>
                   {{
                     new Intl.NumberFormat('zh-TW').format(playerWalletBalance)
@@ -180,7 +180,7 @@ watch(
               </div>
             </div>
             <div class="game-btn is-pc" @click="navigateTo('/game')" v-if="isLogin()">
-              <span>{{ $lang('システムに入る') }}</span>
+              <span>{{ $lang('進入系統') }}</span>
               <div class="rig">
                 <i class="fa-solid fa-angle-right"></i>
               </div>

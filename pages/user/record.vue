@@ -270,11 +270,11 @@ const formatMemo = (value: any) => {
           <i class="fa-solid fa-chart-column"></i>
           {{ $lang('資金紀錄') }} -
           {{
-            recordType == 'transaction'
+            t(recordType == 'transaction'
               ? '訂單記錄'
               : recordType == 'withdraw'
                 ? '提領紀錄'
-                : ''
+                : '')
           }}
         </h2>
       </div>
@@ -322,7 +322,7 @@ const formatMemo = (value: any) => {
                   </div>
                   <!-- <div>{{ $lang('備註') }}:{{ item.memo }}</div> -->
                   <div style="white-space: pre">
-                    {{ formatMemo(item.memo) }}
+                    {{ t(formatMemo(item.memo)) }}
                   </div>
                 </td>
 
