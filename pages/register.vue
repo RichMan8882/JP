@@ -252,7 +252,7 @@ await onMounted(() => {
                   <div class="form-main">
                     <div class="form-input">
                       <input v-model="signupData.account" v-trim-input type="text" class="input_style"
-                        placeholder="請輸入帳號" @input="validateAccount" @copy.prevent @paste.prevent
+                        :placeholder="t('請輸入帳號')" @input="validateAccount" @copy.prevent @paste.prevent
                         @contextmenu.prevent />
                     </div>
                     <div class="tips">
@@ -278,7 +278,7 @@ await onMounted(() => {
                   <div class="form-main">
                     <div class="form-input">
                       <input v-model="signupData.password" v-trim-input :type="passwordEyes ? 'text' : 'password'"
-                        class="input_style" placeholder="請輸入密碼" @input="checkPasswordRequired" @copy.prevent
+                        class="input_style" :placeholder="t('請輸入密碼')" @input="checkPasswordRequired" @copy.prevent
                         @paste.prevent @contextmenu.prevent />
                       <span v-if="!passwordEyes" class="eyes" @click="showPassword(true)">
                         <i class="fa-regular fa-eye-slash"></i>
@@ -319,7 +319,7 @@ await onMounted(() => {
                   <div class="form-main">
                     <div class="form-input">
                       <input ref="passwordSameRef" v-model="verifyPassword" v-trim-input
-                        :type="passwordEyes ? 'text' : 'password'" class="input_style" placeholder="請再次確認密碼"
+                        :type="passwordEyes ? 'text' : 'password'" class="input_style" :placeholder="$lang('請再次確認密碼')"
                         @input="checkPasswordSame" @copy.prevent @paste.prevent @contextmenu.prevent />
                       <span v-if="!passwordEyes" class="eyes" @click="showPassword(true)">
                         <i class="fa-regular fa-eye-slash"></i>
@@ -422,7 +422,7 @@ await onMounted(() => {
                   <div class="form-main">
                     <div class="form-input">
                       <input v-model="signupData.username" v-trim-input type="text" class="input_style"
-                        placeholder="請輸入名稱" />
+                        :placeholder="t('請輸入名稱')" />
                     </div>
                     <div class="tips">
                       <div ref="usernameRef" :class="signupData.username
@@ -512,7 +512,7 @@ await onMounted(() => {
                   </div>
                   <div class="form-main">
                     <div class="form-input">
-                      <input v-model="recaptchaCode" v-trim-input type="text" placeholder="請輸入驗證碼"
+                      <input v-model="recaptchaCode" v-trim-input type="text" :placeholder="t('請輸入驗證碼')"
                         @keyup.enter="setregister" @focus="focusItem = 'recaptcha'" @focusout="focusItem = ''" />
                       <span>
                         <recaptcha style="cursor: pointer; width: 100px" @check-hepler="checkHepler">

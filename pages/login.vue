@@ -76,7 +76,7 @@ const openChatBox = () => {
       <div class="login">
         <div class="login-main">
           <div class="login-top">
-            <h1 style="font-weight: bold">職員專區</h1>
+            <h1 style="font-weight: bold">{{ $lang('職員專區') }}</h1>
             <!--<img src="../static/picture/logo01.png" alt="" style="width: 200px;padding-bottom: 15px;">-->
             <h3 style="font-weight: bold">
               <span style="
@@ -84,13 +84,13 @@ const openChatBox = () => {
                   padding: 0 10px;
                   position: relative;
                   z-index: 3;
-                ">登入系統</span>
+                ">{{ $lang('登入系統') }}</span>
             </h3>
             <div class="form">
-              <input v-model="fetchSigninApi.account" v-trim-input type="text" placeholder="請輸入帳號"
+              <input v-model="fetchSigninApi.account" v-trim-input type="text" :placeholder="t('請輸入帳號')"
                 @focus="focusItem = 'account'" @focusout="focusItem = ''" />
               <input v-model="fetchSigninApi.password" v-trim-input :type="passwordEyes ? 'text' : 'password'"
-                placeholder="請輸入密碼" @keyup.enter="setLogin" @focus="focusItem = 'password'"
+                :placeholder="t('請輸入密碼')" @keyup.enter="setLogin" @focus="focusItem = 'password'"
                 @focusout="focusItem = ''" />
               <br />
 
@@ -101,10 +101,10 @@ const openChatBox = () => {
                   border: 1px solid #ccc;
                   margin: 0 auto;
                 " @check-hepler="checkHepler"></recaptcha>
-              <input v-model="recaptchaCode" v-trim-input type="text" placeholder="請輸入驗證碼" @keyup.enter="setLogin"
+              <input v-model="recaptchaCode" v-trim-input type="text" :placeholder="t('請輸入驗證碼')" @keyup.enter="setLogin"
                 @focus="focusItem = 'recaptcha'" @focusout="focusItem = ''" />
-              <input type="submit" value="登入" @click="setLogin" />
-              <input type="submit" class="regis" value="注冊" @click="() => { navigateTo('/register') }">
+              <input type="submit" :value="t('登入')" @click="setLogin" />
+              <input type="submit" class="regis" :value="t('注冊')" @click="() => { navigateTo('/register') }">
             </div>
 
             <h3 style="font-weight: bold;margin-top: 20px;">
@@ -113,7 +113,7 @@ const openChatBox = () => {
                   padding: 0 10px;
                   position: relative;
                   z-index: 3;
-                ">快捷服務</span>
+                ">{{ $lang('快捷服務') }}</span>
             </h3>
             <div class="login-bottom">
               <div class="login-check">
@@ -121,10 +121,10 @@ const openChatBox = () => {
                   () => {
                     navigateTo('/user')
                   }
-                "><label class="checkbox">返回首頁</label></a>
+                "><label class="checkbox">{{ $lang('返回首頁') }}</label></a>
               </div>
               <div class="login-para" @click="openChatBox()">
-                <p><a> 聯絡客服 </a></p>
+                <p><a> {{ $lang('聯絡客服') }} </a></p>
               </div>
             </div>
           </div>
