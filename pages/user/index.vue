@@ -396,7 +396,7 @@ const clsLis = ref([
           <li v-for="(item, index) in activityLis" :key="index">
             <div class="li-box">
               <figure class="img">
-                <img src="https://upload.comethike.com/uploads/1759831403947.jpg" alt="">
+                <img src="https://upload.comethike.com/uploads/1759832603922.png" alt="">
               </figure>
               <h5 class="txt">
                 <p>
@@ -660,6 +660,7 @@ video::-webkit-media-controls-enclosure
           img
             width: 100%
             vertical-align: middle
+            object-fit: cover
         .txt
           padding: 10px 8px
           background-color: #ffb9bf
