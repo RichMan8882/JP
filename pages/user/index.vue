@@ -468,7 +468,7 @@ const clsLis = ref([
         </ul>
       </div>
     </div>
-    <div class="dashboard-lis">
+    <div class="dashboard-lis" style="padding-top: 0px;">
       <div class="dashboard-lis-title">
         <div class="dashboard-lis-title-txt">
           <svg xmlns="http://www.w3.org/2000/svg" width="5" height="39.5" viewBox="0 0 5 39.5">
@@ -604,11 +604,11 @@ video::-webkit-media-controls-enclosure
           transform: scale(1.05)
 .dashboard-lis
   background-color: #f2f2f2
-  padding: 80px 20px 80px
+  padding: 50px 20px 50px
   .dashboard-lis-banner
     max-width: 1080px
     width: 100%
-    margin: 0 auto 60px
+    margin: 0 auto 20px
     overflow: hidden
     border-radius: 10px
     &:hover
