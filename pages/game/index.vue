@@ -267,7 +267,6 @@ const checkBetData = () => {
             ElMessageBox.alert(
               `
                <p style="margin:0 0 8px 0"> ${t('系統編號')}: ${response.data.roundNo} </p>
-               <p style="margin:0 0 8px 0"> ${t('設置數值')}: ${response.data.amount} </p>
                <p style="margin:0 0 8px 0"> ${t('設置選項')}: ${gameOptionNameList(
                 response.data.option
               )} </p>
@@ -417,9 +416,9 @@ const gameOptionName = (type: Number) => {
     case 3:
       return `${t('雙')}`
     case 4:
-      return `${t('漲')}`
+      return `${t('出貨')}`
     case 5:
-      return `${t('跌')}`
+      return `${t('退貨/換貨')}`
     case 6:
       return `${t('反指標')}`
     default:
@@ -969,7 +968,7 @@ const triggerDataRandom = () => {
         <source src="https://upload.comethike.com/uploads/1759578336584.mov">
       </video>
     </div>
-    <div class="user-t white" style="padding: 9px; line-height: 24px">
+    <div class="user-t white">
       <div class="login-no">
         <div class="goBack" @click="navigateTo('/user')">{{ t('返回首頁') }}</div>
         <span class="log-user">
@@ -980,14 +979,16 @@ const triggerDataRandom = () => {
               display: inline-block;
               margin: 0 5px;
             ">{{ PlayerStore?.playerInfo?.username }} </span>
-          $ {{ new Intl.NumberFormat('zh-TW').format(playerWalletBalance) }}
+          <span style="display: inline-block">
+            $ {{ new Intl.NumberFormat('zh-TW').format(playerWalletBalance) }}
+          </span>
         </span>
       </div>
     </div>
     <div class="sys">
       <div class="container">
         <div class="row text-center">
-          <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-12 col-sm-6 col-xs-6">
             <div class="heading-count">
               <h2>{{ $lang('工單') }}</h2>
               <p>{{ betData.roundNo || '' }}</p>
@@ -1119,6 +1120,12 @@ const triggerDataRandom = () => {
     border-radius: 3px
     font-weight: bold
     cursor: pointer
+    white-space: nowrap
+    display: flex
+    align-items: center
+    justify-content: center
+
+
 .login-off
   font-size: 14px
 .a-aim
@@ -1130,19 +1137,25 @@ const triggerDataRandom = () => {
   color: #fff
   position: absolute
   margin: 0 auto
-  top: 50%
-  transform: translateY(-50%)
+  padding-block-start: 150px
   text-align: center
   width: 100%
   overflow-y: auto
+  @media (max-width: 1200px)
+    padding-block-start: 0px
   .container
-    margin-right: auto
-    margin-left: auto
+    margin: 0 auto
     padding-right: 15px
     padding-left: 15px
+    max-width: 1140px
     width: 100%
-    @media (min-width: 1200px)
-      max-width: 1140px
+    height: 100%
+    @media (max-width: 1200px)
+      .heading-count
+        padding-top: 10px
+        padding-bottom: 10px
+        h2
+          font-size: 36px
     .heading-count
       background-color: rgba(255, 255, 255, 0.411)
       padding-top: 20px

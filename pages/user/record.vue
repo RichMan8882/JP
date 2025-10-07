@@ -109,9 +109,7 @@ const changeRecordType = async (type: string) => {
       })
       console.log(222)
 
-      recordList.value = queryWalletLogRes.data.result.filter((item: any) => {
-        if (item.type === 7) return item
-      })
+      recordList.value = queryWalletLogRes.data.result
       console.log(recordList.value, 'recordList.value ')
 
       return
@@ -224,36 +222,37 @@ const formatMemo = (value: any) => {
   //   .replace('下注', '購買')
   //   .replace('輸贏', '盈虧')
   //   .replace('投注本金', '購買本金')
-  if (value.includes('[高低單雙]')) {
+  if (value.includes('[漲跌-上期]')) {
     const pattern = /(\d{12}).*?「([^」]+)」/
     let str = value.match(pattern)
 
     // str = '訂單編號：' + str[1] + '\r\n' + str[2].replace('高', '購置').replace('低', '放置')
     str =
+      '[訂單結果] ' +
       '訂單編號：' +
       str[1] +
       ' ' +
       '\r\n' +
-      str[2].replace('高', '購置').replace('低', '放置')
+      str[2].replace('比特幣/美元-漲', '結果：出貨').replace('比特幣/美元-跌', '結果：退貨/換貨')
     return str
   } else if (value.includes('[投注成功]')) {
     let str = value
       .replace('投注成功', '訂單成功')
       .replace('期別', '訂單編號')
-      .replace('高', '購置')
-      .replace('低', '放置')
+      .replace('高', '出貨')
+      .replace('低', '退貨/換貨')
+      .replace('漲', '出貨')
+      .replace('跌', '退貨/換貨')
+
     const pattern =
       /\[訂單成功\]\s+.*?\s+投注-(.*?)\s+訂單編號-(\d+)\s+選項-(.*?)\s+金額-\d+/
     str = str.match(pattern)
-    // str = '[訂單成功] ' + str[1] + '\r\n' + '訂單編號：' + str[2] + '\r\n' + str[3].replace('高', '購置').replace('低', '放置')
     str =
       '[訂單成功] ' +
-      str[1] +
-      '\r\n' +
       '訂單編號：' +
       str[2] +
       '\r\n' +
-      str[3].replace('高', '選項-購置 ').replace('低', '選項-放置 ')
+      str[3].replace('漲', '出貨').replace('跌', '退貨/換貨 ')
     return str
   } else {
     return value

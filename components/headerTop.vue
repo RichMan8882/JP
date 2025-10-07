@@ -185,7 +185,6 @@ watch(
                 <i class="fa-solid fa-angle-right"></i>
               </div>
             </div>
-
           </div>
         </div>
         <div class="worker is-mobile" :class="{ 'active': isShw }" @click="onPopup">
@@ -212,7 +211,34 @@ watch(
             </li>
           </ul>
         </div>
-        <div class="popup-btn"></div>
+        <div class="popup-btn">
+
+          <div class="header-bom">
+            <div class="header-el-text">
+              <div class="header-el-subtitle">
+                Hello!&nbsp;
+                <span style="color:#ff6c7a;">
+                  {{ PlayerStore?.playerInfo?.username }}
+                </span>
+              </div>
+              <div class="header-el-subtitle">
+                <span v-if="isLogin()">
+                  {{ $lang('餘額') }}
+                  <i class="fa-solid fa-dollar-sign"></i>
+                  {{
+                    new Intl.NumberFormat('zh-TW').format(playerWalletBalance)
+                  }}
+                </span>
+              </div>
+            </div>
+            <div class="game-btn" @click="navigateTo('/game')" v-if="isLogin()">
+              <span>{{ $lang('進入系統') }}</span>
+              <div class="rig">
+                <i class="fa-solid fa-angle-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -246,6 +272,43 @@ header
       height: 100%
       img
         height: 100%
+  .header-bom
+    padding:  20px 0 10px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 25px
+    .header-el-text
+      .header-el-subtitle
+        font-size: 12px
+        color: #3f3a39
+    .game-btn
+      background: #fff
+      border: 2px solid #ff6c7a
+      color: #ff6c7a
+      border-radius: 10px
+      padding: 10px 20px
+      transition: all 0.1s ease-in-out
+      display: flex
+      align-items: center
+      gap: 15px
+      .rig
+        border-radius: 50%
+        background:  #ff6c7a
+        color: #fff
+        width: 25px
+        height: 25px
+        text-align: center
+        display: flex
+        align-items: center
+        justify-content: center
+        transition: all 0.1s ease-in-out
+      &:hover
+        background: #ff6c7a
+        color: #fff
+        gap: 25px
+        .rig
+          font-size: 16px
   .header-rig
     display: block
     .header
@@ -291,43 +354,7 @@ header
           &:hover
             color: #ff6c7a
             gap: 10px
-      .header-bom
-        padding:  20px 0 10px
-        display: flex
-        align-items: center
-        justify-content: space-between
-        gap: 25px
-        .header-el-text
-          .header-el-subtitle
-            font-size: 12px
-            color: #3f3a39
-        .game-btn
-          background: #fff
-          border: 2px solid #ff6c7a
-          color: #ff6c7a
-          border-radius: 10px
-          padding: 10px 20px
-          transition: all 0.1s ease-in-out
-          display: flex
-          align-items: center
-          gap: 15px
-          .rig
-            border-radius: 50%
-            background:  #ff6c7a
-            color: #fff
-            width: 25px
-            height: 25px
-            text-align: center
-            display: flex
-            align-items: center
-            justify-content: center
-            transition: all 0.1s ease-in-out
-          &:hover
-            background: #ff6c7a
-            color: #fff
-            gap: 25px
-            .rig
-              font-size: 16px
+    
     .worker
       background-color: #ffb9bf
       padding: 10px 10px 10px 10px 
@@ -347,6 +374,7 @@ header
         
       &.active
         padding: 10px 25px 10px 10px 
+        background-color: #ff6c7a
         span
           &:nth-child(1)
             transform: rotateZ(-45deg) translate(2px,14px)

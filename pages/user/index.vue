@@ -158,50 +158,76 @@ await useAsyncData(async () => {
 
 const activityLis = ref([
   {
-    title: t('【在宅×営業事務】営業事務経験を在宅で活かす！柔軟稼働×安心サポートの環境です'),
-    src: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    title: t('着物モデルさん大募集'),
+    src: 'https://upload.comethike.com/uploads/1759816145713.jpg',
     link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    location: '在宅 / 出社',
-    name: '株式会社​A2T',
-    salary: '時間単価：1,100円（税込）',
-    information: ['【在宅】週2日〜、1日3時間〜の稼働想', '【業務】週2日〜、1日3時間〜の稼働想', '【就業場所/業務遂行場所】※社内体制上、国内を想定。', '【在宅】2025/09/22 〜 2026/10/09']
-  },
-  {
-    title: t('【在宅×営業事務】営業事務経験を在宅で活かす！柔軟稼働×安心サポートの環境です'),
-    src: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    location: '在宅 / 出社',
-    name: '株式会社​A2T',
-    salary: '時間単価：1,100円（税込）',
-    information: ['【在宅】週2日〜、1日3時間〜の稼働想', '【業務】週2日〜、1日3時間〜の稼働想', '【就業場所/業務遂行場所】※社内体制上、国内を想定。', '【在宅】2025/09/22 〜 2026/10/09']
-  }, {
-    title: t('【在宅×営業事務】営業事務経験を在宅で活かす！柔軟稼働×安心サポートの環境です'),
-    src: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    location: '在宅 / 出社',
-    name: '株式会社​A2T',
-    salary: '時間単価：1,100円（税込）',
-    information: ['【在宅】週2日〜、1日3時間〜の稼働想', '【業務】週2日〜、1日3時間〜の稼働想', '【就業場所/業務遂行場所】※社内体制上、国内を想定。', '【在宅】2025/09/22 〜 2026/10/09']
-  }, {
-    title: t('【在宅×営業事務】営業事務経験を在宅で活かす！柔軟稼働×安心サポートの環境です'),
-    src: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    location: '在宅 / 出社',
-    name: '株式会社​A2T',
-    salary: '時間単価：1,100円（税込）',
-    information: ['【在宅】週2日〜、1日3時間〜の稼働想', '【業務】週2日〜、1日3時間〜の稼働想', '【就業場所/業務遂行場所】※社内体制上、国内を想定。', '【在宅】2025/09/22 〜 2026/10/09']
-  }, {
-    title: t('【在宅×営業事務】営業事務経験を在宅で活かす！柔軟稼働×安心サポートの環境です'),
-    src: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    location: '在宅 / 出社',
-    name: '株式会社​A2T',
-    salary: '時間単価：1,100円（税込）',
-    information: ['【在宅】週2日〜、1日3時間〜の稼働想', '【業務】週2日〜、1日3時間〜の稼働想', '【就業場所/業務遂行場所】※社内体制上、国内を想定。', '【在宅】2025/09/22 〜 2026/10/09']
+    location: '撮影はモデルさんのお住まいの地域（所在地）で行っていただきますので、遠方への移動は不要です。',
+    name: '募集人数5名',
+    salary: '日円：25000円(含稅)',
+    information: [
+      '【種類】撮影テーマ  ポーズ例',
+      '【振袖】華やか・青春・成人式の喜び  巾着を持って優雅に歩く、袖を広げて見せる、振り返りながら袖に手を添える',
+      '【訪問着】上品・社交的・エレガント  玄関で軽くノックする、手土産を持って微笑む、正座してお茶を差し出す',
+      '【浴衣】夏祭り・青春・花火  団扇やかき氷を手に、花火を見上げる、夏の小道を歩きながら振り返る',
+      '【留袖】端正・成熟した女性の美しさ  礼をする、家族と並んで立つ、膝に手を添えて端正に座る',
+      '【花嫁衣裳】伝統婚礼・幸福感  花を持ってうつむき微笑む、新郎と並んで座る、赤い和傘の下で見つめ合う',
+      '【モダン着物】伝統×現代・和洋ミックス  和風の街並みでコーヒーを持つ、街角でおしゃれに立つ、振り返りながら可愛く微笑む'
+    ]
   }
 ])
 
+import cls1 from '@/assets/image/index/cls1.svg'
+import cls2 from '@/assets/image/index/cls2.svg'
+import cls3 from '@/assets/image/index/cls3.svg'
+import cls4 from '@/assets/image/index/cls4.svg'
+import cls5 from '@/assets/image/index/cls5.svg'
+import cls6 from '@/assets/image/index/cls6.svg'
 
+
+const clsLis = ref([
+  {
+    title: t('在宅で働く'),
+    name: t('自分に合ったペースで！'),
+    src: cls1,
+    link: '',
+    location: '',
+  },
+  {
+    title: t('さまざまな無料講座で'),
+    name: t('自分をさらに磨ける'),
+    src: cls2,
+    link: '',
+    location: '',
+  },
+  {
+    title: t('子どもとの時間を増やす'),
+    name: t('少なめ'),
+    src: cls3,
+    link: '',
+    location: '',
+  },
+  {
+    title: t('時間に縛られず'),
+    name: t('あなたのタイミングで働く'),
+    src: cls4,
+    link: '',
+    location: '',
+  },
+  {
+    title: t('経歴'),
+    name: t('資格などスキルを活かす'),
+    src: cls5,
+    link: '',
+    location: '',
+  },
+  {
+    title: t('専業主婦'),
+    name: t('専業主婦の方もOK ブランクOK'),
+    src: cls6,
+    link: '',
+    location: '',
+  }
+])
 
 </script>
 <template>
@@ -325,11 +351,30 @@ const activityLis = ref([
     <div class="dashboard-banner">
       <div class="bannerBox">
         <div class="bnr-img">
+          <div class="bnr-t">
+            <h2>
+              <span style="color: #ff6c7a">
+                ここでは、
+              </span>
+              <br>すべての女性が自分らしい輝きを咲かせられます。
+            </h2>
+            <h3 style="text-align: right;">ただの仕事探しのプラットフォームではなく、<br /><span
+                style="color: #ff6c7a;font-weight:500;">あなたの夢が始ま</span>
+            </h3>
+          </div>
           <img src="https://upload.comethike.com/uploads/1759567370550.jpg" alt="">
+        </div>
+        <div class="bnr-txt">
+          <p>私たちは、女性のための多様なマッチングプラットフォームです。このサイトのコンセプトは、「女性が自分自身の成長と変化を通して、より良い自分へと進化し、理想や夢を実現できる場所になること」です。</p>
+          <p>ここは、女性のためだけに作られた特別な空間で、仕事の機会を提供するだけでなく、自分を磨くためのさまざまなイベントや講座もご用意しています。</p>
+          <p>自分らしく輝き、夢を叶える第一歩をここから踏み出しましょう。</p>
         </div>
       </div>
     </div>
     <div class="dashboard-lis">
+      <div class="dashboard-lis-banner">
+        <img src="@/assets/image/index/banner_pc.webp" alt="">
+      </div>
       <div class="dashboard-lis-title">
         <div class="dashboard-lis-title-txt">
           <svg xmlns="http://www.w3.org/2000/svg" width="5" height="39.5" viewBox="0 0 5 39.5">
@@ -342,13 +387,16 @@ const activityLis = ref([
           </svg>
           <h2 class="dashboard-lis-title-title">{{ $lang('當前活動') }}</h2>
         </div>
+        <p class="dashboard-lis-title-txt">
+          {{ $lang('すべての挑戦が、自分を咲かせる旅になる。') }}
+        </p>
       </div>
       <div class="dashboard-lis-list">
         <ul class="dashboard-lis-list-ul">
           <li v-for="(item, index) in activityLis" :key="index">
             <div class="li-box">
               <figure class="img">
-                <img src="https://upload.comethike.com/uploads/1759567370550.jpg" alt="">
+                <img src="https://upload.comethike.com/uploads/1759817596867.jpg" alt="">
               </figure>
               <h5 class="txt">
                 <p>
@@ -420,6 +468,37 @@ const activityLis = ref([
         </ul>
       </div>
     </div>
+    <div class="dashboard-lis">
+      <div class="dashboard-lis-title">
+        <div class="dashboard-lis-title-txt">
+          <svg xmlns="http://www.w3.org/2000/svg" width="5" height="39.5" viewBox="0 0 5 39.5">
+            <g id="グループ_1103" data-name="グループ 1103" transform="translate(-473.5 -1804.5)">
+              <rect id="長方形_2437" data-name="長方形 2437" width="20" height="5"
+                transform="translate(473.5 1844) rotate(-90)" fill="#ff6c7a" />
+              <rect id="長方形_2438" data-name="長方形 2438" width="20" height="5"
+                transform="translate(473.5 1824.5) rotate(-90)" fill="#fbb" />
+            </g>
+          </svg>
+          <h2 class="dashboard-lis-title-title">{{ $lang('每一次挑戰都是一場綻放的旅程') }}</h2>
+        </div>
+      </div>
+      <div class="dashboard-lis-list">
+        <ul class="dashboard-lis-list-ul2">
+          <li v-for="(item, index) in clsLis" :key="index">
+            <div class="li-box2">
+              <a>
+                <img class="lazyload" :src="item.src" alt="">
+                <div>
+                  <p>{{ item.title }}</p>
+                  <h3>{{ item.name }}</h3>
+                </div>
+              </a>
+              <span></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
     <div class="ul-container">
       <section class="ul-ad">
         <div class="ul-inner-container">
@@ -455,11 +534,13 @@ const activityLis = ref([
 </template>
 
 <style scoped lang="sass">
+//所有控件
+video::-webkit-media-controls-enclosure
+    display: none
 .dashboard
   padding-top: 123px
   @media (max-width: 768px)
     padding-top: 70px
-
 .dashboard-video
   position: relative
   width: 100%
@@ -479,9 +560,40 @@ const activityLis = ref([
     position: relative
     padding: 15px
     background-color: #ffdddd
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    @media (max-width: 992px)
+      grid-template-columns: repeat(1, 1fr)
+    .bnr-txt
+      padding: 20px
+      @media (max-width: 992px)
+        padding: 20px 0 0
+      p
+        color: #3f3a39
+        font-size: 18px
+        font-weight: 700
+        margin-bottom: 20px
     .bnr-img
+      position: relative  
       overflow: hidden
       border-radius: 12px
+      .bnr-t
+        position: absolute
+        top: 0
+        left: 0
+        z-index: 1
+        padding: 20px 40px 0 20px
+        text-shadow: 2px 2px 5px #ff6c7a
+        color: #fff
+        font-size: 22px
+        font-weight: 700
+        @media (max-width: 992px)
+          font-size: 16px !important
+          padding: 20px 20px 0 20px
+          h2
+            font-size: 14px !important
+        h2
+          font-size: 18px
       img
         width: 100%
         height: auto
@@ -492,12 +604,25 @@ const activityLis = ref([
           transform: scale(1.05)
 .dashboard-lis
   background-color: #f2f2f2
-  padding: 80px 20px 50px
+  padding: 80px 20px 80px
+  .dashboard-lis-banner
+    max-width: 1080px
+    width: 100%
+    margin: 0 auto 60px
+    overflow: hidden
+    border-radius: 10px
+    &:hover
+      img
+        transform: scale(1.05)
+    img
+      width: 100%
+      transition: 0.4s ease
   .dashboard-lis-title
     margin-bottom: clamp(40px, 2.05vw, 30px)
     display: flex
     align-items: center
     justify-content: center
+    flex-direction: column
     .dashboard-lis-title-txt
       display: flex
       align-items: center
@@ -530,6 +655,8 @@ const activityLis = ref([
           height: 96px
           overflow: hidden
           text-align: center
+          @media (max-width: 922px)
+            height: 196px
           img
             width: 100%
             height: 100%
@@ -576,6 +703,56 @@ const activityLis = ref([
             overflow: hidden
             /*! autoprefixer: off */
             -webkit-box-orient: vertical
+    .dashboard-lis-list-ul2
+      display: grid
+      grid-template-columns: repeat(3, 1fr)
+      gap: clamp(20px, 1.05vw, 30px)
+      @media (max-width: 992px)
+        grid-template-columns: repeat(2, 1fr)
+      @media (max-width: 768px)
+        grid-template-columns: repeat(1, 1fr)
+      .li-box2
+        overflow: hidden
+        position: relative
+        padding: 20px 20px 60px
+        border-radius: 10px
+        background: #fff8ea
+        border: 2px solid #fff
+        font-weight: 700
+        h3
+          font-size: 18px
+        &:hover
+          opacity: .8
+        a
+          width: 100%
+          display: flex
+          align-items: center
+          justify-content: center
+          flex-direction: column
+          text-align: center
+          gap: 5px
+        span
+          display: inline-block
+          position: absolute
+          bottom: 0
+          right: 0
+          width: 0
+          height: 0
+          border-color: transparent transparent #ff6c7a
+          border-style: solid
+          border-width: 0 0 62px 102px
+          &::after
+            display: block
+            position: absolute
+            content: ""
+            width: 34px
+            height: 10px
+            bottom: -46px
+            right: 17px
+            border-bottom: 2px solid #fff
+            border-right: 2px solid #fff
+            -webkit-transform: skew(45deg)
+            transform: skew(45deg)
 .ul-container
   margin: 0 clamp(15px, 3.15vw, 60px)
 .lis-cont
@@ -621,7 +798,6 @@ const activityLis = ref([
         stroke: #fff
       &:before
         opacity: 1
-    
     img
       max-width: 100%
       border-radius: 50%
