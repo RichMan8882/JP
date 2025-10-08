@@ -106,15 +106,13 @@ const updateImage = (data: any) => {
           <div class="">
             <!--  銀行  -->
             <div class="form-group">
-              <div class="position-relative">
+              <div class="position-relative" v-if="siteStore.siteData?.depositOptions.bank.length > 0">
                 <label style="
-                    
                     font-weight: bold;
                     font-size: 18px;
                   ">{{ $lang('銀行') }}</label>
                 <select v-model="bankInfo.bankName" name="phoneCode" class="form-control"
-                  style="border: 2px solid #ff6c7a; border-radius: 10px;margin-left: 5px;padding: 0 10px;"
-                  v-if="siteStore.siteData?.depositOptions.bank.length > 0">
+                  style="border: 2px solid #ff6c7a; border-radius: 10px;margin-left: 5px;padding: 0 10px;">
                   <option v-for="item in siteStore.siteData?.depositOptions.bank" :key="item">
                     {{ item }}
                   </option>
