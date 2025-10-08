@@ -500,7 +500,7 @@ const clsLis = ref([
       </div>
     </div>
     <div class="ul-container">
-      <section class="ul-ad">
+      <section class="ul-ad" v-if="false">
         <div class="ul-inner-container">
           <div class="ul-ad-content">
             <div class="ul-ad-txt">

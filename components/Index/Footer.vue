@@ -5,62 +5,64 @@ const siteStore = useSiteStore()
 </script>
 
 <template>
-  <footer class="footer-content">
-    <div class="footer-content__box">
-      <div class="footer-content__box-up">
-        <ul class="footer-content__box-up__menu">
-          <li><a href="https://www.aidma-hd.jp/privacy/" target="_blank"><span>
-                <font dir="auto" style="vertical-align: inherit;">
-                  <font dir="auto" style="vertical-align: inherit;">{{ $lang('隱私權政策') }}</font>
-                </font>
-              </span></a></li>
-          <li><a href="/terms"><span>
-                <font dir="auto" style="vertical-align: inherit;">
-                  <font dir="auto" style="vertical-align: inherit;">{{ $lang('服務條款') }}</font>
-                </font>
-              </span></a></li>
-          <li><a href="/contact"><span>
-                <font dir="auto" style="vertical-align: inherit;">
-                  <font dir="auto" style="vertical-align: inherit;">{{ $lang('詢問') }}</font>
-                </font>
-              </span></a></li>
-          <li><a href="https://www.aidma-hd.jp/profile/"><span>
-                <font dir="auto" style="vertical-align: inherit;">
-                  <font dir="auto" style="vertical-align: inherit;">{{ $lang('營運公司') }}</font>
-                </font>
-              </span></a></li>
-        </ul>
+  <div>
+    <footer class="footer-content" v-if="false">
+      <div class="footer-content__box">
+        <div class="footer-content__box-up">
+          <ul class="footer-content__box-up__menu">
+            <li><a href="https://www.aidma-hd.jp/privacy/" target="_blank"><span>
+                  <font dir="auto" style="vertical-align: inherit;">
+                    <font dir="auto" style="vertical-align: inherit;">{{ $lang('隱私權政策') }}</font>
+                  </font>
+                </span></a></li>
+            <li><a href="/terms"><span>
+                  <font dir="auto" style="vertical-align: inherit;">
+                    <font dir="auto" style="vertical-align: inherit;">{{ $lang('服務條款') }}</font>
+                  </font>
+                </span></a></li>
+            <li><a href="/contact"><span>
+                  <font dir="auto" style="vertical-align: inherit;">
+                    <font dir="auto" style="vertical-align: inherit;">{{ $lang('詢問') }}</font>
+                  </font>
+                </span></a></li>
+            <li><a href="https://www.aidma-hd.jp/profile/"><span>
+                  <font dir="auto" style="vertical-align: inherit;">
+                    <font dir="auto" style="vertical-align: inherit;">{{ $lang('營運公司') }}</font>
+                  </font>
+                </span></a></li>
+          </ul>
+        </div>
+        <div class="footer-content__box-down">
+          <p>
+            <font dir="auto" style="vertical-align: inherit;">
+              <font dir="auto" style="vertical-align: inherit;">{{ $lang('愛多瑪控股有限公司') }}</font>
+            </font>
+          </p>
+          <p>
+            <font dir="auto" style="vertical-align: inherit;">
+              <font dir="auto" style="vertical-align: inherit;">〒141-0021</font>
+            </font>
+          </p>
+          <p>
+            <font dir="auto" style="vertical-align: inherit;">
+              <font dir="auto" style="vertical-align: inherit;">東京都品川區上大崎2-13-30 Oak目黑5樓、10樓</font>
+            </font>
+          </p>
+        </div>
       </div>
-      <div class="footer-content__box-down">
+      <div class="footer-content__copyright -worker">
         <p>
           <font dir="auto" style="vertical-align: inherit;">
-            <font dir="auto" style="vertical-align: inherit;">{{ $lang('愛多瑪控股有限公司') }}</font>
-          </font>
-        </p>
-        <p>
-          <font dir="auto" style="vertical-align: inherit;">
-            <font dir="auto" style="vertical-align: inherit;">〒141-0021</font>
-          </font>
-        </p>
-        <p>
-          <font dir="auto" style="vertical-align: inherit;">
-            <font dir="auto" style="vertical-align: inherit;">東京都品川區上大崎2-13-30 Oak目黑5樓、10樓</font>
+            <font dir="auto" style="vertical-align: inherit;">
+              {{ $lang('版權所有') }}
+              Aidma Holdings Inc.
+              {{ $lang('保留所有權利') }}.
+            </font>
           </font>
         </p>
       </div>
-    </div>
-    <div class="footer-content__copyright -worker">
-      <p>
-        <font dir="auto" style="vertical-align: inherit;">
-          <font dir="auto" style="vertical-align: inherit;">
-            {{ $lang('版權所有') }}
-            Aidma Holdings Inc.
-            {{ $lang('保留所有權利') }}.
-          </font>
-        </font>
-      </p>
-    </div>
-  </footer>
+    </footer>
+  </div>
 </template>
 <style scoped lang="sass">
 .footer-content
