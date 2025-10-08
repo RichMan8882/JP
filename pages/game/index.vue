@@ -37,12 +37,12 @@ const search = ref({
 const dataList = ref([
   {
     title: t('出荷数'),
-    unit: t('劑'),
+    unit: t(''),
     index: '0'
   },
   {
     title: t('返品・交換数'),
-    unit: t('劑'),
+    unit: t(''),
     index: '1'
   },
   // {
