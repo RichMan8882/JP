@@ -209,6 +209,9 @@ watch(
             <li class="has-dropdown active menu-thumb" v-for="(item, index) in filterPledgeList">
               <a @click="handleNavigateTo(item.path), onClose()">{{ $lang(item.title) }}</a>
             </li>
+            <li class="menu-thumb" v-if="isLogin()">
+              <a @click="signout()">{{ $lang('登出') }}</a>
+            </li>
           </ul>
         </div>
         <div class="popup-btn">
