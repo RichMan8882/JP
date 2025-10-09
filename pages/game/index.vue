@@ -416,9 +416,9 @@ const gameOptionName = (type: Number) => {
     case 3:
       return `${t('雙')}`
     case 4:
-      return `${t('出貨')}`
+      return `${t('出荷')}`
     case 5:
-      return `${t('退貨/換貨')}`
+      return `${t('返品・交換')}`
     case 6:
       return `${t('反指標')}`
     default:
@@ -964,7 +964,8 @@ const triggerDataRandom = () => {
 <template>
   <div class="page">
     <div class="page-video">
-      <video autoplay muted loop preload="auto">
+      <video autoplay muted loop class="video-element" webkit-playsinline="true" playsinline="true"
+        x5-video-player-type="h5" x5-video-player-fullscreen="false">
         <source src="https://upload.comethike.com/uploads/1759578336584.mov">
       </video>
     </div>
@@ -980,7 +981,7 @@ const triggerDataRandom = () => {
               margin: 0 5px;
             ">{{ PlayerStore?.playerInfo?.username }} </span>
           <span style="display: inline-block">
-            $ {{ new Intl.NumberFormat('zh-TW').format(playerWalletBalance) }}
+            ¥ {{ new Intl.NumberFormat('zh-TW').format(playerWalletBalance) }}
           </span>
         </span>
       </div>
@@ -1089,6 +1090,24 @@ const triggerDataRandom = () => {
     right: 0
 </style>
 <style lang="sass" scoped>
+
+.video-element 
+  width: 100%
+  height: 100%
+  object-fit: cover
+  /* 隐藏 Webkit 原生控件（关键！） */
+  &::-webkit-media-controls 
+    display: none !important
+  
+  &::-webkit-media-controls-enclosure 
+    display: none !important
+  
+  /* 强制内联播放（冗余属性确保兼容） */
+  -webkit-playsinline: true
+  playsinline: true
+
+
+
 .white
     color: #FFF
 .black

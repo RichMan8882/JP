@@ -172,7 +172,7 @@ watch(
               <div class="header-el-subtitle">
                 <span v-if="isLogin()">
                   {{ $lang('餘額') }}
-                  <i class="fa-solid fa-dollar-sign"></i>
+                  ¥
                   {{
                     new Intl.NumberFormat('zh-TW').format(playerWalletBalance)
                   }}
@@ -224,7 +224,7 @@ watch(
               <div class="header-el-subtitle">
                 <span v-if="isLogin()">
                   {{ $lang('餘額') }}
-                  <i class="fa-solid fa-dollar-sign"></i>
+                  ¥
                   {{
                     new Intl.NumberFormat('zh-TW').format(playerWalletBalance)
                   }}

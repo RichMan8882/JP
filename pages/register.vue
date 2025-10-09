@@ -226,7 +226,7 @@ await onMounted(() => {
       <div class="register-card">
         <div class="bg-temp">
           <h2 class="register-title">
-            {{ $lang('注冊') }}
+            {{ $lang('註冊成為會員（免費）') }}
           </h2>
 
           <div class="form">

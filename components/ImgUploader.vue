@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { UploadProps } from 'element-plus'
+const { t } = useI18n()
 const props = defineProps({
   imgSrc: [String, Array],
   limit: Number,
@@ -19,10 +20,10 @@ const openImage = ref('')
 const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
   console.log('beforeAvatarUpload....')
   if (rawFile.type !== 'image/jpeg') {
-    ElMessage.error('Avatar picture must be JPG format!')
+    ElMessage.error(t('頭像圖片必須是JPG格式！'))
     return false
   } else if (rawFile.size / 1024 / 1024 > 2) {
-    ElMessage.error('Avatar picture size can not exceed 2MB!')
+    ElMessage.error(t('頭像圖片大小不可超過 2MB'))
     return false
   }
   return true
@@ -106,12 +107,12 @@ const uploadTelegraph = async (file: any) => {
 
 const imageChange = async (file: any) => {
   if (file.raw.size / 1024 / 1024 > 5) {
-    ElMessage.error('檔案大小不可超過 5MB')
+    ElMessage.error(t('檔案大小不可超過 5MB'))
     return false
   }
   const base64Image = await uploadTelegraph(file)
   if (!base64Image) {
-    ElMessage.error('上傳失敗')
+    ElMessage.error(t('上傳失敗'))
     return false
   }
   imageList.value.push({ name: file.name, url: base64Image })
@@ -160,39 +161,20 @@ watch(
 
 <template>
   <div class="imgUploader">
-    <el-upload
-      :file-list="imageList"
-      :show-file-list="imageList.length > 0"
-      :on-change="imageChange"
-      action="#"
-      :limit="limit"
-      multiple
-      :drag="true"
-      list-type="picture-card"
-      :auto-upload="false"
-      :class="`${toolName}`"
-    >
+    <el-upload :file-list="imageList" :show-file-list="imageList.length > 0" :on-change="imageChange" action="#"
+      :limit="limit" multiple :drag="true" list-type="picture-card" :auto-upload="false" :class="`${toolName}`">
       <i class="fas fa-plus"></i>
       <template #file="{ file }">
         <div class="imageContainer">
           <img class="el-upload-list__item-thumbnail" :src="file.url" alt="" />
           <span class="el-upload-list__item-actions">
-            <span
-              class="el-upload-list__item-preview"
-              @click="handlePictureCardPreview(file)"
-            >
+            <span class="el-upload-list__item-preview" @click="handlePictureCardPreview(file)">
               <i class="fas fa-eye"></i>
             </span>
-            <span
-              class="el-upload-list__item-delete"
-              @click="handleDownload(file)"
-            >
+            <span class="el-upload-list__item-delete" @click="handleDownload(file)">
               <i class="fas fa-download"></i>
             </span>
-            <span
-              class="el-upload-list__item-delete"
-              @click="handleRemove(file)"
-            >
+            <span class="el-upload-list__item-delete" @click="handleRemove(file)">
               <i class="fas fa-trash"></i>
             </span>
           </span>
@@ -202,13 +184,7 @@ watch(
     <el-dialog v-if="openImage">
       <img w-full :src="openImage" alt="Preview Image" />
     </el-dialog>
-    <el-alert
-      v-if="showAlert"
-      title="尺寸建議 : 1920x500"
-      type="warning"
-      show-icon
-      :closable="false"
-    />
+    <el-alert v-if="showAlert" :title="`${t('尺寸建議')}1920x500`" type="warning" show-icon :closable="false" />
   </div>
 </template>
 

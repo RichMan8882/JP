@@ -718,7 +718,7 @@ onBeforeUnmount(() => {
           </div>
           <div class="game-header-info-item">
             <span>
-              <i class="fa-solid fa-dollar-sign"></i>
+              ¥
             </span>
             {{ PlayerStore?.playerInfo?.balance }}
           </div>
@@ -827,7 +827,7 @@ onBeforeUnmount(() => {
             </div>
             <div class="menu-header-info-item">
               <span>
-                <i class="fa-solid fa-dollar-sign"></i>
+                ¥
               </span>
               {{ PlayerStore?.playerInfo?.balance }}
             </div>

@@ -5,6 +5,13 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
+
+import cls1 from '@/assets/image/index/cls1.svg'
+import cls2 from '@/assets/image/index/cls2.svg'
+import cls3 from '@/assets/image/index/cls3.svg'
+import cls4 from '@/assets/image/index/cls4.svg'
+import cls5 from '@/assets/image/index/cls5.svg'
+import cls6 from '@/assets/image/index/cls6.svg'
 const PlayerStore = usePlayerStore()
 const siteStore = useSiteStore()
 const { signout } = useAuthStore()
@@ -161,7 +168,8 @@ const activityLis = ref([
     title: t('着物モデルさん大募集'),
     src: 'https://upload.comethike.com/uploads/1759816145713.jpg',
     link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    location: '撮影はモデルさんのお住まいの地域（所在地）で行っていただきますので、遠方への移動は不要です。',
+    location:
+      '撮影はモデルさんのお住まいの地域（所在地）で行っていただきますので、遠方への移動は不要です。',
     name: '募集人数5名',
     salary: '日円：25000円(含稅)',
     information: [
@@ -176,69 +184,61 @@ const activityLis = ref([
   }
 ])
 
-import cls1 from '@/assets/image/index/cls1.svg'
-import cls2 from '@/assets/image/index/cls2.svg'
-import cls3 from '@/assets/image/index/cls3.svg'
-import cls4 from '@/assets/image/index/cls4.svg'
-import cls5 from '@/assets/image/index/cls5.svg'
-import cls6 from '@/assets/image/index/cls6.svg'
-
-
 const clsLis = ref([
   {
     title: t('在宅で働く'),
     name: t('自分に合ったペースで！'),
     src: cls1,
     link: '',
-    location: '',
+    location: ''
   },
   {
     title: t('さまざまな無料講座で'),
     name: t('自分をさらに磨ける'),
     src: cls2,
     link: '',
-    location: '',
+    location: ''
   },
   {
     title: t('子どもとの時間を増やす'),
     name: t('少なめ'),
     src: cls3,
     link: '',
-    location: '',
+    location: ''
   },
   {
     title: t('時間に縛られず'),
     name: t('あなたのタイミングで働く'),
     src: cls4,
     link: '',
-    location: '',
+    location: ''
   },
   {
     title: t('経歴'),
     name: t('資格などスキルを活かす'),
     src: cls5,
     link: '',
-    location: '',
+    location: ''
   },
   {
     title: t('専業主婦'),
     name: t('専業主婦の方もOK ブランクOK'),
     src: cls6,
     link: '',
-    location: '',
+    location: ''
   }
 ])
-
 </script>
 <template>
   <div class="dashboard">
     <headerTop />
     <div class="dashboard-video">
-      <video autoplay muted loop poster="@/assets/image/index/shutterstock.jpg">
-        <source src="https://upload.comethike.com/uploads/1759564877962.mov" type="video/mp4">
+      <video autoplay muted loop poster="@/assets/image/index/shutterstock.jpg" class="video-element"
+        webkit-playsinline="true" playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="false">
+        <source src="https://upload.comethike.com/uploads/1759564877962.mov" type="video/mp4" />
       </video>
     </div>
-    <div style="margin: 0 clamp(15px, 3.15vw, 60px);padding-bottom: 10px;" v-if="false">
+    <div v-if="false" style="margin: 0 clamp(15px, 3.15vw, 60px); padding-bottom: 10px">
       <div class="lis-cont">
         <ul>
           <li>
@@ -259,11 +259,9 @@ const clsLis = ref([
                   </g>
                 </g>
               </svg>
-              <div class="text">
-                訂單中心
-              </div>
+              <div class="text">訂單中心</div>
               <div class="ico">
-                <i class="fa-solid fa-angle-right" style="width:20px;height: 20px;"></i>
+                <i class="fa-solid fa-angle-right" style="width: 20px; height: 20px"></i>
               </div>
             </div>
           </li>
@@ -285,11 +283,9 @@ const clsLis = ref([
                   </g>
                 </g>
               </svg>
-              <div class="text">
-                職員資料
-              </div>
+              <div class="text">職員資料</div>
               <div class="ico">
-                <i class="fa-solid fa-angle-right" style="width:20px;height: 20px;"></i>
+                <i class="fa-solid fa-angle-right" style="width: 20px; height: 20px"></i>
               </div>
             </div>
           </li>
@@ -311,11 +307,9 @@ const clsLis = ref([
                   </g>
                 </g>
               </svg>
-              <div class="text">
-                薪資專區
-              </div>
+              <div class="text">薪資專區</div>
               <div class="ico">
-                <i class="fa-solid fa-angle-right" style="width:20px;height: 20px;"></i>
+                <i class="fa-solid fa-angle-right" style="width: 20px; height: 20px"></i>
               </div>
             </div>
           </li>
@@ -337,11 +331,9 @@ const clsLis = ref([
                   </g>
                 </g>
               </svg>
-              <div class="text">
-                財務中心
-              </div>
+              <div class="text">財務中心</div>
               <div class="ico">
-                <i class="fa-solid fa-angle-right" style="width:20px;height: 20px;"></i>
+                <i class="fa-solid fa-angle-right" style="width: 20px; height: 20px"></i>
               </div>
             </div>
           </li>
@@ -353,27 +345,29 @@ const clsLis = ref([
         <div class="bnr-img">
           <div class="bnr-t">
             <h2>
-              <span style="color: #ff6c7a">
-                ここでは、
-              </span>
-              <br>すべての女性が自分らしい輝きを咲かせられます。
+              <span style="color: #ff6c7a"> ここでは、 </span>
+              <br />すべての女性が自分らしい輝きを咲かせられます。
             </h2>
-            <h3 style="text-align: right;">ただの仕事探しのプラットフォームではなく、<br /><span
-                style="color: #ff6c7a;font-weight:500;">あなたの夢が始ま</span>
+            <h3 style="text-align: right">
+              ただの仕事探しのプラットフォームではなく、<br /><span style="color: #ff6c7a; font-weight: 500">あなたの夢が始ま</span>
             </h3>
           </div>
-          <img src="https://upload.comethike.com/uploads/1759567370550.jpg" alt="">
+          <img src="https://upload.comethike.com/uploads/1759567370550.jpg" alt="" />
         </div>
         <div class="bnr-txt">
-          <p>私たちは、女性のための多様なマッチングプラットフォームです。このサイトのコンセプトは、「女性が自分自身の成長と変化を通して、より良い自分へと進化し、理想や夢を実現できる場所になること」です。</p>
-          <p>ここは、女性のためだけに作られた特別な空間で、仕事の機会を提供するだけでなく、自分を磨くためのさまざまなイベントや講座もご用意しています。</p>
+          <p>
+            私たちは、女性のための多様なマッチングプラットフォームです。このサイトのコンセプトは、「女性が自分自身の成長と変化を通して、より良い自分へと進化し、理想や夢を実現できる場所になること」です。
+          </p>
+          <p>
+            ここは、女性のためだけに作られた特別な空間で、仕事の機会を提供するだけでなく、自分を磨くためのさまざまなイベントや講座もご用意しています。
+          </p>
           <p>自分らしく輝き、夢を叶える第一歩をここから踏み出しましょう。</p>
         </div>
       </div>
     </div>
     <div class="dashboard-lis">
       <div class="dashboard-lis-banner">
-        <img src="@/assets/image/index/banner_pc.webp" alt="">
+        <img src="@/assets/image/index/banner_pc.webp" alt="" />
       </div>
       <div class="dashboard-lis-title">
         <div class="dashboard-lis-title-txt">
@@ -396,7 +390,7 @@ const clsLis = ref([
           <li v-for="(item, index) in activityLis" :key="index">
             <div class="li-box">
               <figure class="img">
-                <img src="https://upload.comethike.com/uploads/1759832603922.png" alt="">
+                <img src="https://upload.comethike.com/uploads/1759832603922.png" alt="" />
               </figure>
               <h5 class="txt">
                 <p>
@@ -458,7 +452,7 @@ const clsLis = ref([
               </div>
               <div class="p-box">
                 <div class="box">
-                  <p class="p-txt" v-for="text in item.information">
+                  <p v-for="text in item.information" class="p-txt">
                     {{ text }}
                   </p>
                 </div>
@@ -468,7 +462,7 @@ const clsLis = ref([
         </ul>
       </div>
     </div>
-    <div class="dashboard-lis" style="padding-top: 0px;">
+    <div class="dashboard-lis" style="padding-top: 0px">
       <div class="dashboard-lis-title">
         <div class="dashboard-lis-title-txt">
           <svg xmlns="http://www.w3.org/2000/svg" width="5" height="39.5" viewBox="0 0 5 39.5">
@@ -479,7 +473,9 @@ const clsLis = ref([
                 transform="translate(473.5 1824.5) rotate(-90)" fill="#fbb" />
             </g>
           </svg>
-          <h2 class="dashboard-lis-title-title">{{ $lang('每一次挑戰都是一場綻放的旅程') }}</h2>
+          <h2 class="dashboard-lis-title-title">
+            {{ $lang('每一次挑戰都是一場綻放的旅程') }}
+          </h2>
         </div>
       </div>
       <div class="dashboard-lis-list">
@@ -487,7 +483,7 @@ const clsLis = ref([
           <li v-for="(item, index) in clsLis" :key="index">
             <div class="li-box2">
               <a>
-                <img class="lazyload" :src="item.src" alt="">
+                <img class="lazyload" :src="item.src" alt="" />
                 <div>
                   <p>{{ item.title }}</p>
                   <h3>{{ item.name }}</h3>
@@ -500,12 +496,16 @@ const clsLis = ref([
       </div>
     </div>
     <div class="ul-container">
-      <section class="ul-ad" v-if="false">
+      <section v-if="false" class="ul-ad">
         <div class="ul-inner-container">
           <div class="ul-ad-content">
             <div class="ul-ad-txt">
-              <span class="ul-ad-sub-title">{{ $lang('積極的家庭工作者') }}</span>
-              <h2 class="ul-section-title" style="text-shadow:2px 3px 5px #4d4d4d;">{{ $lang('我們衷心感謝您一直以來的惠顧。') }}</h2>
+              <span class="ul-ad-sub-title">{{
+                $lang('積極的家庭工作者')
+                }}</span>
+              <h2 class="ul-section-title" style="text-shadow: 2px 3px 5px #4d4d4d">
+                {{ $lang('我們衷心感謝您一直以來的惠顧。') }}
+              </h2>
               <div class="ul-ad-categories">
                 <span class="category"><span><i class="fa-solid fa-check"></i></span>{{ $lang('日本') }}</span>
                 <span class="category"><span><i class="fa-solid fa-check"></i></span>{{ $lang('韓国') }}</span>
@@ -516,13 +516,12 @@ const clsLis = ref([
             <!-- <div class="ul-ad-img">
               <img src="@/assets/image/index/ad01-img.png" alt="Ad Image">
             </div> -->
-            <a class="ul-btn" style="font-weight: bold;">{{ $lang('了解詳情') }}
+            <a class="ul-btn" style="font-weight: bold">{{ $lang('了解詳情') }}
               <svg t="1739515035390" class="icon" viewBox="0 0 1024 1024" version="1.1"
                 xmlns="http://www.w3.org/2000/svg" p-id="1851" xmlns:xlink="http://www.w3.org/1999/xlink" width="20"
                 height="20">
                 <path class="color" d="M416 192v64h306.016L200.96 776.992 247.04 823.04 768 301.984V608h64V192H416z"
-                  p-id="1852">
-                </path>
+                  p-id="1852"></path>
               </svg>
             </a>
           </div>
@@ -534,6 +533,24 @@ const clsLis = ref([
 </template>
 
 <style scoped lang="sass">
+
+.video-element
+  width: 100%
+  height: 100%
+  object-fit: cover
+  /* 隐藏 Webkit 原生控件（关键！） */
+  &::-webkit-media-controls
+    display: none !important
+
+  &::-webkit-media-controls-enclosure
+    display: none !important
+
+  /* 强制内联播放（冗余属性确保兼容） */
+  -webkit-playsinline: true
+  playsinline: true
+
+
+
 //所有控件
 video::-webkit-media-controls-enclosure
     display: none
@@ -574,7 +591,7 @@ video::-webkit-media-controls-enclosure
         font-weight: 700
         margin-bottom: 20px
     .bnr-img
-      position: relative  
+      position: relative
       overflow: hidden
       border-radius: 12px
       .bnr-t
@@ -827,7 +844,7 @@ video::-webkit-media-controls-enclosure
   position: relative
   overflow: hidden
   z-index: 1
-  &::before 
+  &::before
     content: ""
     position: absolute
     inset: 0
@@ -836,9 +853,9 @@ video::-webkit-media-controls-enclosure
     mix-blend-mode: multiply
     opacity: 30%
     z-index: -1
-  .ul-inner-container 
+  .ul-inner-container
     margin: 0 clamp(15px, 10.25vw, 195px)
-  .ul-ad-content 
+  .ul-ad-content
     display: flex
     align-items: flex-start
     align-items: center
@@ -847,9 +864,9 @@ video::-webkit-media-controls-enclosure
   .ul-ad-img
     img
       filter: saturate(.5)
-  .ul-ad-txt, .ul-ad .ul-btn 
+  .ul-ad-txt, .ul-ad .ul-btn
     margin-bottom: clamp(15px, 1.84vw, 35px)
-  .ul-btn 
+  .ul-btn
     border-radius: 999px
     border: 1px solid white
     display: inline-flex
@@ -872,12 +889,12 @@ video::-webkit-media-controls-enclosure
       transition: all .3s ease
     // .right-arrow
 
-    &:hover 
+    &:hover
       background-color: #FFF
       color: #EF2853
       .color
         fill: #EF2853
-  .ul-ad-sub-title 
+  .ul-ad-sub-title
     background-color: white
     border-radius: 999px
     padding: clamp(2px, 0.26vw, 5px) clamp(7px, 0.53vw, 10px)
@@ -886,18 +903,18 @@ video::-webkit-media-controls-enclosure
     text-transform: uppercase
     color: #ff6c7a
     display: inline-block
-  .ul-section-title 
+  .ul-section-title
     color: white
     margin-bottom: clamp(12px, 1.05vw, 20px)
     font-weight: 600
     font-size: clamp(25px, 2.1vw, 40px)
     letter-spacing: -0.03em
     color: var(--black)
-  .ul-ad-categories 
+  .ul-ad-categories
     display: flex
     gap: clamp(15px, 2.1vw, 40px)
     flex-wrap: wrap
-    .category 
+    .category
       font-weight: 500
       font-size: clamp(11px, 0.74vw, 14px)
       text-transform: uppercase
@@ -914,7 +931,7 @@ video::-webkit-media-controls-enclosure
   .lis-cont ul li
     width: 50%
     margin-bottom: 10px
-    
+
 @media screen and (max-width: 768px)
   .lis-cont ul li
     width: 100%

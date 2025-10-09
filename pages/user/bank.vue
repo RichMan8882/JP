@@ -2,6 +2,7 @@
 const playerStore = usePlayerStore()
 const siteStore = useSiteStore()
 const { bankApply } = usePlayerStore()
+const { t } = useI18n()
 const pageType = ref('bank')
 const bankInfo = ref({
   bankName: siteStore.siteData?.depositOptions.bank[0],
@@ -22,13 +23,13 @@ await useAsyncData(async () => {
 const submitBankApply = async () => {
   console.log(bankInfo)
   if (bankInfo.value.branch === '') {
-    return ElMessage.error('請填寫分行')
+    return ElMessage.error(t('請填寫分行'))
   }
   if (bankInfo.value.account === '') {
-    return ElMessage.error('請填寫戶名')
+    return ElMessage.error(t('請填寫戶名'))
   }
   if (bankInfo.value.accountNo === '') {
-    return ElMessage.error('請填寫帳號')
+    return ElMessage.error(t('請填寫帳號'))
   }
   // if (bankInfo.value.image[0] === '') {
   //   return ElMessage.error('請上傳身分證正面')
@@ -37,7 +38,7 @@ const submitBankApply = async () => {
   //   return ElMessage.error('請上傳身分證反面')
   // }
   if (bankInfo.value.image[2] === '') {
-    return ElMessage.error('請上傳檔案')
+    return ElMessage.error(t('請上傳檔案'))
   }
   const bankApplyRes = await bankApply(bankInfo.value)
   if (bankApplyRes) {

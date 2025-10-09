@@ -57,11 +57,11 @@ export default {
     validateInput() {
       if (this.helper.validate(this.inputText)) {
         document.getElementById('verify_code').innerHTML =
-          '驗證碼<span>*</span>'
+          `${t('驗證碼')}<span>*</span>`
         $('#verify_code').css('color', '#393939')
         console.log('驗證碼輸入正確')
       } else {
-        document.getElementById('verify_code').innerHTML = '驗證碼錯誤'
+        document.getElementById('verify_code').innerHTML = t('驗證碼錯誤')
         $('#verify_code').css('color', '#FF435E')
       }
     },

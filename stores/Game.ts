@@ -248,9 +248,9 @@ export const useGameStore = defineStore('gamePages', () => {
             title: `${t('下單失敗')}`,
             type: 'error',
             showClose: false,
-            message: `${t('請確認網路連線')}`
+            message: `${t(res.data.message)}`
           })
-          message = `${t('請確認網路連線')}`
+          message = `${t(res.data.message)}`
         }
         return {
           success: false,

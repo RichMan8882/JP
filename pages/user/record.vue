@@ -233,16 +233,16 @@ const formatMemo = (value: any) => {
       str[1] +
       ' ' +
       '\r\n' +
-      str[2].replace('比特幣/美元-漲', '結果：出貨').replace('比特幣/美元-跌', '結果：退貨/換貨')
+      str[2].replace('比特幣/美元-漲', '結果：出荷').replace('比特幣/美元-跌', '結果：返品・交換')
     return str
   } else if (value.includes('[投注成功]')) {
     let str = value
       .replace('投注成功', '訂單成功')
       .replace('期別', '訂單編號')
-      .replace('高', '出貨')
-      .replace('低', '退貨/換貨')
-      .replace('漲', '出貨')
-      .replace('跌', '退貨/換貨')
+      .replace('高', '出荷')
+      .replace('低', '返品・交換')
+      .replace('漲', '出荷')
+      .replace('跌', '返品・交換')
 
     const pattern =
       /\[訂單成功\]\s+.*?\s+投注-(.*?)\s+訂單編號-(\d+)\s+選項-(.*?)\s+金額-\d+/
@@ -252,7 +252,7 @@ const formatMemo = (value: any) => {
       '訂單編號：' +
       str[2] +
       '\r\n' +
-      str[3].replace('漲', '出貨').replace('跌', '退貨/換貨 ')
+      str[3].replace('漲', '出荷').replace('跌', '返品・交換')
     return str
   } else {
     return value
@@ -303,7 +303,7 @@ const formatMemo = (value: any) => {
               <tr>
                 <th>{{ $lang('時間') }}</th>
                 <th>{{ $lang('內容') }}</th>
-                <!-- <th style="padding-right: 0;">{{ $lang('金額') }}</th> -->
+                <th style="padding-right: 0;">{{ $lang('金額') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -326,10 +326,10 @@ const formatMemo = (value: any) => {
                 </td>
 
                 <!-- 金額 -->
-                <!-- <td>
+                <td>
                   <p>
                     $ {{ new Intl.NumberFormat('zh-TW').format(item.amount) }}</p>
-                </td> -->
+                </td>
               </tr>
             </tbody>
           </table>
@@ -360,7 +360,7 @@ const formatMemo = (value: any) => {
                   </div>
                   <div>{{ $lang('狀態') }}:{{ applyStatus(item.status) }}</div>
                   <div>
-                    {{ $lang('手續費') }}: $
+                    {{ $lang('手續費') }}: ¥
                     {{ new Intl.NumberFormat('zh-TW').format(item.fee) }}
                   </div>
                 </td>
@@ -371,14 +371,14 @@ const formatMemo = (value: any) => {
                   <div>{{ $lang('帳號') }}:{{ item.bankData.accountNo }}</div>
                   <div>{{ $lang('狀態') }}:{{ applyStatus(item.status) }}</div>
                   <div>
-                    {{ $lang('手續費') }}: $
+                    {{ $lang('手續費') }}: ¥
                     {{ new Intl.NumberFormat('zh-TW').format(item.fee) }}
                   </div>
                 </td>
                 <!-- 金額 -->
                 <td>
                   <p>
-                    $ {{ new Intl.NumberFormat('zh-TW').format(item.amount) }}
+                    ¥ {{ new Intl.NumberFormat('zh-TW').format(item.amount) }}
                   </p>
                 </td>
               </tr>

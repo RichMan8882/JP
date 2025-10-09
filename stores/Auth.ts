@@ -127,7 +127,7 @@ export const useAuthStore = defineStore('auth', () => {
       })
       console.log(`signin : `, res)
       if (res.statusCode !== 200) {
-        res.statusCode === 400 ? null : ElMessage.error(`${t(res.message)}`)
+        res.statusCode === 400 ? null : ElMessage.error(t(res.message))
         return {
           success: false
         }

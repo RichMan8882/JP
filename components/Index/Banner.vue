@@ -27,47 +27,29 @@ const routerTo = (path) => {
 </script>
 <template>
   <div class="bannerBox">
-    <video muted autoplay loop :src="props.bannervideo"></video>
+    <video muted autoplay loop class="video-element" webkit-playsinline="true" playsinline="true"
+      x5-video-player-type="h5" x5-video-player-fullscreen="false" :src="props.bannervideo"></video>
     <div class="title">
       <div class="bannerTitle">{{ props.title }}</div>
       <div class="bannerText">{{ props.text }}</div>
     </div>
     <div class="menu" :class="isFixed ? 'fixedtop' : ''">
       <div class="menulist">
-        <div
-          v-for="(item, index) in props.menulist"
-          :key="index"
-          class="menuitem"
-          :class="item.path == route.path ? 'menuaction' : ''"
-          @click="routerTo(item.path)"
-        >
+        <div v-for="(item, index) in props.menulist" :key="index" class="menuitem"
+          :class="item.path == route.path ? 'menuaction' : ''" @click="routerTo(item.path)">
           {{ item.title }}
         </div>
       </div>
     </div>
-    <div
-      class="mobileMenu"
-      :class="isShowMenu ? 'rotate' : ''"
-      @click="isShowMenu = !isShowMenu"
-    >
+    <div class="mobileMenu" :class="isShowMenu ? 'rotate' : ''" @click="isShowMenu = !isShowMenu">
       <div>總覽</div>
       <svg width="20" height="13" viewBox="0 0 20 13" class="~.3s">
-        <path
-          d="M191.6,17.244l8,8,8-8"
-          transform="translate(-189.599 -15.244)"
-          fill="none"
-          stroke="black"
-          stroke-width="3"
-        ></path>
+        <path d="M191.6,17.244l8,8,8-8" transform="translate(-189.599 -15.244)" fill="none" stroke="black"
+          stroke-width="3"></path>
       </svg>
       <div v-if="isShowMenu" class="mobileMenulist">
-        <div
-          v-for="(item, index) in props.menulist"
-          :key="index"
-          class="mobileMenuitem"
-          :class="item.path == route.path ? 'menuaction' : ''"
-          @click="routerTo(item.path)"
-        >
+        <div v-for="(item, index) in props.menulist" :key="index" class="mobileMenuitem"
+          :class="item.path == route.path ? 'menuaction' : ''" @click="routerTo(item.path)">
           {{ item.title }}
         </div>
       </div>
@@ -75,77 +57,94 @@ const routerTo = (path) => {
   </div>
 </template>
 <style scoped lang="sass">
+
+.video-element 
+  width: 100%
+  height: 100%
+  object-fit: cover
+  /* 隐藏 Webkit 原生控件（关键！） */
+  &::-webkit-media-controls 
+    display: none !important
+  
+  &::-webkit-media-controls-enclosure 
+    display: none !important
+  
+  /* 强制内联播放（冗余属性确保兼容） */
+  -webkit-playsinline: true
+  playsinline: true
+
+
 .bannerBox
-    width: 100vw
-    height: 660px
-    position: relative
-    video
-        position: absolute
-        width: 100vw
-        height: 100%
-        left: 50%
-        top: 50%
-        transform: translate(-50%,-50%)
-        object-fit: cover
-    .title
-        position: absolute
-        bottom: 220px
-        width: 100%
-        font-size: 72px
-        left: 120px
-        .bannerTitle
-            color: white
-            font-size: 72px
-            text-align: left
-        .bannerText
-            color: white
-            font-size: 1.125rem
+  width: 100vw
+  height: 660px
+  position: relative
+  video
+      position: absolute
+      width: 100vw
+      height: 100%
+      left: 50%
+      top: 50%
+      transform: translate(-50%,-50%)
+      object-fit: cover
+  .title
+      position: absolute
+      bottom: 220px
+      width: 100%
+      font-size: 72px
+      left: 120px
+      .bannerTitle
+          color: white
+          font-size: 72px
+          text-align: left
+      .bannerText
+          color: white
+          font-size: 1.125rem
 
-    .menu
-        position: absolute
-        width: 100vw
-        background-color: rgba(2, 59, 112, 0.45)
-        bottom: 0
-        height: 70px
+  .menu
+      position: absolute
+      width: 100vw
+      background-color: rgba(2, 59, 112, 0.45)
+      bottom: 0
+      height: 70px
 
-        .menulist
-            width: 1000px
-            margin: 0 auto
-            display: flex
-            .menuitem
-                margin-right: 4rem
-                font-size: 1.07rem
-                color: white
-                display: flex
-                align-items: center
-                height: 70px
-                cursor: pointer
-            .menuaction
-                color: rgb(110, 178, 211)
-    .mobileMenu
-      display: none
-      .mobileMenulist
-        position: absolute
-        top: 62px
-        width: 100%
-        left: 0
-        color: #222222
-        z-index: 10
-        box-shadow: rgba(0, 0, 0, 0.1) 0rem 0.1875rem 0.375rem
+      .menulist
+          width: 1000px
+          margin: 0 auto
+          display: flex
+          .menuitem
+              margin-right: 4rem
+              font-size: 1.07rem
+              color: white
+              display: flex
+              align-items: center
+              height: 70px
+              cursor: pointer
+          .menuaction
+              color: rgb(110, 178, 211)
+  .mobileMenu
+    display: none
+    .mobileMenulist
+      position: absolute
+      top: 62px
+      width: 100%
+      left: 0
+      color: #222222
+      z-index: 10
+      box-shadow: rgba(0, 0, 0, 0.1) 0rem 0.1875rem 0.375rem
 
-        .mobileMenuitem
-          font-size: 1.07rem
-          background-color: rgb(245, 245, 245)
-          border-bottom: 0.0625rem solid rgb(255, 255, 255)
-          cursor: pointer
-          padding: 1rem
-        .menuaction
-          color: rgb(110, 178, 211)
-    .fixedtop
-        background-color: rgb(37, 87, 132)
-        position: fixed
-        top: 110px
-        z-index: 9999
+      .mobileMenuitem
+        font-size: 1.07rem
+        background-color: rgb(245, 245, 245)
+        border-bottom: 0.0625rem solid rgb(255, 255, 255)
+        cursor: pointer
+        padding: 1rem
+      .menuaction
+        color: rgb(110, 178, 211)
+  .fixedtop
+      background-color: rgb(37, 87, 132)
+      position: fixed
+      top: 110px
+      z-index: 9999
 @media (max-width: 1000px)
   .bannerTitle
     font-size: 30px

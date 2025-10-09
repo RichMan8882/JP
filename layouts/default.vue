@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 // listen to locale change
 const { locale, setLocaleCookie } = useI18n()
-
+const { t } = useI18n()
 watch(locale, (val) => {
   setLocaleCookie(val)
 })
@@ -57,7 +57,7 @@ await onMounted(() => {
     //   showClose: false,
     //   duration: 2500
     // })
-    ElMessage.error(route.query.error)
+    ElMessage.error(t(route.query.error))
     const newQuery = { ...route.query }
     delete newQuery.error
     router.replace({ query: newQuery })
@@ -128,7 +128,7 @@ const routerName = (router: String) => {
 }
 const siteStore = useSiteStore()
 useHead({
-  title: `${siteStore.siteData.title}- ${routerName(router.currentRoute.value.name)}`,
+  title: `${siteStore.siteData.title}`,
   link: [
     {
       rel: 'icon',
@@ -164,7 +164,7 @@ watch(
       router.currentRoute.value.name
     )
     useHead({
-      title: `${siteStore.siteData.title}- ${routerName(router.currentRoute.value.name)}`,
+      title: `${siteStore.siteData.title}`,
       link: [
         {
           rel: 'icon',

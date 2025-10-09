@@ -39,7 +39,7 @@ const setLogin = async () => {
   )
   if (!recaptchaCheck) {
     ElMessage({
-      message: '驗證碼錯誤',
+      message: t('驗證碼錯誤'),
       type: 'error',
       showClose: false
     })
