@@ -242,7 +242,7 @@ const checkBetData = () => {
         parseFloat(betData.value.amount) < symbolData.value.config.minBetAmount
       ) {
         ElNotification({
-          message: ` ${t('最低交易金額為')} $ ${symbolData.value.config.minBetAmount}`,
+          message: ` ${t('最低交易金額為')} ¥ ${symbolData.value.config.minBetAmount}`,
           type: 'error',
           showClose: false
         })
@@ -252,7 +252,7 @@ const checkBetData = () => {
         parseFloat(betData.value.amount) > symbolData.value.config.maxBetAmount
       ) {
         ElNotification({
-          message: `${t('最高交易金額為')} $ ${symbolData.value.config.maxBetAmount}`,
+          message: `${t('最高交易金額為')} ¥  ${symbolData.value.config.maxBetAmount}`,
           type: 'error',
           showClose: false
         })

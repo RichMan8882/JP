@@ -328,7 +328,7 @@ const formatMemo = (value: any) => {
                 <!-- 金額 -->
                 <td>
                   <p>
-                    $ {{ new Intl.NumberFormat('zh-TW').format(item.amount) }}</p>
+                    ¥ {{ new Intl.NumberFormat('zh-TW').format(item.amount) }}</p>
                 </td>
               </tr>
             </tbody>
