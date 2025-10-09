@@ -415,7 +415,9 @@ const formatMemo = (value: any) => {
 .ul-cart-container
   min-height: 100vh
   .cart-top
-    margin: clamp(40px, 4.2vw, 80px) clamp(15px, 19.44vw, 370px)
+    margin: clamp(40px, 4.2vw, 80px) 0
+    width: 100%
+    overflow-x: scroll
     .ul-cart-table
       width: 100%
       text-align: -webkit-match-parent
@@ -429,14 +431,21 @@ const formatMemo = (value: any) => {
         &:last-child
           border-bottom: none
       th
+        padding-left: 20px
         padding-bottom: 20px
         padding-right: clamp(30px, 4.73vw, 90px)
         word-spacing: normal
         min-width: 150px
+        @media (max-width: 768px)
+          padding-inline: 20px
+
       td
+        padding-left: 20px
         padding-top: clamp(18px, 1.47vw, 28px)
         padding-bottom: clamp(18px, 1.47vw, 28px)
         padding-right: clamp(30px, 1.47vw, 28px)
+        @media (max-width: 768px)
+          padding-inline: 20px
         p
           margin-top: 0
           margin-bottom: 1rem
