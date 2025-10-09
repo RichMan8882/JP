@@ -228,7 +228,7 @@ const checkBetData = () => {
         //   showClose: false
         // })
         // return
-        betData.value.amount = 50
+        betData.value.amount = 300
       }
       if (betData.value.option.length === 0) {
         ElNotification({
