@@ -107,13 +107,16 @@ const updateImage = (data: any) => {
           <div class="">
             <!--  銀行  -->
             <div class="form-group">
-              <div class="position-relative" v-if="siteStore.siteData?.depositOptions.bank.length > 0">
-                <label style="
-                    font-weight: bold;
-                    font-size: 18px;
-                  ">{{ $lang('銀行') }}</label>
-                <select v-model="bankInfo.bankName" name="phoneCode" class="form-control"
-                  style="border: 2px solid #ff6c7a; border-radius: 10px;margin-left: 5px;padding: 0 10px;">
+              <div v-if="siteStore.siteData?.depositOptions.bank.length > 0" class="position-relative">
+                <label style="font-weight: bold; font-size: 18px">{{
+                  $lang('銀行名')
+                  }}</label>
+                <select v-model="bankInfo.bankName" name="phoneCode" class="form-control" style="
+                    border: 2px solid #ff6c7a;
+                    border-radius: 10px;
+                    margin-left: 5px;
+                    padding: 0 10px;
+                  ">
                   <option v-for="item in siteStore.siteData?.depositOptions.bank" :key="item">
                     {{ item }}
                   </option>
@@ -124,11 +127,9 @@ const updateImage = (data: any) => {
             <!-- 分行 -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="
-                    
-                    font-weight: bold;
-                    font-size: 18px;
-                  ">{{ $lang('分行') }}</label>
+                <label style="font-weight: bold; font-size: 18px">{{
+                  $lang('分行')
+                  }}</label>
                 <input v-model="bankInfo.branch" v-trim-input type="text" name="name" class="form-control" />
               </div>
             </div>
@@ -136,39 +137,35 @@ const updateImage = (data: any) => {
             <!-- 帳戶號碼  -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="
-                    
-                    font-weight: bold;
-                    font-size: 18px;
-                  ">{{ $lang('帳戶號碼') }}</label>
+                <label style="font-weight: bold; font-size: 18px">{{
+                  $lang('帳戶號碼')
+                  }}</label>
                 <input v-model="bankInfo.accountNo" v-trim-input type="text" name="tel" class="form-control" />
               </div>
             </div>
             <!-- 帳戶戶名 -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="
-                    
-                    font-weight: bold;
-                    font-size: 18px;
-                  ">{{ $lang('帳戶戶名') }}</label>
+                <label style="font-weight: bold; font-size: 18px">{{
+                  $lang('帳戶戶名')
+                  }}</label>
                 <input v-model="bankInfo.account" v-trim-input type="text" name="name" class="form-control" />
               </div>
             </div>
             <!--  上傳照片 -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="
-                    
-                    font-weight: bold;
-                    font-size: 18px;
-                  ">{{ $lang('上傳照片') }}</label>
+                <label style="font-weight: bold; font-size: 18px">{{
+                  $lang('上傳照片')
+                  }}</label>
                 <div class="form-control" style="display: flex; flex-wrap: wrap">
                   <pureImgUploader :limit="1" :index="2" @update-image="updateImage">
                   </pureImgUploader>
                 </div>
                 <!-- <input type="file" name="name" v-model="playerStore.playerInfo.username" class="form-control"> -->
-                <span style="font-size: 12px; color: #8d1515">請上傳身分證(其他證件亦可)與存摺照片，證件+存摺務必同名，請勿修圖後製，請耐心等待審核並開通</span>
+                <span style="font-size: 12px; color: #8d1515">身分証明書と通帳の写真をアップロードしてください。
+                  証明書と通帳の名義は必ず同一である必要があります。
+                  審査完了までしばらくお待ちください</span>
               </div>
             </div>
             <br />
@@ -180,9 +177,16 @@ const updateImage = (data: any) => {
       </div>
     </div>
     <div v-else style="">
-      <div class="input-classic" style="display: flex;justify-content: center;align-items: center;padding: 200px 0;">
-        <span class="input-title" style="text-align: center;">{{ $lang('銀行資訊狀態') }}</span>
-        <div class="input-text text-center" style="color: #ff6c7a; font-size: 22px;">
+      <div class="input-classic" style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 200px 0;
+        ">
+        <span class="input-title" style="text-align: center">{{
+          $lang('銀行資訊狀態')
+          }}</span>
+        <div class="input-text text-center" style="color: #ff6c7a; font-size: 22px">
           {{ $lang('審核中') }}
         </div>
       </div>
@@ -191,11 +195,10 @@ const updateImage = (data: any) => {
   </div>
 </template>
 
-
 <style scoped lang="sass">
 .pages
   box-sizing: border-box
-  
+
   @media screen and (max-width: 992px)
     padding: 0
 </style>
@@ -217,20 +220,20 @@ const updateImage = (data: any) => {
 .inf-bg
   margin-top: 50px
   padding: 0 clamp(15px, 3.15vw, 60px) clamp(40px, 4.2vw, 80px)
-  @media (max-width: 992px) 
+  @media (max-width: 992px)
     padding: 0
-  .ul-contact-form-container 
-    border-radius: clamp(15px, 1.1vw, 30px)  
+  .ul-contact-form-container
+    border-radius: clamp(15px, 1.1vw, 30px)
     background-color: white
     border: 2px solid #ff6c7ab9
     margin: 0 clamp(15px, 19.71vw, 375px)
     padding: clamp(60px, 6.31vw, 70px) clamp(20px, 2.1vw, 40px)
     box-shadow: 0px -10px 40px rgba(0, 0, 0, 0.15)
-    @media screen and (max-width: 991px) 
+    @media screen and (max-width: 991px)
       margin: 0 clamp(15px, 11.71vw, 375px)
-    @media screen and (max-width: 767px) 
+    @media screen and (max-width: 767px)
       margin: clamp(15px, 3.15vw, 375px)
-  .ul-contact-form input, .ul-contact-form textarea 
+  .ul-contact-form input, .ul-contact-form textarea
     display: block
     height: clamp(45px, 2.94vw, 56px)
     border: #ff6c7aaa 1px solid
@@ -240,7 +243,7 @@ const updateImage = (data: any) => {
     max-width: 100%
     width: 100%
     border-radius: 10px
-  .form-control:focus 
+  .form-control:focus
     color: #212529
     background-color: #fff
     border-color: #ff6c7a88
@@ -256,7 +259,7 @@ const updateImage = (data: any) => {
         bottom: 10px
         cursor: pointer
   .ul-contact-form-container
-    @media screen and (max-width: 992px) 
+    @media screen and (max-width: 992px)
       margin: 20px 5px
       padding: 15px
   .ul-contact-form-container__title
@@ -265,7 +268,7 @@ const updateImage = (data: any) => {
     font-weight: 600
     font-size: clamp(22px, 2.52vw, 35px)
     margin-block-end: clamp(15px, 1.58vw, 30px)
-  .ul-contact-form .update_password 
+  .ul-contact-form .update_password
     flex-shrink: 0
     background-color: #ff6c7a
     height: clamp(45px, 2.94vw, 56px)
@@ -286,6 +289,6 @@ const updateImage = (data: any) => {
   border: 2px solid #ff6c7a
   background: repeating-linear-gradient( -45deg, #ff6c7a, #ff6c7a 5px,  #ff8691 0, #ff8691 8px )
   transition: all .2s ease-in-out
-  &:hover    
+  &:hover
     transform: scale(1.05)
 </style>

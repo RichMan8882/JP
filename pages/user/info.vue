@@ -99,50 +99,68 @@ const sendPasswordChange = async () => {
     </div>
     <div class="inf-bg">
       <div class="ul-contact-form-container">
-        <h3 class="ul-contact-form-container__title"
-          style="text-shadow: 0px 0px 6px rgba(253, 190, 117, 0.7);text-decoration: underline;">{{ $lang('職員基本資料') }}
+        <h3 class="ul-contact-form-container__title" style="
+            text-shadow: 0px 0px 6px rgba(253, 190, 117, 0.7);
+            text-decoration: underline;
+          ">
+          {{ $lang('職員基本資料') }}
         </h3>
         <div class="ul-contact-form">
           <div class="grid">
-
             <!-- 職員編號 (只讀) -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">{{ $lang('職員編號') }}</label>
+                <label style="font-weight: bold; font-size: 18px">{{
+                  $lang('職員編號')
+                  }}</label>
                 <input type="text" name="acc" :value="playerStore?.playerInfo?.account || ''" readonly
-                  class="form-control">
-
+                  class="form-control" />
               </div>
             </div>
 
             <!-- 職員名稱 (只讀) -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">{{ $lang('職員名稱') }}</label>
-                <input type="text" name="name" :value="playerStore?.playerInfo?.username" readonly class="form-control">
-
+                <label style="font-weight: bold; font-size: 18px">{{
+                  $lang('職員名稱')
+                  }}</label>
+                <input type="text" name="name" :value="playerStore?.playerInfo?.username" readonly
+                  class="form-control" />
               </div>
             </div>
 
             <!-- 職員電話 (只讀) -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">{{ $lang('職員電話') }}</label>
-                <input type="text" name="tel"
-                  :value="playerStore?.playerInfo?.countryCode + ' ' + playerStore?.playerInfo?.mobile" readonly
-                  class="form-control">
+                <label style="font-weight: bold; font-size: 18px">{{
+                  $lang('職員電話')
+                  }}</label>
+                <input type="text" name="tel" :value="playerStore?.playerInfo?.countryCode +
+                  ' ' +
+                  playerStore?.playerInfo?.mobile
+                  " readonly class="form-control" />
               </div>
-            </div><br>
-          </div><br>
+            </div>
+            <br />
+          </div>
+          <br />
         </div>
 
         <!-- 更新密碼表單 -->
-        <h3 class="ul-contact-form-container__title"
-          style="text-shadow: 0px 0px 6px rgba(253, 190, 117, 0.7);text-decoration: underline;">{{ $lang('更換密碼') }}</h3>
+        <h3 class="ul-contact-form-container__title" style="
+            text-shadow: 0px 0px 6px rgba(253, 190, 117, 0.7);
+            text-decoration: underline;
+          ">
+          {{ $lang('更換密碼') }}
+        </h3>
         <div class="ul-contact-form">
-          <div class="form-group" style="padding-top: 10px;">
+          <div class="form-group" style="padding-top: 10px">
             <div class="position-relative">
-              <label style="color: rgb(102, 3, 58);font-weight: bold;font-size: 18px;">{{ $lang('舊密碼') }}</label>
+              <label style="
+                  color: rgb(102, 3, 58);
+                  font-weight: bold;
+                  font-size: 18px;
+                ">{{ $lang('舊密碼') }}</label>
               <input v-model="pwd.oPwd" v-trim-input :type="pwd.showoPwd ? 'text' : 'password'" class="form-control"
                 @copy.prevent @paste.prevent @contextmenu.prevent />
               <div v-if="!pwd.showoPwd" class="eyes" @click="pwd.showoPwd = true">
@@ -153,9 +171,13 @@ const sendPasswordChange = async () => {
               </div>
             </div>
           </div>
-          <div class="form-group" style="padding-top: 10px;">
+          <div class="form-group" style="padding-top: 10px">
             <div class="position-relative">
-              <label style="color: rgb(102, 3, 58);font-weight: bold;font-size: 18px;">{{ $lang('新密碼') }}</label>
+              <label style="
+                  color: rgb(102, 3, 58);
+                  font-weight: bold;
+                  font-size: 18px;
+                ">{{ $lang('新密碼') }}</label>
               <input v-model="pwd.nPwd" v-trim-input :type="pwd.shownPwd ? 'text' : 'password'" class="form-control"
                 @copy.prevent @paste.prevent @contextmenu.prevent />
               <div v-if="!pwd.shownPwd" class="eyes" @click="pwd.shownPwd = true">
@@ -168,7 +190,11 @@ const sendPasswordChange = async () => {
           </div>
           <div class="form-group">
             <div class="position-relative">
-              <label style="color: rgb(102, 3, 58);font-weight: bold;font-size: 18px;">{{ $lang('確認新密碼') }}</label>
+              <label style="
+                  color: rgb(102, 3, 58);
+                  font-weight: bold;
+                  font-size: 18px;
+                ">{{ $lang('確認新密碼') }}</label>
               <input v-model="pwd.nPwdConfirm" v-trim-input :type="pwd.shownPwdConfirm ? 'text' : 'password'"
                 class="form-control" @copy.prevent @paste.prevent @contextmenu.prevent />
               <div v-if="!pwd.shownPwdConfirm" class="eyes" @click="pwd.shownPwdConfirm = true">
@@ -178,20 +204,29 @@ const sendPasswordChange = async () => {
                 <i class="fa-regular fa-eye"></i>
               </div>
             </div>
-          </div><br>
+          </div>
+          <br />
           <!-- submit btn -->
-          <div class="btn btn-primary update_password" @click="sendPasswordChange"><span
-              style="font-size: 20px;font-weight: bold;">{{ $lang('更新密碼') }}</span></div>
-        </div><br><br>
+          <div class="btn btn-primary update_password" @click="sendPasswordChange">
+            <span style="font-size: 20px; font-weight: bold">{{
+              $lang('更新密碼')
+              }}</span>
+          </div>
+        </div>
+        <br /><br />
 
         <!-- 更新金鑰密碼表單 -->
-        <h3 class="ul-contact-form-container__title"
+        <!-- <h3 class="ul-contact-form-container__title"
           style="text-shadow: 0px 0px 6px rgba(253, 190, 117, 0.7);text-decoration: underline;">{{ $lang('更換金鑰密碼') }}
-        </h3><br>
-        <div action="" class="ul-contact-form">
-          <div class="form-group" style="padding-top: 10px;">
+        </h3><br> -->
+        <div v-if="false" action="" class="ul-contact-form">
+          <div class="form-group" style="padding-top: 10px">
             <div class="position-relative">
-              <label style="color: rgb(182, 87, 10);font-weight: bold;font-size: 18px;">{{ $lang('舊金鑰密碼') }}</label>
+              <label style="
+                  color: rgb(182, 87, 10);
+                  font-weight: bold;
+                  font-size: 18px;
+                ">{{ $lang('舊金鑰密碼') }}</label>
               <input v-model="transactionPwd.oPwd" v-trim-input :type="transactionPwd.showoPwd ? 'text' : 'password'"
                 class="form-control" @copy.prevent @paste.prevent @contextmenu.prevent />
               <div v-if="!transactionPwd.showoPwd" class="eyes" @click="transactionPwd.showoPwd = true">
@@ -202,9 +237,13 @@ const sendPasswordChange = async () => {
               </div>
             </div>
           </div>
-          <div class="form-group" style="padding-top: 10px;">
+          <div class="form-group" style="padding-top: 10px">
             <div class="position-relative">
-              <label style="color: rgb(182, 87, 10);font-weight: bold;font-size: 18px;">{{ $lang('新金鑰密碼') }}</label>
+              <label style="
+                  color: rgb(182, 87, 10);
+                  font-weight: bold;
+                  font-size: 18px;
+                ">{{ $lang('新金鑰密碼') }}</label>
               <input v-model="transactionPwd.nPwd" v-trim-input :type="transactionPwd.shownPwd ? 'text' : 'password'"
                 class="form-control" @copy.prevent @paste.prevent @contextmenu.prevent />
               <div v-if="!transactionPwd.shownPwd" class="eyes" @click="transactionPwd.shownPwd = true">
@@ -217,7 +256,11 @@ const sendPasswordChange = async () => {
           </div>
           <div class="form-group">
             <div class="position-relative">
-              <label style="color: rgb(182, 87, 10);font-weight: bold;font-size: 18px;">{{ $lang('確認新金鑰密碼') }}</label>
+              <label style="
+                  color: rgb(182, 87, 10);
+                  font-weight: bold;
+                  font-size: 18px;
+                ">{{ $lang('確認新金鑰密碼') }}</label>
               <input v-model="transactionPwd.nPwdConfirm" v-trim-input
                 :type="transactionPwd.shownPwdConfirm ? 'text' : 'password'" class="form-control" @copy.prevent
                 @paste.prevent @contextmenu.prevent />
@@ -228,11 +271,14 @@ const sendPasswordChange = async () => {
                 <i class="fa-regular fa-eye"></i>
               </div>
             </div>
-          </div><br>
+          </div>
+          <br />
           <!-- submit btn -->
-          <div class="btn btn-primary update_password" @click="sendPasswordChange"><span
-              style="font-size: 20px;font-weight: bold;">{{
-                $lang('更新金鑰密碼') }}</span></div>
+          <div class="btn btn-primary update_password" @click="sendPasswordChange">
+            <span style="font-size: 20px; font-weight: bold">{{
+              $lang('更新金鑰密碼')
+              }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -243,7 +289,7 @@ const sendPasswordChange = async () => {
 <style scoped lang="sass">
 .pages
   box-sizing: border-box
-  
+
   @media screen and (max-width: 992px)
     padding: 0
 </style>
@@ -265,20 +311,20 @@ const sendPasswordChange = async () => {
 .inf-bg
   margin-top: 50px
   padding: 0 clamp(15px, 3.15vw, 60px) clamp(40px, 4.2vw, 80px)
-  @media (max-width: 992px) 
+  @media (max-width: 992px)
     padding: 0
-  .ul-contact-form-container 
-    border-radius: clamp(15px, 1.1vw, 30px)  
+  .ul-contact-form-container
+    border-radius: clamp(15px, 1.1vw, 30px)
     background-color: white
     border: 2px solid #ff6c7ab9
     margin: 0 clamp(15px, 19.71vw, 375px)
     padding: clamp(60px, 6.31vw, 70px) clamp(20px, 2.1vw, 40px)
     box-shadow: 0px -10px 40px rgba(0, 0, 0, 0.15)
-    @media screen and (max-width: 991px) 
+    @media screen and (max-width: 991px)
       margin: 0 clamp(15px, 11.71vw, 375px)
-    @media screen and (max-width: 767px) 
+    @media screen and (max-width: 767px)
       margin: clamp(15px, 3.15vw, 375px)
-  .ul-contact-form input, .ul-contact-form textarea 
+  .ul-contact-form input, .ul-contact-form textarea
     display: block
     height: clamp(45px, 2.94vw, 56px)
     border: #ff6c7aaa 1px solid
@@ -288,7 +334,7 @@ const sendPasswordChange = async () => {
     max-width: 100%
     width: 100%
     border-radius: 10px
-  .form-control:focus 
+  .form-control:focus
     color: #212529
     background-color: #fff
     border-color: #ff6c7a88
@@ -304,7 +350,7 @@ const sendPasswordChange = async () => {
         bottom: 10px
         cursor: pointer
   .ul-contact-form-container
-    @media screen and (max-width: 992px) 
+    @media screen and (max-width: 992px)
       margin: 20px 5px
       padding: 15px
   .ul-contact-form-container__title
@@ -312,7 +358,7 @@ const sendPasswordChange = async () => {
     text-align: center
     font-weight: 600
     font-size: clamp(22px, 2.52vw, 35px)
-  .ul-contact-form .update_password 
+  .ul-contact-form .update_password
     flex-shrink: 0
     background-color: #ff6c7a
     height: clamp(45px, 2.94vw, 56px)

@@ -13,7 +13,6 @@ const props = defineProps({
   // menu: { type: Boolean, default: false }
 })
 
-
 const dashboardList = ref([
   {
     title: t('職員首頁'),
@@ -35,21 +34,21 @@ const dashboardList = ref([
     path: '/user/bank',
     icon: '<i class="fa-solid fa-handshake-angle"></i>'
   },
-  {
-    title: t('財務中心'),
-    path: '/user/record',
-    icon: '<i class="fa-solid fa-file-invoice"></i>'
-  },
+  // {
+  //   title: t('財務中心'),
+  //   path: '/user/record',
+  //   icon: '<i class="fa-solid fa-file-invoice"></i>'
+  // },
   {
     title: t('質押'),
     path: '/user/pledge',
     icon: '<i class="fas fa-coins"></i>'
-  },
-  {
-    title: t('聯絡我們'),
-    path: 'customer',
-    icon: '<i class="fa-brands fa-facebook-messenger"></i>'
   }
+  // {
+  //   title: t('聯絡我們'),
+  //   path: 'customer',
+  //   icon: '<i class="fa-brands fa-facebook-messenger"></i>'
+  // }
 ])
 const filterPledgeList = computed(() => {
   return dashboardList.value.filter(
@@ -150,12 +149,12 @@ watch(
               </li>
             </ul>
 
-            <div class="menu-btn hover-target" @click="signout()" v-if="isLogin()">
-              <a style="padding-right: 0;">{{ $lang('登出') }}</a>
+            <div v-if="isLogin()" class="menu-btn hover-target" @click="signout()">
+              <a style="padding-right: 0">{{ $lang('登出') }}</a>
               <i class="fa-solid fa-arrow-right"></i>
             </div>
-            <div class="menu-btn hover-target" @click="navigateTo('/login')" v-else>
-              <a style="padding-right: 0;">{{ $lang('登入') }}</a>
+            <div v-else class="menu-btn hover-target" @click="navigateTo('/login')">
+              <a style="padding-right: 0">{{ $lang('登入') }}</a>
               <i class="fa-solid fa-arrow-right"></i>
             </div>
           </div>
@@ -165,7 +164,7 @@ watch(
             <div class="header-el-text">
               <div class="header-el-subtitle">
                 Hello!&nbsp;
-                <span style="color:#ff6c7a;">
+                <span style="color: #ff6c7a">
                   {{ PlayerStore?.playerInfo?.username }}
                 </span>
               </div>
@@ -179,7 +178,7 @@ watch(
                 </span>
               </div>
             </div>
-            <div class="game-btn is-pc" @click="navigateTo('/game')" v-if="isLogin()">
+            <div v-if="isLogin()" class="game-btn is-pc" @click="navigateTo('/game')">
               <span>{{ $lang('進入系統') }}</span>
               <div class="rig">
                 <i class="fa-solid fa-angle-right"></i>
@@ -187,7 +186,7 @@ watch(
             </div>
           </div>
         </div>
-        <div class="worker is-mobile" :class="{ 'active': isShw }" @click="onPopup">
+        <div class="worker is-mobile" :class="{ active: isShw }" @click="onPopup">
           <span></span>
           <span></span>
           <span></span>
@@ -206,21 +205,22 @@ watch(
         </div> -->
         <div class="popup-menus">
           <ul class="menus">
-            <li class="has-dropdown active menu-thumb" v-for="(item, index) in filterPledgeList">
-              <a @click="handleNavigateTo(item.path), onClose()">{{ $lang(item.title) }}</a>
+            <li v-for="(item, index) in filterPledgeList" class="has-dropdown active menu-thumb">
+              <a @click="handleNavigateTo(item.path), onClose()">{{
+                $lang(item.title)
+                }}</a>
             </li>
-            <li class="menu-thumb" v-if="isLogin()">
+            <li v-if="isLogin()" class="menu-thumb">
               <a @click="signout()">{{ $lang('登出') }}</a>
             </li>
           </ul>
         </div>
         <div class="popup-btn">
-
           <div class="header-bom">
             <div class="header-el-text">
               <div class="header-el-subtitle">
                 Hello!&nbsp;
-                <span style="color:#ff6c7a;">
+                <span style="color: #ff6c7a">
                   {{ PlayerStore?.playerInfo?.username }}
                 </span>
               </div>
@@ -234,7 +234,7 @@ watch(
                 </span>
               </div>
             </div>
-            <div class="game-btn" @click="navigateTo('/game')" v-if="isLogin()">
+            <div v-if="isLogin()" class="game-btn" @click="navigateTo('/game')">
               <span>{{ $lang('進入系統') }}</span>
               <div class="rig">
                 <i class="fa-solid fa-angle-right"></i>
@@ -245,7 +245,6 @@ watch(
       </div>
     </div>
   </header>
-
 </template>
 <style scoped lang="sass">
 header
@@ -330,7 +329,7 @@ header
             font-size: 15px
             &:hover
               &::before
-                opacity: 1  
+                opacity: 1
             &::before
               content: ''
               position: absolute
@@ -357,10 +356,10 @@ header
           &:hover
             color: #ff6c7a
             gap: 10px
-    
+
     .worker
       background-color: #ffb9bf
-      padding: 10px 10px 10px 10px 
+      padding: 10px 10px 10px 10px
       border-radius: 15px 0 0 15px
       position: fixed
       top: 10px
@@ -374,9 +373,9 @@ header
         height: 2px
         margin-block: 6px
         transition: all 0.1s ease-in-out
-        
+
       &.active
-        padding: 10px 25px 10px 10px 
+        padding: 10px 25px 10px 10px
         background-color: #ff6c7a
         span
           &:nth-child(1)
@@ -385,7 +384,7 @@ header
             transform: rotateZ(45deg) translate(8px,-8px)
           &:nth-child(3)
             opacity: 0
-            
+
 .popup-wrapper
   position: fixed
   top: 0
@@ -417,7 +416,7 @@ header
       border-bottom: 1px solid  #3a3f39
       padding-bottom: 16px
       margin-bottom: 16px
-       
+
       .header-el-text
         margin-left: 15px
 

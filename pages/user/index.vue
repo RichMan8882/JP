@@ -349,7 +349,7 @@ const clsLis = ref([
               <br />すべての女性が自分らしい輝きを咲かせられます。
             </h2>
             <h3 style="text-align: right">
-              ただの仕事探しのプラットフォームではなく、<br /><span style="color: #ff6c7a; font-weight: 500">あなたの夢が始ま</span>
+              ただの仕事探しのプラットフォームではなく、<br /><span style="color: #ff6c7a; font-weight: 500">あなたの夢が叶う</span>
             </h3>
           </div>
           <img src="https://upload.comethike.com/uploads/1759567370550.jpg" alt="" />

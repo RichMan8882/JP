@@ -44,7 +44,7 @@ const dataList = ref([
     title: t('返品・交換数'),
     unit: t(''),
     index: '1'
-  },
+  }
   // {
   //   title: t('待放置數量'),
   //   unit: t('劑'),
@@ -177,7 +177,7 @@ const connectRecordList = computed(() => {
   }
 })
 const addBetGameType = (type: any) => {
-  console.log(type);
+  console.log(type)
 
   betData.value.option = [type + '']
   // if (betData.value.option.includes(type)) {
@@ -191,7 +191,7 @@ const addBetGameType = (type: any) => {
 const checkBetData = () => {
   if (!disableBet.value) {
     disableBet.value = true
-    console.log(checkBetData.value);
+    console.log(checkBetData.value)
 
     try {
       betData.value.productId = symbolData.value.id
@@ -966,20 +966,20 @@ const triggerDataRandom = () => {
     <div class="page-video">
       <video autoplay muted loop class="video-element" webkit-playsinline="true" playsinline="true"
         x5-video-player-type="h5" x5-video-player-fullscreen="false">
-        <source src="https://upload.comethike.com/uploads/1759578336584.mov">
+        <source src="https://upload.comethike.com/uploads/1759578336584.mov" />
       </video>
     </div>
     <div class="user-t white">
       <div class="login-no">
-        <div class="goBack" @click="navigateTo('/user')">{{ t('返回首頁') }}</div>
+        <div class="goBack" @click="navigateTo('/user')">
+          {{ t('返回首頁') }}
+        </div>
         <span class="log-user">
           <span style="margin-right: 5px">
             <i class="fa-solid fa-user"></i>
           </span>
-          Hello,<span style="
-              display: inline-block;
-              margin: 0 5px;
-            ">{{ PlayerStore?.playerInfo?.username }} </span>
+          Hello,<span style="display: inline-block; margin: 0 5px">{{ PlayerStore?.playerInfo?.username }}
+          </span>
           <span style="display: inline-block">
             ¥ {{ new Intl.NumberFormat('zh-TW').format(playerWalletBalance) }}
           </span>
@@ -992,7 +992,11 @@ const triggerDataRandom = () => {
           <div class="col-md-12 col-sm-6 col-xs-6">
             <div class="heading-count">
               <h2>{{ $lang('工單') }}</h2>
-              <p>{{ betData.roundNo || '' }}</p>
+              <p>
+                <span style="font-size: 10px">注文番号</span> <br />{{
+                  betData.roundNo || ''
+                }}
+              </p>
               <div class="card-body-time" :style="socketCurrentRoundCountdown < 11 ? 'color:red' : ''">
                 {{ $lang('剩餘時間:') }}
                 <span>{{ socketCurrentRoundCountdown || '0' }}s</span>
@@ -1005,11 +1009,14 @@ const triggerDataRandom = () => {
             </div>
             <div class="round button radio-group" :class="{
               active: betData.option[0] == 4
-            }" @click="addBetGameType(4)">{{ $lang('出荷') }}</div>
+            }" @click="addBetGameType(4)">
+              {{ $lang('出荷') }}
+            </div>
 
             <div class="round button radio-group" :class="{ active: betData.option[0] == 5 }"
               @click="addBetGameType(5)">
-              {{ $lang('返品/交換') }}</div>
+              {{ $lang('返品/交換') }}
+            </div>
             <div class="button-group" @click="checkBetData">
               <button id="confirmButton" class="btn btn-common">
                 {{ $lang('確定') }}
@@ -1023,7 +1030,6 @@ const triggerDataRandom = () => {
 </template>
 <style lang="scss">
 .messageStyle {
-
   border-radius: 15px !important;
 
   .el-message-box__header {
@@ -1091,17 +1097,17 @@ const triggerDataRandom = () => {
 </style>
 <style lang="sass" scoped>
 
-.video-element 
+.video-element
   width: 100%
   height: 100%
   object-fit: cover
   /* 隐藏 Webkit 原生控件（关键！） */
-  &::-webkit-media-controls 
+  &::-webkit-media-controls
     display: none !important
-  
-  &::-webkit-media-controls-enclosure 
+
+  &::-webkit-media-controls-enclosure
     display: none !important
-  
+
   /* 强制内联播放（冗余属性确保兼容） */
   -webkit-playsinline: true
   playsinline: true
@@ -1197,10 +1203,10 @@ const triggerDataRandom = () => {
       line-height: 36px
       // font-weight: bold
   /* 定义流动动画 */
-  @keyframes gradientFlow 
-    0% 
+  @keyframes gradientFlow
+    0%
       background-position: 0 0
-    100% 
+    100%
       background-position: 100% 100%
 
   .btns
@@ -1224,7 +1230,7 @@ const triggerDataRandom = () => {
       transition: all .3s
       text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
       background: transparent
-      &::before 
+      &::before
         content: ""
         position: absolute
         top: 0
@@ -1250,7 +1256,7 @@ const triggerDataRandom = () => {
       font-size: 22px
       border: 2px solid  #fff
       overflow: hidden
-      &::before 
+      &::before
         content: ""
         position: absolute
         top: 0
@@ -1278,12 +1284,10 @@ const triggerDataRandom = () => {
       font-size: 22px
       grid-column: 3 / 1
       border: 2px solid  #fff
-      transition: all .3s 
+      transition: all .3s
       background: repeating-linear-gradient( -45deg, #ff6c7a, #ff6c7a 5px,  #ff8691 0, #ff8691 8px )
       &:hover
         margin: 40px 0 0
-        
-      
 </style>
 <style lang="sass" scoped>
 .game
@@ -1515,8 +1519,6 @@ const triggerDataRandom = () => {
         span
           font-size: 42px
 </style>
-
-
 
 <style lang="sass" scoped>
 .menu
