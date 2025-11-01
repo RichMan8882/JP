@@ -239,9 +239,9 @@ watch(
             <!--  銀行  -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">{{ $lang('銀行') }}</label>
+                <label style="font-weight: bold;font-size: 18px;">{{ $lang('銀行名') }}</label>
                 <input type="text" name="acc"
-                  :value="playerStore.playerInfo.bankInfo.bankName + ' ' + playerStore.playerInfo.bankInfo.branch"
+                  :value="playerStore.playerInfo.bankInfo.bankName + ' ' + playerStore.playerInfo.bankInfo.branch + ' ' + playerStore.playerInfo?.bankInfo?.accountType"
                   class="form-control" readonly>
 
               </div>
@@ -291,7 +291,7 @@ watch(
                   }}</span>&nbsp
                 <span style="font-size: 12px;color: rgb(47, 169, 88);">{{ $lang('手續費') }}：{{
                   withdrawAmount > 0 ? withdrawFee : 0
-                  }}</span>
+                }}</span>
               </div>
             </div>
 

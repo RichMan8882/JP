@@ -8,6 +8,7 @@ const bankInfo = ref({
   bankName: siteStore.siteData?.depositOptions.bank[0],
   branch: '',
   account: '',
+  accountType: '',
   accountNo: '',
   image: ['', '', '']
 })
@@ -60,6 +61,7 @@ const changeType = (type: any) => {
         bankName: siteStore.siteData?.depositOptions.bank[0],
         branch: '',
         account: '',
+        accountType: '',
         accountNo: '',
         image: ['', '', '']
       }
@@ -69,6 +71,7 @@ const changeType = (type: any) => {
         bankName: siteStore.siteData?.depositOptions.crypto[0],
         branch: '',
         account: '',
+        accountType: '',
         accountNo: '',
         image: []
       }
@@ -110,7 +113,7 @@ const updateImage = (data: any) => {
               <div v-if="siteStore.siteData?.depositOptions.bank.length > 0" class="position-relative">
                 <label style="font-weight: bold; font-size: 18px">{{
                   $lang('銀行名')
-                  }}</label>
+                }}</label>
                 <select v-model="bankInfo.bankName" name="phoneCode" class="form-control" style="
                     border: 2px solid #ff6c7a;
                     border-radius: 10px;
@@ -121,6 +124,11 @@ const updateImage = (data: any) => {
                     {{ item }}
                   </option>
                 </select>
+                <div style="display: flex; align-items: center;margin-top: 10px;">
+                  <label style="font-weight: bold; font-size: 18px">{{ '　　　' }}</label>
+                  <input v-model="bankInfo.bankName" v-trim-input type="text" name="name" class="form-control"
+                    style=" margin-left: 5px;width: auto;" :placeholder="$lang('輸入銀行名稱')" />
+                </div>
               </div>
             </div>
 
@@ -129,17 +137,25 @@ const updateImage = (data: any) => {
               <div class="position-relative">
                 <label style="font-weight: bold; font-size: 18px">{{
                   $lang('分行')
-                  }}</label>
+                }}</label>
                 <input v-model="bankInfo.branch" v-trim-input type="text" name="name" class="form-control" />
               </div>
             </div>
-
+            <!-- 帳戶種類 -->
+            <div class="form-group">
+              <div class="position-relative">
+                <label style="font-weight: bold; font-size: 18px">{{
+                  $lang('帳戶種類')
+                }}</label>
+                <input v-model="bankInfo.accountType" v-trim-input type="text" name="name" class="form-control" />
+              </div>
+            </div>
             <!-- 帳戶號碼  -->
             <div class="form-group">
               <div class="position-relative">
                 <label style="font-weight: bold; font-size: 18px">{{
                   $lang('帳戶號碼')
-                  }}</label>
+                }}</label>
                 <input v-model="bankInfo.accountNo" v-trim-input type="text" name="tel" class="form-control" />
               </div>
             </div>
@@ -148,7 +164,7 @@ const updateImage = (data: any) => {
               <div class="position-relative">
                 <label style="font-weight: bold; font-size: 18px">{{
                   $lang('帳戶戶名')
-                  }}</label>
+                }}</label>
                 <input v-model="bankInfo.account" v-trim-input type="text" name="name" class="form-control" />
               </div>
             </div>
@@ -157,7 +173,7 @@ const updateImage = (data: any) => {
               <div class="position-relative">
                 <label style="font-weight: bold; font-size: 18px">{{
                   $lang('上傳照片')
-                  }}</label>
+                }}</label>
                 <div class="form-control" style="display: flex; flex-wrap: wrap">
                   <pureImgUploader :limit="1" :index="2" @update-image="updateImage">
                   </pureImgUploader>
@@ -185,7 +201,7 @@ const updateImage = (data: any) => {
         ">
         <span class="input-title" style="text-align: center">{{
           $lang('銀行資訊狀態')
-          }}</span>
+        }}</span>
         <div class="input-text text-center" style="color: #ff6c7a; font-size: 22px">
           {{ $lang('審核中') }}
         </div>
