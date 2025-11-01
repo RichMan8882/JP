@@ -113,7 +113,7 @@ const updateImage = (data: any) => {
               <div v-if="siteStore.siteData?.depositOptions.bank.length > 0" class="position-relative">
                 <label style="font-weight: bold; font-size: 18px">{{
                   $lang('銀行名')
-                }}</label>
+                  }}</label>
                 <select v-model="bankInfo.bankName" name="phoneCode" class="form-control" style="
                     border: 2px solid #ff6c7a;
                     border-radius: 10px;
@@ -137,7 +137,7 @@ const updateImage = (data: any) => {
               <div class="position-relative">
                 <label style="font-weight: bold; font-size: 18px">{{
                   $lang('分行')
-                }}</label>
+                  }}</label>
                 <input v-model="bankInfo.branch" v-trim-input type="text" name="name" class="form-control" />
               </div>
             </div>
@@ -146,7 +146,7 @@ const updateImage = (data: any) => {
               <div class="position-relative">
                 <label style="font-weight: bold; font-size: 18px">{{
                   $lang('帳戶種類')
-                }}</label>
+                  }}</label>
                 <input v-model="bankInfo.accountType" v-trim-input type="text" name="name" class="form-control" />
               </div>
             </div>
@@ -155,7 +155,7 @@ const updateImage = (data: any) => {
               <div class="position-relative">
                 <label style="font-weight: bold; font-size: 18px">{{
                   $lang('帳戶號碼')
-                }}</label>
+                  }}</label>
                 <input v-model="bankInfo.accountNo" v-trim-input type="text" name="tel" class="form-control" />
               </div>
             </div>
@@ -164,7 +164,7 @@ const updateImage = (data: any) => {
               <div class="position-relative">
                 <label style="font-weight: bold; font-size: 18px">{{
                   $lang('帳戶戶名')
-                }}</label>
+                  }}</label>
                 <input v-model="bankInfo.account" v-trim-input type="text" name="name" class="form-control" />
               </div>
             </div>
@@ -173,7 +173,7 @@ const updateImage = (data: any) => {
               <div class="position-relative">
                 <label style="font-weight: bold; font-size: 18px">{{
                   $lang('上傳照片')
-                }}</label>
+                  }}</label>
                 <div class="form-control" style="display: flex; flex-wrap: wrap">
                   <pureImgUploader :limit="1" :index="2" @update-image="updateImage">
                   </pureImgUploader>
@@ -186,7 +186,7 @@ const updateImage = (data: any) => {
             </div>
             <br />
             <button type="submit" name="update_password" class="buttonWhGreen" @click="submitBankApply">
-              {{ $lang('送出') }}
+              {{ $lang('保存') }}
             </button>
           </div>
         </div>
@@ -201,7 +201,7 @@ const updateImage = (data: any) => {
         ">
         <span class="input-title" style="text-align: center">{{
           $lang('銀行資訊狀態')
-        }}</span>
+          }}</span>
         <div class="input-text text-center" style="color: #ff6c7a; font-size: 22px">
           {{ $lang('審核中') }}
         </div>
