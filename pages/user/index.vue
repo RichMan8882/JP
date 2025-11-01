@@ -307,7 +307,7 @@ const clsLis = ref([
                   </g>
                 </g>
               </svg>
-              <div class="text">薪資專區</div>
+              <div class="text">{{ t('薪資專區') }}</div>
               <div class="ico">
                 <i class="fa-solid fa-angle-right" style="width: 20px; height: 20px"></i>
               </div>
