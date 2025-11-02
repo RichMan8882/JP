@@ -68,10 +68,10 @@ export const useAuthStore = defineStore('auth', () => {
   }
   const signup = async (params: any) => {
     try {
-      ElMessage({
-        message: `${t('註冊中...')}`,
-        type: 'info'
-      })
+      // ElMessage({
+      //   message: `${t('註冊中...')}`,
+      //   type: 'info'
+      // })
       const res: any = await $API('/authorize/signup', {
         method: 'POST',
         body: JSON.stringify({
@@ -83,7 +83,7 @@ export const useAuthStore = defineStore('auth', () => {
         }
       })
       if (res.statusCode !== 200) {
-        ElMessage.error(`${t(res.message)}`)
+        // ElMessage.error(`${t(res.message)}`)
         return {
           success: false
         }
@@ -127,7 +127,7 @@ export const useAuthStore = defineStore('auth', () => {
       })
       console.log(`signin : `, res)
       if (res.statusCode !== 200) {
-        res.statusCode === 400 ? null : ElMessage.error(t(res.message))
+        // res.statusCode === 400 ? null : ElMessage.error(t(res.message))
         return {
           success: false
         }
