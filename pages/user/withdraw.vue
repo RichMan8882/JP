@@ -258,7 +258,7 @@ watch(
             <!-- 我的資產 -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">{{ $lang('我的資產(主錢包)') }}</label>
+                <label style="font-weight: bold;font-size: 18px;">{{ $lang('工資餘額') }}</label>
                 <input type="text" name="name" :value="new Intl.NumberFormat('zh-TW').format(mainBalance)"
                   class="form-control" readonly>
               </div>
@@ -266,7 +266,7 @@ watch(
             <!-- 帳號 -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">{{ $lang('帳號') }}</label>
+                <label style="font-weight: bold;font-size: 18px;">{{ $lang('帳戶號碼') }}</label>
                 <input type="text" name="name" v-model="playerStore.playerInfo.bankInfo.accountNo" class="form-control"
                   readonly>
               </div>
@@ -274,7 +274,7 @@ watch(
             <!-- 金額 -->
             <div class="form-group">
               <div class="position-relative">
-                <label style="font-weight: bold;font-size: 18px;">{{ $lang('金額') }}</label>
+                <label style="font-weight: bold;font-size: 18px;">{{ $lang('出金金額') }}</label>
                 <input type="number" v-model="withdrawAmount" class="form-control">
               </div>
               <div>
@@ -291,7 +291,7 @@ watch(
                   }}</span>&nbsp
                 <span style="font-size: 12px;color: rgb(47, 169, 88);">{{ $lang('手續費') }}：{{
                   withdrawAmount > 0 ? withdrawFee : 0
-                }}</span>
+                  }}</span>
               </div>
             </div>
 
@@ -303,7 +303,7 @@ watch(
               </div>
             </div>
             <button type="button" class="buttonWhGreen" @click="goWithdraw">
-              {{ $lang('送出') }}
+              {{ $lang('実行') }}
             </button>
           </form>
 
@@ -347,7 +347,7 @@ watch(
               </div>
             </div>
             <button type="button" class="buttonWhGreen" @click="goTransfer">
-              {{ $lang('送出') }}
+              {{ $lang('実行') }}
             </button>
           </form>
         </div>
