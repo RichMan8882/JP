@@ -247,14 +247,14 @@ export const useGameStore = defineStore('gamePages', () => {
           ElNotification({
             title: `${t('下單失敗')}`,
             type: 'error',
-            showClose: false,
-            message: `${t(res.data.message)}`
+            showClose: false
+            // message: `${t(res.data.message)}`
           })
           message = `${t(res.data.message)}`
         }
         return {
           success: false,
-          message: message
+          message
         }
       }
       return {
