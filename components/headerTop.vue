@@ -84,7 +84,7 @@ const playerWalletBalance = computed(() => {
   console.log(PlayerStore.playerInfo, 'PlayerStore.playerInfo')
 
   const findWallet = PlayerStore.playerInfo?.wallet.find(
-    (wallet: any) => wallet.type === 11
+    (wallet: any) => wallet.type === 1
   )
   if (findWallet) {
     return Number(findWallet.balance)
