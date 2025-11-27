@@ -36,12 +36,12 @@ const search = ref({
 })
 const dataList = ref([
   {
-    title: t('出荷数'),
+    title: t('コンテナを買い付ける'),
     unit: t(''),
     index: '0'
   },
   {
-    title: t('返品・交換数'),
+    title: t('コンテナを売却する'),
     unit: t(''),
     index: '1'
   }
@@ -222,13 +222,13 @@ const checkBetData = () => {
         }
       }
       if (betData.value.amount === '') {
-        // ElNotification({
-        //   message: `${t('請輸入下單金額')}`,
-        //   type: 'error',
-        //   showClose: false
-        // })
-        // return
-        betData.value.amount = 300
+        ElNotification({
+          message: `${t('請輸入下單金額')}`,
+          type: 'error',
+          showClose: false
+        })
+        return
+        // betData.value.amount = 300
       }
       if (betData.value.option.length === 0) {
         ElNotification({
@@ -416,9 +416,9 @@ const gameOptionName = (type: Number) => {
     case 3:
       return `${t('雙')}`
     case 4:
-      return `${t('出荷')}`
+      return `${t('コンテナを買い付ける')}`
     case 5:
-      return `${t('返品・交換')}`
+      return `${t('コンテナを売却する')}`
     case 6:
       return `${t('反指標')}`
     default:
@@ -579,10 +579,12 @@ const startConnectWebSocket = async () => {
     const { event, data } = message
     switch (event) {
       case 'PRODUCT_UPDATE': {
-        // console.log('PRODUCT_UPDATE', data)
+        console.log('PRODUCT_UPDATE', data)
         productList.value = [data.result.find(
-          (item) => item.symbol === "BTCUSDT"
+          (item) => item.symbol === "ETHUSDT"
         )]
+        console.log(productList.value);
+
         if (symbolData.value === null) {
           symbol.value = productList.value[0].symbol
           symbolData.value = productList.value[0]
@@ -993,7 +995,7 @@ const triggerDataRandom = () => {
         <div class="row text-center">
           <div class="col-md-12 col-sm-6 col-xs-6">
             <div class="heading-count">
-              <h2>{{ $lang('工單') }}</h2>
+              <h2>{{ $lang('コンテナをピックアップする') }}</h2>
               <p>
                 <span style="font-size: 10px">注文番号</span> <br />{{
                   betData.roundNo || ''
@@ -1006,18 +1008,21 @@ const triggerDataRandom = () => {
             </div>
           </div>
           <div class="btns" style="padding: 40px 0 20px">
-            <div v-for="(item, index) in dataList" :key="`data-${index}`" class="time-entry">
+            <!-- <div v-for="(item, index) in dataList" :key="`data-${index}`" class="time-entry">
               <span id="a1a_value">&nbsp;{{ dataNumber[item.index] }}&nbsp;{{ item.unit }}</span>{{ item.title }}
-            </div>
+            </div> -->
             <div class="round button radio-group" :class="{
               active: betData.option[0] == 4
             }" @click="addBetGameType(4)">
-              {{ $lang('出荷') }}
+              {{ $lang('コンテナを買い付ける') }}
             </div>
 
             <div class="round button radio-group" :class="{ active: betData.option[0] == 5 }"
               @click="addBetGameType(5)">
-              {{ $lang('返品/交換') }}
+              {{ $lang('コンテナを売却する') }}
+            </div>
+            <div class="inp-group">
+              <input type="number" class="form-control" placeholder="" v-model="betData.amount" />
             </div>
             <div class="button-group" @click="checkBetData">
               <button id="confirmButton" class="btn btn-common">
@@ -1183,6 +1188,7 @@ const triggerDataRandom = () => {
         padding-bottom: 10px
         h2
           font-size: 36px
+          
     .heading-count
       background-color: rgba(255, 255, 255, 0.411)
       padding-top: 20px
@@ -1191,7 +1197,7 @@ const triggerDataRandom = () => {
       h2
         font-size: 42px
         color: #ffffff
-        line-height: 30px
+        line-height: 42px
         margin-bottom: 15px
         text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
     .heading-count p
@@ -1290,6 +1296,22 @@ const triggerDataRandom = () => {
       background: repeating-linear-gradient( -45deg, #ff6c7a, #ff6c7a 5px,  #ff8691 0, #ff8691 8px )
       &:hover
         margin: 40px 0 0
+    .inp-group
+      overflow: hidden
+      margin: 40px 20px 0
+      position: relative
+      padding: 10px 20px
+      border-radius: 10px
+      font-size: 22px
+      grid-column: 3 / 1
+      background:  rgba(255, 255, 255, 0.811)
+      border: 2px solid  #ff6c7a
+      input
+        outline: none
+        background: transparent
+        width: 100%
+        color: #000
+        text-align: center
 </style>
 <style lang="sass" scoped>
 .game
@@ -1615,6 +1637,7 @@ const triggerDataRandom = () => {
         display: block
         margin-right: 12px
         font-size: 24px
+
 </style>
 
 <style scoped>

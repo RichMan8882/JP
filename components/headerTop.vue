@@ -130,6 +130,56 @@ watch(
     emit('onPopupState', newVal)
   }
 )
+
+const onOpenTz = (path: string) => {
+  ElMessageBox.prompt('', 'パスワードを入力してください', {
+    confirmButtonText: 'もちろん',
+    cancelButtonText: 'キャンセル',
+    customClass: 'custom-message-box' // 添加自定义类名
+  }).then(({ value }) => {
+    // 处理成功
+    console.log(value);
+    if (value == '0000@') {
+      navigateTo(path)
+    } else {
+      ElMessage({
+        message: 'パスワードが間違っています',
+        type: 'warning'
+      });
+    }
+  }).catch(() => {
+    // 处理取消
+
+  });
+  // 动态添加样式
+  setTimeout(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      .custom-message-box .el-input__wrapper.is-focus {
+        box-shadow: 0 0 0 1px #ff6c7a inset !important;
+      }
+      .custom-message-box .el-button--primary {
+        background-color: #ff6c7a !important;
+        border-color: #ff6c7a !important;
+      }
+      .custom-message-box .el-button--primary:hover {
+        background-color: #ff5a6a !important;
+        border-color: #ff5a6a !important;
+      }
+      .custom-message-box .el-button:not(.el-button--primary) {
+        color: #ff6c7a !important;
+        border-color: #ff6c7a !important;
+      }
+      .custom-message-box .el-button:not(.el-button--primary):hover {
+        color: #ff5a6a !important;
+        border-color: #ff5a6a !important;
+        background-color: #fff5f6 !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }, 10);
+}
+
 </script>
 <template>
   <header :class="{ opaque: props.opaque, absolute: absolute, top: top }">
@@ -178,6 +228,12 @@ watch(
                 </span>
               </div>
             </div>
+            <div v-if="isLogin()" class="game-btn is-pc game-btn2" @click="onOpenTz('/game/container')">
+              <span>{{ $lang('投資する') }}</span>
+              <!-- <div class="rig">
+                <i class="fa-solid fa-angle-right"></i>
+              </div> -->
+            </div>
             <div v-if="isLogin()" class="game-btn is-pc" @click="navigateTo('/game')">
               <span>{{ $lang('進入系統') }}</span>
               <div class="rig">
@@ -208,7 +264,7 @@ watch(
             <li v-for="(item, index) in filterPledgeList" class="has-dropdown active menu-thumb">
               <a @click="handleNavigateTo(item.path), onClose()">{{
                 $lang(item.title)
-                }}</a>
+              }}</a>
             </li>
             <li v-if="isLogin()" class="menu-thumb">
               <a @click="signout()">{{ $lang('登出') }}</a>
@@ -233,6 +289,12 @@ watch(
                   }}
                 </span>
               </div>
+            </div>
+            <div v-if="isLogin()" class="game-btn game-btn2" @click="onOpenTz('/game/container')">
+              <span>{{ $lang('投資する') }}</span>
+              <!-- <div class="rig">
+                <i class="fa-solid fa-angle-right"></i>
+              </div> -->
             </div>
             <div v-if="isLogin()" class="game-btn" @click="navigateTo('/game')">
               <span>{{ $lang('進入系統') }}</span>
@@ -284,6 +346,12 @@ header
       .header-el-subtitle
         font-size: 12px
         color: #3f3a39
+    .game-btn2
+      background: #ff6c7a !important
+      color: #fff !important
+      &:hover
+        background: #fff !important
+        color: #ff6c7a !important
     .game-btn
       background: #fff
       border: 2px solid #ff6c7a
@@ -384,7 +452,7 @@ header
             transform: rotateZ(45deg) translate(8px,-8px)
           &:nth-child(3)
             opacity: 0
-
+  
 .popup-wrapper
   position: fixed
   top: 0
@@ -408,6 +476,11 @@ header
     transform: translateX(100%)
     transition: all 0.3s ease-in-out
     padding: 20px
+    .popup-btn
+      .header-bom
+        flex-wrap: wrap
+        .header-el-text
+          width: 100%
     .popup-title
       display: flex
       justify-content: space-between
