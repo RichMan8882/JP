@@ -166,7 +166,7 @@ await useAsyncData(async () => {
 const activityLis = ref([
   {
     title: t('着物モデルさん大募集'),
-    src: 'https://upload.comethike.com/uploads/1759816145713.jpg',
+    src: 'https://upload.comethike.com/uploads/1759832603922.png',
     link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     location:
       '撮影はモデルさんのお住まいの地域（所在地）で行っていただきますので、遠方への移動は不要です。',
@@ -180,6 +180,30 @@ const activityLis = ref([
       '【留袖】端正・成熟した女性の美しさ  礼をする、家族と並んで立つ、膝に手を添えて端正に座る',
       '【花嫁衣裳】伝統婚礼・幸福感  花を持ってうつむき微笑む、新郎と並んで座る、赤い和傘の下で見つめ合う',
       '【モダン着物】伝統×現代・和洋ミックス  和風の街並みでコーヒーを持つ、街角でおしゃれに立つ、振り返りながら可愛く微笑む'
+    ]
+  },
+  {
+    title: t('自分だけの美しい瞬間を残してみませんか？'),
+    src: 'https://upload.comethike.com/uploads/1766408747881.jpg',
+    link: '',
+    location:
+      '',
+    name: '',
+    salary: '',
+    information: [
+      'ただいま、漢服・着物・ウェディングドレスの撮影モデルを募集しています。',
+      '一度の撮影で、全く異なる三つの文化・スタイルの美しさを体験できます🌸💍',
+      '• 優雅で華麗な 漢服',
+      '• 落ち着きと柔らかさを感じる 着物',
+      '• 夢のように華やかでロマンチックな ウェディングドレス',
+      'どの雰囲気がお好きな方でも、',
+      '「もっと綺麗になりたい」「新しい自分を試してみたい」',
+      'そんな気持ちがあれば大歓迎です💖',
+      '撮影中は、カメラマンがポーズを丁寧にサポートしますので、',
+      '未経験の方でも安心して参加いただけます✨',
+      '「素敵な一枚を残したい」という気持ちさえあれば十分です。',
+      'カメラを通して、あなたの一番輝く姿を一緒に記録しましょう。',
+      '素敵な作品を一緒に作れる日を、心より楽しみにしています！'
     ]
   }
 ])
@@ -390,7 +414,7 @@ const clsLis = ref([
           <li v-for="(item, index) in activityLis" :key="index">
             <div class="li-box">
               <figure class="img">
-                <img src="https://upload.comethike.com/uploads/1759832603922.png" alt="" />
+                <img :src="item.src" alt="" />
               </figure>
               <h5 class="txt">
                 <p>
@@ -398,7 +422,7 @@ const clsLis = ref([
                 </p>
               </h5>
               <div class="text">
-                <h4>
+                <h4 v-if="item.name != ''">
                   <svg class="svg-color" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
                     <g id="グループ_1646" data-name="グループ 1646" transform="translate(-213 -3241)">
                       <circle id="楕円形_36" data-name="楕円形 36" cx="11.5" cy="11.5" r="11.5"
@@ -417,7 +441,7 @@ const clsLis = ref([
                     {{ item.name }}
                   </span>
                 </h4>
-                <h4>
+                <h4 v-if="item.location != ''">
                   <svg class="svg-color" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
                     <g id="グループ_1647" data-name="グループ 1647" transform="translate(-213 -3275)">
                       <circle id="楕円形_35" data-name="楕円形 35" cx="11.5" cy="11.5" r="11.5"
@@ -433,7 +457,7 @@ const clsLis = ref([
                     {{ item.location }}
                   </span>
                 </h4>
-                <h4>
+                <h4 v-if="item.salary != ''">
                   <svg class="svg-color" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
                     <g id="グループ_1648" data-name="グループ 1648" transform="translate(-213 -3309)">
                       <circle id="楕円形_37" data-name="楕円形 37" cx="11.5" cy="11.5" r="11.5"
@@ -502,7 +526,7 @@ const clsLis = ref([
             <div class="ul-ad-txt">
               <span class="ul-ad-sub-title">{{
                 $lang('積極的家庭工作者')
-              }}</span>
+                }}</span>
               <h2 class="ul-section-title" style="text-shadow: 2px 3px 5px #4d4d4d">
                 {{ $lang('我們衷心感謝您一直以來的惠顧。') }}
               </h2>
