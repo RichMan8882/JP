@@ -205,6 +205,23 @@ const activityLis = ref([
       'カメラを通して、あなたの一番輝く姿を一緒に記録しましょう。',
       '素敵な作品を一緒に作れる日を、心より楽しみにしています！'
     ]
+  },
+  {
+    title: t('🎄🤍 クリスマスの小さなプレゼント 🤍🎄'),
+    src: 'https://upload.comethike.com/uploads/1766409232824.jpg',
+    link: '',
+    location: '',
+    name: '',
+    salary: '',
+    information: [
+      'この子どもマフラー、',
+      'この投稿にコメントしてくれたママさんへお渡しします 🧣✨',
+      '✔️ コメントするだけ',
+      '✔️ 数量制限なし',
+      'お子さんの年齢や、',
+      '「可愛いと思った理由」だけでもOKです🤍',
+      '気軽にコメントしてください🫶'
+    ]
   }
 ])
 
@@ -526,7 +543,7 @@ const clsLis = ref([
             <div class="ul-ad-txt">
               <span class="ul-ad-sub-title">{{
                 $lang('積極的家庭工作者')
-                }}</span>
+              }}</span>
               <h2 class="ul-section-title" style="text-shadow: 2px 3px 5px #4d4d4d">
                 {{ $lang('我們衷心感謝您一直以來的惠顧。') }}
               </h2>
@@ -693,7 +710,7 @@ video::-webkit-media-controls-enclosure
         width: 100%
         .img
           width: 100%
-          height: 96px
+          height: 130px
           overflow: hidden
           text-align: center
           @media (max-width: 922px)
