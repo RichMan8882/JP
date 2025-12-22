@@ -192,24 +192,23 @@ const onOpenTz = (path: string) => {
       <div class="header-rig">
         <div class="header is-pc">
           <div class="header-top">
-            <ul class="menu">
+            <ul class="menu" v-if="isLogin()">
               <li v-for="item in filterPledgeList" :key="item.title" class="nav-sty black a-aim"
                 @click="handleNavigateTo(item.path)">
                 {{ item.title }}
               </li>
             </ul>
-
             <div v-if="isLogin()" class="menu-btn hover-target" @click="signout()">
               <a style="padding-right: 0">{{ $lang('登出') }}</a>
               <i class="fa-solid fa-arrow-right"></i>
             </div>
-            <div v-else class="menu-btn hover-target" @click="navigateTo('/login')">
+            <div v-else class="menu-btn hover-target" style="border-radius: 10px;" @click="navigateTo('/login')">
               <a style="padding-right: 0">{{ $lang('登入') }}</a>
               <i class="fa-solid fa-arrow-right"></i>
             </div>
           </div>
         </div>
-        <div class="header is-pc">
+        <div class="header is-pc" v-if="isLogin()">
           <div class="header-bom">
             <div class="header-el-text">
               <div class="header-el-subtitle">
@@ -261,7 +260,7 @@ const onOpenTz = (path: string) => {
         </div> -->
         <div class="popup-menus">
           <ul class="menus">
-            <li v-for="(item, index) in filterPledgeList" class="has-dropdown active menu-thumb">
+            <li v-for="(item, index) in filterPledgeList" v-if="isLogin()" class="has-dropdown active menu-thumb">
               <a @click="handleNavigateTo(item.path), onClose()">{{
                 $lang(item.title)
               }}</a>
@@ -269,12 +268,15 @@ const onOpenTz = (path: string) => {
             <li v-if="isLogin()" class="menu-thumb">
               <a @click="signout()">{{ $lang('登出') }}</a>
             </li>
+            <li v-else class="menu-thumb">
+              <a @click="navigateTo('/login')">{{ $lang('登入') }}</a>
+            </li>
           </ul>
         </div>
         <div class="popup-btn">
           <div class="header-bom">
             <div class="header-el-text">
-              <div class="header-el-subtitle">
+              <div class="header-el-subtitle" v-if="isLogin()">
                 Hello!&nbsp;
                 <span style="color: #ff6c7a">
                   {{ PlayerStore?.playerInfo?.username }}

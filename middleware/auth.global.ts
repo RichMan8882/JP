@@ -60,14 +60,14 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
       if (to.path.includes('game')) {
         return navigateTo(`/login`)
       }
-      if (to.path.includes('user')) {
-        return navigateTo(`/login`)
-      }
+      // if (to.path.includes('user')) {
+      //   return navigateTo(`/login`)
+      // }
     }
   }
 
   if (process.client) {
-    const accessTokenQuery = to.query.accessToken
+    const accessTokenQuery = to.query.accessToken    
     if (accessTokenQuery) {
       console.table({
         queryToken: !!accessTokenQuery,
@@ -92,9 +92,9 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
       if (to.path.includes('game')) {
         return navigateTo(`/login`)
       }
-      if (to.path.includes('user')) {
-        return navigateTo(`/login`)
-      }
+      // if (to.path.includes('user')) {
+      //   return navigateTo(`/login`)
+      // }
     } else if (isLogin()) {
       queryInfo()
       fetchInfo()

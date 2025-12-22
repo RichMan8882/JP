@@ -5,7 +5,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
-
+const { isLogin } = useAuthStore()
 import cls1 from '@/assets/image/index/cls1.svg'
 import cls2 from '@/assets/image/index/cls2.svg'
 import cls3 from '@/assets/image/index/cls3.svg'
@@ -230,7 +230,7 @@ const clsLis = ref([
 ])
 </script>
 <template>
-  <div class="dashboard">
+  <div class="dashboard" :style="isLogin() ? '' : 'padding-top: 63px !important'">
     <headerTop />
     <div class="dashboard-video">
       <video autoplay muted loop poster="@/assets/image/index/shutterstock.jpg" class="video-element"
@@ -480,7 +480,7 @@ const clsLis = ref([
       </div>
       <div class="dashboard-lis-list">
         <ul class="dashboard-lis-list-ul2">
-          <li v-for="(item, index) in clsLis" :key="index">
+          <li v-for="(item, index) in clsLis" :key="index" @click="() => { if (!isLogin()) navigateTo('/login') }">
             <div class="li-box2">
               <a>
                 <img class="lazyload" :src="item.src" alt="" />
@@ -502,7 +502,7 @@ const clsLis = ref([
             <div class="ul-ad-txt">
               <span class="ul-ad-sub-title">{{
                 $lang('積極的家庭工作者')
-                }}</span>
+              }}</span>
               <h2 class="ul-section-title" style="text-shadow: 2px 3px 5px #4d4d4d">
                 {{ $lang('我們衷心感謝您一直以來的惠顧。') }}
               </h2>
