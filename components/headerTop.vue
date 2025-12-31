@@ -228,7 +228,9 @@ const onOpenTz = (path: string) => {
               </div>
             </div>
             <div v-if="isLogin()" class="game-btn is-pc game-btn2" @click="onOpenTz('/game/container')">
-              <span>{{ $lang('投資する') }}</span>
+              <!-- <span>{{ $lang('投資する') }}</span> -->
+
+              <img src="@/assets/image/home1/mimg.png" alt="" style="width: auto;">
               <!-- <div class="rig">
                 <i class="fa-solid fa-angle-right"></i>
               </div> -->
@@ -263,7 +265,7 @@ const onOpenTz = (path: string) => {
             <li v-for="(item, index) in filterPledgeList" v-if="isLogin()" class="has-dropdown active menu-thumb">
               <a @click="handleNavigateTo(item.path), onClose()">{{
                 $lang(item.title)
-              }}</a>
+                }}</a>
             </li>
             <li v-if="isLogin()" class="menu-thumb">
               <a @click="signout()">{{ $lang('登出') }}</a>
@@ -293,7 +295,8 @@ const onOpenTz = (path: string) => {
               </div>
             </div>
             <div v-if="isLogin()" class="game-btn game-btn2" @click="onOpenTz('/game/container')">
-              <span>{{ $lang('投資する') }}</span>
+              <!-- <span>{{ $lang('投資する') }}</span> -->
+              <img src="@/assets/image/home1/mimg.png" alt="" style="width: auto;">
               <!-- <div class="rig">
                 <i class="fa-solid fa-angle-right"></i>
               </div> -->
@@ -349,11 +352,20 @@ header
         font-size: 12px
         color: #3f3a39
     .game-btn2
-      background: #ff6c7a !important
+      // background: #ff6c7a !important
       color: #fff !important
-      &:hover
-        background: #fff !important
-        color: #ff6c7a !important
+      height: 49px
+      padding: 0 !important
+      border: none !important
+      box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2)
+      img
+        border-radius: 10px
+        width: auto !important
+        height: 100% !important
+        transition: all .3s
+        &:hover
+          transform: scale(1.05)
+          
     .game-btn
       background: #fff
       border: 2px solid #ff6c7a
